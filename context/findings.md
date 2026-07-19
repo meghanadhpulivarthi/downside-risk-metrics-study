@@ -694,3 +694,16 @@ plateau, demotes the win-rate to a regime-dependent companion stat (43% directed
 crash, ->100% on calm), keeps 'danger is cheap search not LLM'. Fig 5 caption qualified. New
 Appendix "Snooping robustness across panels and seeds". Abstract/Intro/Conclusion unchanged
 (they only assert the plateau, which holds). PDF stays 7pp, clean compile.
+
+### 2026-07-19 — Restructured to SHORT paper (~4pp main + appendices)
+
+User: contribution too weak for a long paper -> put main in 4 pages, rest in appendix, delete
+nothing. Done: merged §Why+§Economics+§Discovery+§Blowup into one section "Why volatility wins
+— and can anything beat it?" (bold subparagraphs pointing to appendices); folded Related Work
+into Intro as a bold lead-in; compressed Data/Protocol + Magnitude prose; merged Discussion+
+Conclusion. Relocated Fig 3 (mediation) -> new app:mediation; Table+Fig 5 (best-of-N) -> app:snooping.
+Moved bibliography BEFORE \appendix so main body+refs end ~page 4; appendices A–J run pages 4–8.
+Body figures kept: Fig 1 (forest) + Table 1 (h2h) only. Total 8pp, 0 overfull hboxes, all refs
+resolve. Also added \usepackage{xurl} + \emergencystretch and Table 5 (delisting) earlier to kill
+right-margin overflows; Fig 6 labels repositioned to stay in-frame. sec:economics/discovery/blowup
+labels removed (now sec:why).
