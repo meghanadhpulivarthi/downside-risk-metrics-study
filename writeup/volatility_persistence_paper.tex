@@ -264,7 +264,8 @@ magnitude adds a little only where tails are fat.
 search should fail out-of-sample and merely overfit validation. It does, in magnitude:
 an LLM agent rewriting a scoring function and a $20{,}000$-configuration sweep both
 inflate the best \emph{validation} score with search intensity while the
-\emph{locked-test} score plateaus at the volatility baseline. Across $12$ holdout
+\emph{locked-test} score plateaus at the volatility baseline (Figure~\ref{fig:bon}).
+Across $12$ holdout
 panels $\times$ $3$ search seeds (App.~\ref{app:snooping}), the validation-selected
 metric's out-of-sample edge over volatility is at most $+0.07$ and averages
 $+0.02$--$0.03$, straddling zero --- no search, LLM or brute-force, finds a genuine
@@ -281,6 +282,18 @@ top-decile lift, while a gradient-boosting model over all ten metrics overfits a
 loses (AUC $0.59$). Again the \emph{size}, not the shape, of recent moves carries the
 signal --- a ranking result, not a deployment recommendation (cost, liquidity, and
 reflexivity frictions are unmodeled).
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/fig5_best_of_N.png}
+\caption{Automated discovery cannot beat volatility out of sample. As search intensity
+grows, the best \emph{validation} score climbs while its locked-\emph{test} score stays
+flat at the volatility baseline. On this ($2017\!\to\!2018$-crash) holdout,
+validation-selected winners beat volatility on the locked test only $43\%$ of the time;
+across $12$ panels $\times$ $3$ seeds the win-rate is regime-dependent, but the
+locked-test edge over volatility never exceeds noise (App.~\ref{app:snooping}).}
+\label{fig:bon}
+\end{figure}
 
 %% =========================================================================
 \section{Discussion and conclusion}\label{sec:discussion}
@@ -612,18 +625,6 @@ Search intensity $N$ & Best validation & Its locked test \\
 \bottomrule
 \end{tabular}
 \end{table}
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=\columnwidth]{figures/fig5_best_of_N.png}
-\caption{As search intensity grows, the best validation score climbs while its
-locked-test score stays flat around the volatility baseline. On this
-($2017\!\to\!2018$-crash) holdout, validation-selected winners beat volatility on the
-locked test only $43\%$ of the time; across panels and seeds the win-rate is
-regime-dependent, but the locked-test score never exceeds the volatility baseline by
-more than noise.}
-\label{fig:bon}
-\end{figure}
 
 To check that this is not a single-panel artifact, we re-ran the
 candidate search (a general nonlinear generator over per-date feature ranks, $1{,}500$
