@@ -351,8 +351,8 @@ volatility is the workhorse; magnitude adds a little only where tails are fat.
 If the incremental signal beyond volatility is genuinely this small, then a
 tireless automated search should be \emph{unable} to find a metric that beats
 volatility out of sample --- and should instead overfit the validation set. That
-is exactly what happens, and it is worth demonstrating because AI agents are now
-being wired into quantitative-research loops. We let an LLM agent freely rewrite a
+is essentially what happens \emph{in magnitude}, and it is worth demonstrating because
+AI agents are now being wired into quantitative-research loops. We let an LLM agent freely rewrite a
 scoring function, and separately ran a $20{,}000$-configuration directed search.
 Both inflate the best \emph{validation} score with search intensity while the
 \emph{locked-test} score plateaus at the volatility baseline (Table~\ref{tab:bon},
