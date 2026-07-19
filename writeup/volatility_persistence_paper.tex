@@ -211,8 +211,8 @@ magnitude beats shape \emph{within} the own-asset family, while no systematic
 co-movement metric adds signal (Figure~\ref{fig:forest} groups both axes). Nor is the
 increment an artifact of the $-100\%$ delisting code (mid-window delistings are
 ${\le}1\%$ of asset-dates; valuing them at last price or dropping them moves VaR's
-increment by ${\le}0.02$; App.~\ref{app:delisting}). Exact values and power checks are
-in App.~\ref{app:partials}.
+increment by ${\le}0.02$; App.~\ref{app:delisting}). Table~\ref{tab:partials} gives the
+exact increments with BH significance; power checks are in App.~\ref{app:partials}.
 
 \begin{figure*}[t]
 \centering
@@ -237,6 +237,30 @@ markets are fat-tailed and blow-up-prone (crypto increments $0.12$--$0.19$, exce
 kurtosis $8$--$21$, vs equity $0.03$--$0.08$; App.~\ref{app:hetero},~\ref{app:conditional}):
 tail magnitude carries incremental information precisely when the tail is active.
 
+\begin{table}[t]
+\centering
+\caption{Partial Spearman $\rho(\text{metric},\text{drawdown}\mid\text{volatility})$.
+Rows 1--3 tail magnitude, rows 4--9 tail shape. $\ast$ survives BH ($q=0.05$,
+positive); $\dagger$ survives BH negative; n/e = not estimable per date.}
+\label{tab:partials}
+\small
+\begin{tabular}{lccccc}
+\toprule
+Metric & cr-16 & cr-17 & cr-18 & eq 94 & eq 05 \\
+\midrule
+VaR & $+0.12\ast$ & $+0.19\ast$ & $+0.13\ast$ & $+0.03\ast$ & $+0.08\ast$ \\
+downside dev. & $+0.13\ast$ & $+0.14\ast$ & $+0.20\ast$ & $+0.02$ & $+0.01$ \\
+ES~\cite{atilgan2020} & $+0.14\ast$ & $+0.08\ast$ & $+0.08$ & $+0.03$ & $+0.00$ \\
+neg.\ semibeta~\cite{bpq2022} & $+0.02$ & $+0.08\ast$ & $+0.13\ast$ & $+0.03$ & $+0.05\ast$ \\
+UPM/LPM~\cite{violenawrocki2016} & $-0.00$ & $+0.01$ & $-0.05$ & $-0.05\dagger$ & $-0.07\dagger$ \\
+downside beta~\cite{ang2006} & $-0.08\dagger$ & $+0.03$ & $+0.02$ & $+0.01$ & $+0.04$ \\
+Hill tail~\cite{kellyjiang2014} & $-0.09\dagger$ & $-0.13\dagger$ & $-0.09\dagger$ & n/e & n/e \\
+lower-tail dep.~\cite{chabiyo2018} & $-0.07$ & $-0.04$ & $-0.17\dagger$ & $-0.01$ & $+0.00$ \\
+GDA~\cite{faragotedongap2018} & $+0.03$ & $-0.05$ & $+0.05$ & $-0.01$ & $-0.03$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 %% =========================================================================
 \section{Why volatility wins --- and can anything beat it?}\label{sec:why}
 \textbf{Persistence.} Volatility wins because it is \emph{persistent}, the founding
@@ -246,9 +270,20 @@ drawdown (App.~\ref{app:chain}). We resist calling forward volatility a
 \emph{sufficient statistic}: a naive same-window mediation suggests it, but that test
 is contaminated (forward volatility and drawdown share a window). Measured on a
 disjoint, predictive window, trailing volatility retains a partial correlation of
-$0.32$--$0.34$ on equity (App.~\ref{app:mediation}) --- so persistence is a
+$0.32$--$0.34$ on equity (Figure~\ref{fig:mediation}) --- so persistence is a
 \emph{leading but incomplete} explanation, not a mechanism that reduces drawdown to
 one number.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/fig3_mediation.png}
+\caption{Mediation: partial $\rho(\text{trailing vol},\text{drawdown}\mid
+\text{forward vol})$. The same-window (mechanical) design gives $\approx 0$ on equity,
+falsely suggesting full mediation; the predictive (disjoint-window) design gives
+$0.32$--$0.34$ --- trailing volatility is not screened off, so forward volatility is
+not a sufficient statistic.}
+\label{fig:mediation}
+\end{figure}
 
 \textbf{Does the edge pay?} A rank correlation is not a profit-and-loss statement.
 The pre-registered composite the decomposition implies --- $z(\text{vol})+z(\text{VaR})$,
@@ -389,11 +424,10 @@ Data sources: a CoinMarketCap daily
 crypto dump (retaining delisted coins), yfinance S\&P~500 constituents and the
 market index, and point-in-time index membership.
 
-\section{Partial correlations and power}\label{app:partials}
-Table~\ref{tab:partials} gives the exact partial correlations plotted in
-Figure~\ref{fig:forest}, with BH significance. VaR survives on all five beds; the
-one equity ES cell that is nominally significant does not survive correction.
-Power on the thin crypto beds: for VaR, on crypto-16 ($n=8$) and crypto-17 ($n=9$)
+\section{Power and placebo}\label{app:partials}
+The partial correlations of Table~\ref{tab:partials} (\S\ref{sec:magnitude}) survive BH
+on the beds marked; the one equity ES cell that is nominally significant does not survive
+correction. Power on the thin crypto beds: for VaR, on crypto-16 ($n=8$) and crypto-17 ($n=9$)
 the effect ($0.12$, $0.19$) exceeds the $80\%$-power minimum detectable effect
 ($0.09$, $0.09$) and is stable under leave-one-date-out; on crypto-18 ($n=7$) the
 effect ($0.13$) is below its MDE ($0.18$) and is reported as suggestive. A placebo
@@ -401,30 +435,6 @@ effect ($0.13$) is below its MDE ($0.18$) and is reported as suggestive. A place
 correlation to $\approx 0$ on four of five beds; the exception, crypto-18
 ($+0.028$, CI $[0.003,0.059]$), is negligible against a real skill of $\approx
 0.38$ and reflects the coarse block bootstrap at $n=7$.
-
-\begin{table}[t]
-\centering
-\caption{Partial Spearman $\rho(\text{metric},\text{drawdown}\mid\text{volatility})$.
-Rows 1--3 tail magnitude, rows 4--9 tail shape. $\ast$ survives BH ($q=0.05$,
-positive); $\dagger$ survives BH negative; n/e = not estimable per date.}
-\label{tab:partials}
-\small
-\begin{tabular}{lccccc}
-\toprule
-Metric & cr-16 & cr-17 & cr-18 & eq 94 & eq 05 \\
-\midrule
-VaR & $+0.12\ast$ & $+0.19\ast$ & $+0.13\ast$ & $+0.03\ast$ & $+0.08\ast$ \\
-downside dev. & $+0.13\ast$ & $+0.14\ast$ & $+0.20\ast$ & $+0.02$ & $+0.01$ \\
-ES~\cite{atilgan2020} & $+0.14\ast$ & $+0.08\ast$ & $+0.08$ & $+0.03$ & $+0.00$ \\
-neg.\ semibeta~\cite{bpq2022} & $+0.02$ & $+0.08\ast$ & $+0.13\ast$ & $+0.03$ & $+0.05\ast$ \\
-UPM/LPM~\cite{violenawrocki2016} & $-0.00$ & $+0.01$ & $-0.05$ & $-0.05\dagger$ & $-0.07\dagger$ \\
-downside beta~\cite{ang2006} & $-0.08\dagger$ & $+0.03$ & $+0.02$ & $+0.01$ & $+0.04$ \\
-Hill tail~\cite{kellyjiang2014} & $-0.09\dagger$ & $-0.13\dagger$ & $-0.09\dagger$ & n/e & n/e \\
-lower-tail dep.~\cite{chabiyo2018} & $-0.07$ & $-0.04$ & $-0.17\dagger$ & $-0.01$ & $+0.00$ \\
-GDA~\cite{faragotedongap2018} & $+0.03$ & $-0.05$ & $+0.05$ & $-0.01$ & $-0.03$ \\
-\bottomrule
-\end{tabular}
-\end{table}
 
 \section{The persistence chain}\label{app:chain}
 Table~\ref{tab:chain} decomposes why trailing volatility forecasts drawdown. Both
@@ -473,18 +483,8 @@ volatility retains a partial correlation of $0.32$--$0.34$ on equity
 (Figure~\ref{fig:mediation}). Trailing volatility carries forecasting content a
 short-horizon volatility forecast does not, so persistence is a leading but incomplete
 explanation. Consistently, drawdown skill and volatility persistence rise and fall
-together as the horizon varies (App.~\ref{app:horizon}).
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=\columnwidth]{figures/fig3_mediation.png}
-\caption{Mediation: partial $\rho(\text{trailing vol},\text{drawdown}\mid
-\text{forward vol})$. Under the same-window (mechanical) design it is $\approx 0$
-on equity, falsely suggesting full mediation; under the predictive
-(disjoint-window) design it is $0.32$--$0.34$ --- trailing volatility is not
-screened off, so forward volatility is not a sufficient statistic.}
-\label{fig:mediation}
-\end{figure}
+together as the horizon varies (App.~\ref{app:horizon}). The mediation figure is
+Figure~\ref{fig:mediation} in \S\ref{sec:why}.
 
 \section{Horizon dynamics}\label{app:horizon}
 Sweeping the forecast horizon from $14$ to $90$ days, volatility persistence and

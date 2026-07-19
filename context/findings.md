@@ -707,3 +707,10 @@ Body figures kept: Fig 1 (forest) + Table 1 (h2h) only. Total 8pp, 0 overfull hb
 resolve. Also added \usepackage{xurl} + \emergencystretch and Table 5 (delisting) earlier to kill
 right-margin overflows; Fig 6 labels repositioned to stay in-frame. sec:economics/discovery/blowup
 labels removed (now sec:why).
+
+### 2026-07-19 — Promoted more evidence into the main body (user: "lots of space, put more in main")
+Body now carries 5 floats (was 3): added Table 2 (exact partial-ρ + BH sig, from App B) and
+Fig 2 (mediation, from app:mediation) into §Magnitude and §Why. Body figures: Fig 1 forest,
+Fig 2 mediation, Fig 3 best-of-N; body tables: Table 1 verdict, Table 2 partials. App B retitled
+"Power and placebo" (table moved out); app:mediation keeps prose, points to body Fig 2. Main =
+full 4 pages (appendix starts page 4 right col, after refs); total 7pp; 0 overfull, all refs resolve.
