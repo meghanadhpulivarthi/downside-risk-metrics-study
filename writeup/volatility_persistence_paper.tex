@@ -354,15 +354,27 @@ volatility out of sample --- and should instead overfit the validation set. That
 is exactly what happens, and it is worth demonstrating because AI agents are now
 being wired into quantitative-research loops. We let an LLM agent freely rewrite a
 scoring function, and separately ran a $20{,}000$-configuration directed search.
-Both inflate the best \emph{validation} score monotonically with search intensity
-while the \emph{locked-test} score plateaus at the volatility baseline
-(Table~\ref{tab:bon}, Figure~\ref{fig:bon}); validation-selected winners beat
-volatility on the locked test only ${\sim}43\%$ of the time --- a coin flip ---
-despite a $0.94$ validation--test rank correlation across configurations. A
-non-LLM random sweep reproduces the same plateau: the danger is the cheap search,
-not the language model. We present this as an illustrative caution on a single locked
-panel, not a multi-panel estimate of the inflation curve; establishing its stability
-across panels and seeds is left to future work.
+Both inflate the best \emph{validation} score with search intensity while the
+\emph{locked-test} score plateaus at the volatility baseline (Table~\ref{tab:bon},
+Figure~\ref{fig:bon}). This plateau is the robust result: across a grid of $12$ holdout
+panels $\times$ $3$ search seeds (Appendix~\ref{app:snooping}), the validation-selected
+metric's out-of-sample edge over volatility is at most $+0.07$ and averages
+$+0.02$--$0.03$, straddling zero --- no search, LLM or brute-force, finds a genuine
+out-of-sample improvement. A non-LLM random sweep reproduces it, so the danger is the
+cheap search, not the language model.
+
+We are careful \emph{not} to overstate a companion statistic. How often a
+validation-winner even \emph{nominally} edges volatility on the test is
+regime-dependent, and far less informative than the near-zero size of that edge. On the
+hardest, most realistic holdout --- validation in the $2017$ bull market, test on the
+$2018$ crash, where volatility's own cross-sectional skill \emph{rises}
+($0.31\!\to\!0.38$) --- validation-selected winners beat volatility only $43\%$ of the
+time under the aggressive directed search ($57\%$ under a milder generator): a coin
+flip, despite a $0.94$ validation--test rank correlation. On calmer out-of-time windows,
+where volatility weakens on the test, the nominal win-rate climbs toward $100\%$ --- but
+only by a noise-sized margin. Automated search's apparent success is largest exactly
+where it is least useful (calm futures) and evaporates where it would matter (stress
+futures).
 
 The statistics are classical data snooping~\cite{white2000,bailey2017}; what is
 new is the \emph{setting}. An autonomous agent removes the last natural brake on
@@ -395,8 +407,11 @@ Search intensity $N$ & Best validation & Its locked test \\
 \centering
 \includegraphics[width=\columnwidth]{figures/fig5_best_of_N.png}
 \caption{As search intensity grows, the best validation score climbs while its
-locked-test score stays flat around the volatility baseline. Validation-selected
-winners beat volatility on the locked test only $43\%$ of the time.}
+locked-test score stays flat around the volatility baseline. On this
+($2017\!\to\!2018$-crash) holdout, validation-selected winners beat volatility on the
+locked test only $43\%$ of the time; across panels and seeds the win-rate is
+regime-dependent, but the locked-test score never exceeds the volatility baseline by
+more than noise (Appendix~\ref{app:snooping}).}
 \label{fig:bon}
 \end{figure}
 
@@ -634,6 +649,28 @@ sorting on volatility vs.\ the composite. Volatility already separates drawdown
 strongly; the composite is indistinguishable except marginally on crypto-bull.}
 \label{fig:economic}
 \end{figure}
+
+\section{Snooping robustness across panels and seeds}\label{app:snooping}
+To check that the discovery result is not a single-panel artifact, we re-ran the
+candidate search (a general nonlinear generator over per-date feature ranks, $1{,}500$
+candidates per run) over a grid of holdout panels $\times$ $3$ search seeds, in two
+families: \emph{out-of-time} --- a fixed-length test window slid through the timeline
+with validation always chronologically earlier (six windows, including the original
+$2017\!\to\!2018$ split) --- and \emph{random} --- order-ignoring $10$-val/$7$-test
+repartitions of the non-train dates (six draws). Per run we record the
+validation-selected metric's locked-test edge over volatility (\emph{test gap}) and the
+fraction of validation-winners that also beat volatility on test (\emph{win-rate}).
+
+\emph{The plateau is stable.} The test gap averages $+0.020$ (out-of-time; range
+$-0.028$ to $+0.046$) and $+0.035$ (random; $+0.014$ to $+0.072$) --- always small and
+often straddling zero, so no search beats volatility out-of-sample by more than noise on
+any panel or seed. Validation--test rank correlation is $0.94$--$0.99$ throughout.
+\emph{The win-rate is not.} It averages $0.79$ (out-of-time, range $0.55$--$1.00$) and
+$0.82$ (random, $0.62$--$0.97$), lowest on holdouts where volatility's own skill is high
+on the test (the $2018$ crash: $0.43$ directed / $0.57$ milder generator) and near $1.0$
+on calm windows. Because these nominal ``wins'' come with a test gap of essentially
+zero, the \emph{sign} of the win-rate is far less informative than its \emph{magnitude}:
+the validation-selected metric matches, but does not beat, volatility.
 
 %% =========================================================================
 \begin{thebibliography}{99}

@@ -665,3 +665,32 @@ Table 1. NOT yet committed/pushed to GitHub.
 - P3-#6: motivated cross-sectional Spearman (which assets to derisk) + noted month-end formation
   dates => overlapping 90d windows, block bootstrap handles serial dependence (coarsely at n=7-9).
 PDF stays 7 pages; no undefined citations.
+
+### 2026-07-19 — P2-#5 STRENGTHENED: multi-panel/seed snooping robustness (reframe)
+
+New script run_snooping_robustness.py. Re-ran candidate search over 12 holdout panels x 3
+seeds, two families: out-of-time (6 sliding windows incl. original 2017->2018 split, val
+always chronologically before test) + random (6 order-ignoring 10-val/7-test repartitions).
+Output: outputs/2026-07-19_05-36-40_snooping_robustness/snooping_robustness.json.
+
+KEY FINDING — the '43% coin-flip' is NOT robust; it is the aggressive directed-sweep number
+on the single hardest (2018-crash) holdout. Diagnostic on the EXACT original split: win-rate
+0.43 (directed sweep generator) vs 0.57 (milder multi_run generator) — generator-dependent.
+
+What IS robust (across all 36 runs): the val-selected metric's locked-test EDGE over vol
+(test_gap) is tiny everywhere — out-of-time mean +0.020 (range -0.028..+0.046), random mean
++0.035 (+0.014..+0.072). No search (LLM or brute) beats vol OOS by more than noise. val-test
+corr 0.94-0.99 throughout.
+
+What is NOT robust: win-rate (fraction of val-winners beating vol on test) is regime-dependent
+— mean 0.79 out-of-time (0.55-1.00), 0.82 random (0.62-0.97). Lowest when vol's own test skill
+is HIGH (2018 crash, vol_val 0.31 -> vol_test 0.38); ~1.0 on calm windows where vol weakens.
+Driver: search 'wins' by a noise-sized margin, so the SIGN of win-rate is far less informative
+than its near-zero MAGNITUDE. Random-vs-out-of-time contrast is mild (0.035 vs 0.020) — did NOT
+overclaim 'random CV hides danger'.
+
+Reframe applied to paper (honest, per user): §Discovery now leads with the robust test-gap
+plateau, demotes the win-rate to a regime-dependent companion stat (43% directed / 57% mild on
+crash, ->100% on calm), keeps 'danger is cheap search not LLM'. Fig 5 caption qualified. New
+Appendix "Snooping robustness across panels and seeds". Abstract/Intro/Conclusion unchanged
+(they only assert the plateau, which holds). PDF stays 7pp, clean compile.
