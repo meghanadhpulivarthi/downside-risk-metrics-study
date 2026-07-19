@@ -127,7 +127,11 @@ downside beta~\cite{ang2006,leviwelch2020}, lower-tail
 dependence~\cite{chabiyo2018}, disappointment-aversion risk~\cite{faragotedongap2018},
 and tail-exponent factors~\cite{kellyjiang2014}. Most were built to \emph{price}
 the cross-section of returns, not to forecast a single asset's drawdown; we
-repurpose them and scope our conclusions accordingly.
+repurpose them and scope our conclusions accordingly. Separately, a drawdown-specific
+literature studies the maximum-drawdown statistic directly --- its distribution under
+a Brownian model~\cite{magdonismail2004} and its use as a portfolio-optimization
+objective~\cite{chekhlov2005}. We borrow its \emph{target} (forward maximum drawdown)
+but ask which \emph{cross-sectional} risk metrics best forecast it.
 
 \textbf{Volatility persistence.} That volatility is autocorrelated and
 forecastable is the founding fact of the ARCH/GARCH
@@ -155,7 +159,11 @@ rests on the crypto beds, while equity tests cross-asset generality.
 $90$-day forward maximum drawdown of each asset (delisting scored as a $-100\%$
 terminal loss); skill is the per-formation-date cross-sectional Spearman
 correlation between metric and realized drawdown, averaged over the bed, with
-paired block-bootstrap $95\%$ confidence intervals. Because the evaluation spans
+paired block-bootstrap $95\%$ confidence intervals. We use a \emph{cross-sectional}
+rank correlation because the operational question is which assets to derisk on a given
+date, not the time series of any single asset. Formation dates are month-ends, so
+consecutive $90$-day forward windows overlap; the block bootstrap over dates addresses
+the induced serial dependence, though on the $7$--$9$-date crypto beds only coarsely. Because the evaluation spans
 ${\sim}45$ metric~$\times$~bed cells, significance flags are BH-corrected
 ($q=0.05$) within each family. To ask what a metric adds \emph{beyond} volatility,
 we use the partial Spearman correlation controlling for volatility. The discovery
@@ -180,7 +188,10 @@ are two volatility variants (downside deviation, VaR) on the single crypto-bull
 bed --- and they reverse on equity, where volatility significantly beats them.
 Every genuinely different, shape-based metric is significantly \emph{worse} than
 volatility on every bed. There is no metric that consistently or generalizably
-beats volatility across regimes and asset classes. This is a narrower and more
+beats volatility across regimes and asset classes. We fix that bar in advance to
+avoid a moving goalpost: an edge counts as \emph{generalizable} only if the metric
+BH-significantly beats volatility on at least one crypto \emph{and} one equity bed
+--- i.e., survives a change of asset class. No metric clears it. This is a narrower and more
 defensible statement than ``nothing beats volatility'': small, regime-specific
 edges exist for volatility's own variants, but they do not survive a change of
 asset class.
@@ -349,7 +360,9 @@ while the \emph{locked-test} score plateaus at the volatility baseline
 volatility on the locked test only ${\sim}43\%$ of the time --- a coin flip ---
 despite a $0.94$ validation--test rank correlation across configurations. A
 non-LLM random sweep reproduces the same plateau: the danger is the cheap search,
-not the language model.
+not the language model. We present this as an illustrative caution on a single locked
+panel, not a multi-panel estimate of the inflation curve; establishing its stability
+across panels and seeds is left to future work.
 
 The statistics are classical data snooping~\cite{white2000,bailey2017}; what is
 new is the \emph{setting}. An autonomous agent removes the last natural brake on
@@ -645,6 +658,9 @@ heteroskedasticity. \emph{Journal of Econometrics}, 31(3):307--327, 1986.
 \bibitem{chabiyo2018} F.~Chabi-Yo, S.~Ruenzi, and F.~Weigert. Crash sensitivity and
 the cross-section of expected stock returns.
 \emph{Journal of Financial and Quantitative Analysis}, 53(3):1059--1100, 2018.
+\bibitem{chekhlov2005} A.~Chekhlov, S.~Uryasev, and M.~Zabarankin. Drawdown measure
+in portfolio optimization. \emph{International Journal of Theoretical and Applied
+Finance}, 8(1):13--58, 2005.
 \bibitem{engle1982} R.~Engle. Autoregressive conditional heteroscedasticity with
 estimates of the variance of U.K.\ inflation. \emph{Econometrica}, 50(4):987--1007, 1982.
 \bibitem{faragotedongap2018} A.~Farago and R.~T\'edongap. Downside risks and the
@@ -658,6 +674,9 @@ of expected returns. \emph{Review of Financial Studies}, 29(1):5--68, 2016.
 \emph{Review of Financial Studies}, 27(10):2841--2871, 2014.
 \bibitem{leviwelch2020} Y.~Levi and I.~Welch. Symmetric and asymmetric market betas
 and downside risk. \emph{Review of Financial Studies}, 33(6):2772--2795, 2020.
+\bibitem{magdonismail2004} M.~Magdon-Ismail, A.~Atiya, A.~Pratap, and
+Y.~Abu-Mostafa. On the maximum drawdown of a Brownian motion.
+\emph{Journal of Applied Probability}, 41(1):147--161, 2004.
 \bibitem{rockafellar2000} R.~T.~Rockafellar and S.~Uryasev. Optimization of
 conditional value-at-risk. \emph{Journal of Risk}, 2(3):21--41, 2000.
 \bibitem{sortino1991} F.~Sortino and R.~van der Meer. Downside risk.

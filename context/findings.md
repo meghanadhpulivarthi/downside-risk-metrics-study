@@ -652,3 +652,16 @@ Also this session: title "Benchmark"→"Evaluation" (.tex+.md+abstract+conclusio
 = Meghanadh Pulivarthi / Independent Researcher / meghanadh27@gmail.com, repo URL → real
 downside-risk-metrics-study, removed stale "(replace with URL)" note, Hill-omitted footnote on
 Table 1. NOT yet committed/pushed to GitHub.
+
+### 2026-07-19 — P2/P3 reviewer concerns (prose, no new experiments)
+
+- P2-#4 drawdown-specific literature: added Chekhlov-Uryasev-Zabarankin (IJTAF 8(1):13-58,
+  2005, CDaR) and Magdon-Ismail-Atiya-Pratap-Abu-Mostafa (J.Appl.Prob. 41(1):147-161, 2004,
+  max-drawdown distribution) to Related Work — both verified against publisher records.
+- Moving-goalpost: defined "generalizable" ex ante in §Verdict (must BH-beat vol on >=1 crypto
+  AND >=1 equity bed). None clears it.
+- P2-#5 LLM section: scoped explicitly as single-panel illustrative caution; multi-panel/seed
+  stability flagged as future work (no fabricated data).
+- P3-#6: motivated cross-sectional Spearman (which assets to derisk) + noted month-end formation
+  dates => overlapping 90d windows, block bootstrap handles serial dependence (coarsely at n=7-9).
+PDF stays 7 pages; no undefined citations.
