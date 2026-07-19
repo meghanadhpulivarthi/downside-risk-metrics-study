@@ -1,0 +1,467 @@
+{
+  "crypto_2016_calm": {
+    "n_dates": 8,
+    "mean_death_rate": 0.009,
+    "variants": {
+      "baseline": {
+        "var5": {
+          "mean": 0.124,
+          "ci": [
+            0.063,
+            0.157
+          ],
+          "n": 8,
+          "sig_pos": true
+        },
+        "es5": {
+          "mean": 0.141,
+          "ci": [
+            0.068,
+            0.227
+          ],
+          "n": 8,
+          "sig_pos": true
+        },
+        "downside_dev": {
+          "mean": 0.128,
+          "ci": [
+            0.079,
+            0.185
+          ],
+          "n": 8,
+          "sig_pos": true
+        }
+      },
+      "lastprice": {
+        "var5": {
+          "mean": 0.124,
+          "ci": [
+            0.063,
+            0.157
+          ],
+          "n": 8,
+          "sig_pos": true
+        },
+        "es5": {
+          "mean": 0.141,
+          "ci": [
+            0.068,
+            0.227
+          ],
+          "n": 8,
+          "sig_pos": true
+        },
+        "downside_dev": {
+          "mean": 0.128,
+          "ci": [
+            0.079,
+            0.185
+          ],
+          "n": 8,
+          "sig_pos": true
+        }
+      },
+      "exclude": {
+        "var5": {
+          "mean": 0.144,
+          "ci": [
+            0.076,
+            0.202
+          ],
+          "n": 8,
+          "sig_pos": true
+        },
+        "es5": {
+          "mean": 0.163,
+          "ci": [
+            0.095,
+            0.267
+          ],
+          "n": 8,
+          "sig_pos": true
+        },
+        "downside_dev": {
+          "mean": 0.151,
+          "ci": [
+            0.101,
+            0.231
+          ],
+          "n": 8,
+          "sig_pos": true
+        }
+      }
+    }
+  },
+  "crypto_2017_bull": {
+    "n_dates": 9,
+    "mean_death_rate": 0.0,
+    "variants": {
+      "baseline": {
+        "var5": {
+          "mean": 0.194,
+          "ci": [
+            0.124,
+            0.24
+          ],
+          "n": 9,
+          "sig_pos": true
+        },
+        "es5": {
+          "mean": 0.076,
+          "ci": [
+            0.035,
+            0.103
+          ],
+          "n": 9,
+          "sig_pos": true
+        },
+        "downside_dev": {
+          "mean": 0.141,
+          "ci": [
+            0.099,
+            0.172
+          ],
+          "n": 9,
+          "sig_pos": true
+        }
+      },
+      "lastprice": {
+        "var5": {
+          "mean": 0.194,
+          "ci": [
+            0.124,
+            0.24
+          ],
+          "n": 9,
+          "sig_pos": true
+        },
+        "es5": {
+          "mean": 0.076,
+          "ci": [
+            0.035,
+            0.103
+          ],
+          "n": 9,
+          "sig_pos": true
+        },
+        "downside_dev": {
+          "mean": 0.141,
+          "ci": [
+            0.099,
+            0.172
+          ],
+          "n": 9,
+          "sig_pos": true
+        }
+      },
+      "exclude": {
+        "var5": {
+          "mean": 0.194,
+          "ci": [
+            0.124,
+            0.24
+          ],
+          "n": 9,
+          "sig_pos": true
+        },
+        "es5": {
+          "mean": 0.076,
+          "ci": [
+            0.035,
+            0.103
+          ],
+          "n": 9,
+          "sig_pos": true
+        },
+        "downside_dev": {
+          "mean": 0.141,
+          "ci": [
+            0.099,
+            0.172
+          ],
+          "n": 9,
+          "sig_pos": true
+        }
+      }
+    }
+  },
+  "crypto_2018_crash": {
+    "n_dates": 7,
+    "mean_death_rate": 0.0,
+    "variants": {
+      "baseline": {
+        "var5": {
+          "mean": 0.135,
+          "ci": [
+            0.018,
+            0.27
+          ],
+          "n": 7,
+          "sig_pos": true
+        },
+        "es5": {
+          "mean": 0.077,
+          "ci": [
+            -0.0,
+            0.167
+          ],
+          "n": 7,
+          "sig_pos": false
+        },
+        "downside_dev": {
+          "mean": 0.199,
+          "ci": [
+            0.076,
+            0.342
+          ],
+          "n": 7,
+          "sig_pos": true
+        }
+      },
+      "lastprice": {
+        "var5": {
+          "mean": 0.135,
+          "ci": [
+            0.018,
+            0.27
+          ],
+          "n": 7,
+          "sig_pos": true
+        },
+        "es5": {
+          "mean": 0.077,
+          "ci": [
+            -0.0,
+            0.167
+          ],
+          "n": 7,
+          "sig_pos": false
+        },
+        "downside_dev": {
+          "mean": 0.199,
+          "ci": [
+            0.076,
+            0.342
+          ],
+          "n": 7,
+          "sig_pos": true
+        }
+      },
+      "exclude": {
+        "var5": {
+          "mean": 0.135,
+          "ci": [
+            0.018,
+            0.27
+          ],
+          "n": 7,
+          "sig_pos": true
+        },
+        "es5": {
+          "mean": 0.077,
+          "ci": [
+            -0.0,
+            0.167
+          ],
+          "n": 7,
+          "sig_pos": false
+        },
+        "downside_dev": {
+          "mean": 0.199,
+          "ci": [
+            0.076,
+            0.342
+          ],
+          "n": 7,
+          "sig_pos": true
+        }
+      }
+    }
+  },
+  "equity_1994_99_calm": {
+    "n_dates": 66,
+    "mean_death_rate": 0.0,
+    "variants": {
+      "baseline": {
+        "var5": {
+          "mean": 0.035,
+          "ci": [
+            0.01,
+            0.066
+          ],
+          "n": 66,
+          "sig_pos": true
+        },
+        "es5": {
+          "mean": 0.03,
+          "ci": [
+            0.002,
+            0.063
+          ],
+          "n": 66,
+          "sig_pos": true
+        },
+        "downside_dev": {
+          "mean": 0.02,
+          "ci": [
+            -0.009,
+            0.055
+          ],
+          "n": 66,
+          "sig_pos": false
+        }
+      },
+      "lastprice": {
+        "var5": {
+          "mean": 0.035,
+          "ci": [
+            0.01,
+            0.066
+          ],
+          "n": 66,
+          "sig_pos": true
+        },
+        "es5": {
+          "mean": 0.03,
+          "ci": [
+            0.002,
+            0.063
+          ],
+          "n": 66,
+          "sig_pos": true
+        },
+        "downside_dev": {
+          "mean": 0.02,
+          "ci": [
+            -0.009,
+            0.055
+          ],
+          "n": 66,
+          "sig_pos": false
+        }
+      },
+      "exclude": {
+        "var5": {
+          "mean": 0.035,
+          "ci": [
+            0.01,
+            0.066
+          ],
+          "n": 66,
+          "sig_pos": true
+        },
+        "es5": {
+          "mean": 0.03,
+          "ci": [
+            0.002,
+            0.063
+          ],
+          "n": 66,
+          "sig_pos": true
+        },
+        "downside_dev": {
+          "mean": 0.02,
+          "ci": [
+            -0.009,
+            0.055
+          ],
+          "n": 66,
+          "sig_pos": false
+        }
+      }
+    }
+  },
+  "equity_2005_09_gfc": {
+    "n_dates": 54,
+    "mean_death_rate": 0.0,
+    "variants": {
+      "baseline": {
+        "var5": {
+          "mean": 0.076,
+          "ci": [
+            0.043,
+            0.107
+          ],
+          "n": 54,
+          "sig_pos": true
+        },
+        "es5": {
+          "mean": 0.0,
+          "ci": [
+            -0.033,
+            0.032
+          ],
+          "n": 54,
+          "sig_pos": false
+        },
+        "downside_dev": {
+          "mean": 0.01,
+          "ci": [
+            -0.022,
+            0.044
+          ],
+          "n": 54,
+          "sig_pos": false
+        }
+      },
+      "lastprice": {
+        "var5": {
+          "mean": 0.076,
+          "ci": [
+            0.043,
+            0.107
+          ],
+          "n": 54,
+          "sig_pos": true
+        },
+        "es5": {
+          "mean": 0.0,
+          "ci": [
+            -0.033,
+            0.032
+          ],
+          "n": 54,
+          "sig_pos": false
+        },
+        "downside_dev": {
+          "mean": 0.01,
+          "ci": [
+            -0.022,
+            0.044
+          ],
+          "n": 54,
+          "sig_pos": false
+        }
+      },
+      "exclude": {
+        "var5": {
+          "mean": 0.076,
+          "ci": [
+            0.043,
+            0.107
+          ],
+          "n": 54,
+          "sig_pos": true
+        },
+        "es5": {
+          "mean": 0.0,
+          "ci": [
+            -0.033,
+            0.032
+          ],
+          "n": 54,
+          "sig_pos": false
+        },
+        "downside_dev": {
+          "mean": 0.01,
+          "ci": [
+            -0.022,
+            0.044
+          ],
+          "n": 54,
+          "sig_pos": false
+        }
+      }
+    }
+  }
+}

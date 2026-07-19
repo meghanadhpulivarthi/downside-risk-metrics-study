@@ -612,3 +612,43 @@ New figure fig7_economic.png (drawdown discrimination vol vs composite). Appendi
 removed file-by-file code description → single repo link (PLACEHOLDER URL
 github.com/meghanadhpulivarthi/partial-moments-audit — user to replace). New Appendix B holds
 both experiments (Table B1 + Fig 7 + conditional test). PDF regenerated.
+
+---
+
+## 2026-07-19 — Fresh full review + P1 revisions (delisting sensitivity, own/systematic regroup)
+
+Ran a fresh (non-verification) full ARS review on the near-final `.tex`. Decision: Major
+Revision at a selective bar / Minor at the workshop bar. Prior R1/R2/R3 (sufficient-statistic
+retraction, placebo CI, citations) verified intact — no regressions. Three NEW substantive
+critiques converged across reviewers, all addressed:
+
+**P1-#2 Delisting-coding sensitivity** (`run_delisting_sensitivity.py`, new). Worry: the
+magnitude edge might be death-prediction / an artifact of coding mid-window delisting as
+-100%. REFUTED empirically. Within the point-in-time top-100 universe, mid-window delistings
+are RARE: mean death rate 0.9% (crypto-16), 0% (all other beds). Recomputing partial
+ρ(metric,dd|vol) under three drawdown codings — baseline(-100%), last-traded-price (no override),
+exclude-delisted (survivors only) — leaves VaR's increment within ±0.02 everywhere:
+  cr-16 +0.124/+0.124/+0.144 ; cr-17 +0.194 (all three) ; cr-18 +0.135 (all three) ;
+  eq-94 +0.035 (all three) ; eq-05 +0.076 (all three). ES/downside_dev identical pattern.
+Conclusion: magnitude = crash-SEVERITY forecasting (captured by ordinary peak-to-trough),
+distinct from the blow-up/terminal-death result. → new Appendix "Delisting-coding robustness".
+
+**P1-#1 Own-asset vs systematic regroup** (Fig 1, `make_figures.py` fig_forest). Domain/DA
+worry: "magnitude vs shape" might really be "own-asset vs systematic co-movement" (winners are
+own-asset dispersion; most losers involve the market). Regrouped Fig 1 into 3 families:
+own-asset magnitude (VaR/downside_dev/ES, blue), own-asset shape (Hill exponent — the ONLY pure
+own-asset shape metric, orange), systematic co-movement (VN ratio*, semibeta, downside beta,
+lower-tail dep, GDA, red). Key: Hill (own-asset shape) is ≈0/negative on every bed → magnitude
+beats shape WITHIN the own-asset family; separately no systematic metric adds signal. Confound
+answered, contribution sharpened rather than sunk. (*VN ratio computed benchmark-relative in
+compute_metrics, so it sits in the systematic block.)
+
+**P1-#3 Labeling.** Added "pre-specified vs exploratory" note to §Data (verdict/partials/composite
+pre-specified; heterogeneity + conditional exploratory) and an explicit n=7–9 crypto power caveat
+(lean on equity for the null, treat crypto-only positives as suggestive).
+
+PDF: 6→7 pages. All numbers trace to outputs/2026-07-19_04-50-07_delisting_sensitivity/.
+Also this session: title "Benchmark"→"Evaluation" (.tex+.md+abstract+conclusion), author block
+= Meghanadh Pulivarthi / Independent Researcher / meghanadh27@gmail.com, repo URL → real
+downside-risk-metrics-study, removed stale "(replace with URL)" note, Hill-omitted footnote on
+Table 1. NOT yet committed/pushed to GitHub.

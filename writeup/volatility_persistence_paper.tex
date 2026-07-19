@@ -24,15 +24,14 @@
 \begin{document}
 
 \title{Magnitude, Not Shape: A Survivorship-Free, Significance-Tested
-Benchmark of Downside-Risk Metrics}
+Evaluation of Downside-Risk Metrics}
 
-\author{Author Name}
+\author{Meghanadh Pulivarthi}
 \affiliation{%
-  \institution{Affiliation}
-  \city{City}
-  \country{Country}}
-\email{author@example.com}
-\renewcommand{\shortauthors}{Author Name}
+  \institution{Independent Researcher}
+  \country{}}
+\email{meghanadh27@gmail.com}
+\renewcommand{\shortauthors}{Pulivarthi}
 
 \begin{abstract}
 Every few years a new downside- or tail-risk metric is proposed to improve on
@@ -40,7 +39,7 @@ plain return volatility, always on the same premise: the \emph{shape} of the
 loss distribution --- its asymmetry, tail heaviness, or co-crash structure ---
 carries information that symmetric volatility misses. We test that premise as
 adversarially as the data allow. On a survivorship-free (a crypto panel retaining
-delisted coins, plus equity), multi-regime, multiple-testing-corrected benchmark
+delisted coins, plus equity), multi-regime, multiple-testing-corrected evaluation
 of ten metrics across five test beds, no metric --- published or
 machine-discovered --- reliably beats volatility at forecasting an asset's
 forward maximum drawdown. The anatomy of that failure is a clean law:
@@ -93,8 +92,8 @@ We test that premise on the fairest field we can build. Three disciplines the
 source literature usually omits turn out to matter enormously: a
 \emph{survivorship-free} universe (so the assets that actually died are present),
 a \emph{locked} out-of-sample holdout (so search cannot leak into the verdict),
-and \emph{multiple-testing correction} (so a benchmark of dozens of comparisons
-does not manufacture winners). We benchmark ten metrics as forecasters of
+and \emph{multiple-testing correction} (so an evaluation of dozens of comparisons
+does not manufacture winners). We evaluate ten metrics as forecasters of
 $90$-day forward maximum drawdown across five cross-sectional test beds spanning
 calm, bull, and crash regimes in crypto and equity, with per-date
 rank-correlation skill, paired block-bootstrap confidence intervals, and
@@ -156,12 +155,22 @@ rests on the crypto beds, while equity tests cross-asset generality.
 $90$-day forward maximum drawdown of each asset (delisting scored as a $-100\%$
 terminal loss); skill is the per-formation-date cross-sectional Spearman
 correlation between metric and realized drawdown, averaged over the bed, with
-paired block-bootstrap $95\%$ confidence intervals. Because the benchmark spans
+paired block-bootstrap $95\%$ confidence intervals. Because the evaluation spans
 ${\sim}45$ metric~$\times$~bed cells, significance flags are BH-corrected
 ($q=0.05$) within each family. To ask what a metric adds \emph{beyond} volatility,
 we use the partial Spearman correlation controlling for volatility. The discovery
 experiment (\S\ref{sec:discovery}) uses a strict train/validation/\emph{locked-test}
 split, scored once after the metric is frozen.
+
+\textbf{Pre-specified vs exploratory.} The head-to-head verdict
+(\S\ref{sec:verdict}), the magnitude-vs-shape partials (\S\ref{sec:magnitude}), and
+the equal-weight composite (\S\ref{sec:economics}) were specified before inspecting
+outcomes; the cross-bed heterogeneity and stress-conditional cuts
+(Appendices~\ref{app:hetero},~\ref{app:conditional}) are exploratory and flagged as
+such. The crypto beds have only $7$--$9$ formation dates, so their block-bootstrap
+CIs are coarse: we lean on the well-powered equity beds ($54$--$66$ dates) for the
+null that shape adds nothing, and read crypto-only positives as suggestive rather
+than confirmatory.
 
 %% =========================================================================
 \section{The verdict: nothing beats volatility}\label{sec:verdict}
@@ -180,7 +189,9 @@ asset class.
 \centering
 \caption{Standalone out-of-sample drawdown-forecast Spearman correlation.
 $\ast$ = significantly beats volatility, $\dagger$ = significantly worse (both
-survive BH, $q=0.05$); unmarked = indistinguishable.}
+survive BH, $q=0.05$); unmarked = indistinguishable. The Hill tail
+exponent~\cite{kellyjiang2014} is omitted here (not estimable per date on
+equity); its increment appears in Table~\ref{tab:partials}.}
 \label{tab:h2h}
 \small
 \begin{tabular}{lccccc}
@@ -212,21 +223,41 @@ increment: VaR is significant on \textbf{all five beds} (partial $\rho$ up to
 $0.19$), downside deviation on the three crypto beds. Tail-\emph{shape} measures
 --- the Viole--Nawrocki asymmetry ratio, lower-tail dependence, the tail exponent,
 the disappointment-aversion proxy --- are $\approx 0$ or significantly
-\emph{negative} everywhere. The one shape-family exception, negative semibeta, is
-plausibly a case of co-crash \emph{magnitude} leaking into a shape statistic. The
-forecastable residual beyond volatility is thus the \emph{size} of tail losses,
-not their \emph{asymmetry} --- precisely the premise the shape metrics were built
-on. Exact values, and the power checks that back the thin crypto beds, are in
-Appendix~\ref{app:partials}.
+\emph{negative} everywhere.
+
+A skeptic might counter that this is really an \emph{own-asset vs systematic} split,
+not a magnitude vs shape one: the winners (VaR, ES, downside deviation) are all
+own-asset dispersion, whereas most losers (downside beta, semibeta, lower-tail
+dependence, the disappointment-aversion proxy) are \emph{systematic} co-movement
+measures. Figure~\ref{fig:forest} is grouped to settle this. The magnitude/shape
+split survives with the own/systematic axis held fixed: the one \emph{own-asset}
+shape metric, the Hill tail exponent, is itself $\approx 0$ or negative on every bed
+--- so among own-asset metrics, magnitude beats shape --- and, separately, no
+systematic co-movement metric adds signal. Negative semibeta is the only shape
+statistic with an occasional positive increment, plausibly co-crash
+\emph{magnitude} leaking into a shape measure. The forecastable residual beyond
+volatility is thus the \emph{size} of tail losses, not their \emph{asymmetry} ---
+precisely the premise the shape metrics were built on. Nor is the increment an
+artifact of coding a delisting as a $-100\%$ loss: within the top-$100$ universe
+mid-window delistings are rare ($\le\!1\%$ of asset-dates), and valuing delisted
+assets at their last traded price, or dropping them entirely, leaves VaR's increment
+within $\pm0.02$ on every bed (Appendix~\ref{app:delisting}) --- so this is
+crash-\emph{severity} forecasting, distinct from the blow-up result of
+\S\ref{sec:blowup}. Exact values, and the power checks that back the thin crypto
+beds, are in Appendix~\ref{app:partials}.
 
 \begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{figures/fig1_partial_forest.png}
 \caption{Incremental signal beyond volatility, by bed: partial Spearman
-$\rho(\text{metric},\text{drawdown}\mid\text{volatility})$. Tail-magnitude metrics
-(blue) sit to the right of zero, especially in crypto; tail-shape metrics (red)
-cluster at or to the left of zero. Whiskers are $95\%$ block-bootstrap CIs; the
-dotted line separates the two families.}
+$\rho(\text{metric},\text{drawdown}\mid\text{volatility})$, grouped on both axes a
+skeptic cares about --- what the metric measures (magnitude vs shape) \emph{and}
+whose distribution it uses (own-asset vs systematic co-movement with the market).
+Only own-asset magnitude (blue) sits reliably right of zero. The lone own-asset
+\emph{shape} metric, the Hill tail exponent (orange), is $\approx 0$ or negative ---
+so ``magnitude beats shape'' holds \emph{within} the own-asset family --- and no
+systematic co-movement metric (red) adds signal. Whiskers are $95\%$ block-bootstrap
+CIs; dotted lines separate the three families.}
 \label{fig:forest}
 \end{figure*}
 
@@ -397,7 +428,7 @@ holdout.
 
 %% =========================================================================
 \section{Conclusion}
-On a survivorship-free, multi-regime, multiple-testing-corrected benchmark, no
+On a survivorship-free, multi-regime, multiple-testing-corrected evaluation, no
 downside-risk metric --- published or machine-discovered --- reliably beats plain
 volatility at forecasting drawdown. What survives correction is a sharp
 decomposition: the only forecastable residual beyond volatility is tail
@@ -418,8 +449,8 @@ drawdown forecasting, not the originals' pricing claims.
 \appendix
 \section{Reproducibility}\label{app:repro}
 Code, data pointers, and result logs to reproduce every table and figure are
-available at \url{https://github.com/USERNAME/partial-moments-audit}
-\emph{(replace with the final public URL)}. Data sources: a CoinMarketCap daily
+available at \url{https://github.com/meghanadhpulivarthi/downside-risk-metrics-study}.
+Data sources: a CoinMarketCap daily
 crypto dump (retaining delisted coins), yfinance S\&P~500 constituents and the
 market index, and point-in-time index membership.
 
@@ -532,6 +563,22 @@ to $+0.18$ ($[0.09,0.24]$) in high-stress dates ($24$ dates, $12$ per regime;
 suggestive given the overlap) --- while on equity it is flat and small ($+0.056$
 vs.\ $+0.050$; $120$ dates). Tail magnitude carries incremental information
 precisely when the tail is active.
+
+\section{Delisting-coding robustness}\label{app:delisting}
+The crypto forward-drawdown codes a mid-window delisting as a terminal $-100\%$ loss.
+To confirm the magnitude increment is genuine crash-severity skill --- not an artifact
+of that code, nor a restatement of the blow-up result (\S\ref{sec:blowup}) --- we
+recompute $\rho(\text{metric},\text{drawdown}\mid\text{vol})$ under two alternative
+codings: valuing a delisted asset at its \emph{last traded price} (ordinary
+peak-to-trough, no $-100\%$ override), and \emph{excluding} delisted assets (skill
+among survivors only). Within the point-in-time top-$100$ universe, mid-window
+delistings are rare --- $0.9\%$ of asset-dates on crypto-2016 and none on the other
+four beds --- so the three codings barely differ. VaR's increment is unchanged to
+within $\pm0.02$: per bed, baseline\,/\,last-price\,/\,exclude gives
+$+0.12/{+}0.12/{+}0.14$ (crypto-16), $+0.19$ on all three (crypto-17), $+0.14$ on all
+three (crypto-18), $+0.035$ (equity-94), and $+0.076$ (equity-05); downside deviation
+and ES behave identically. The magnitude edge is drawdown-\emph{severity} forecasting,
+distinct from the terminal-death signal.
 
 \section{Pre-registered composite and economic backtest}\label{app:composite}
 The composite is $z(\text{vol})+z(\text{VaR})$, equal weight, computed

@@ -1,7 +1,11 @@
 # --- Large / regenerable / third-party (do NOT commit) ---
-data/                 # 1.8 GB: CoinMarketCap crypto dump, yfinance parquet caches (third-party)
-.tools/               # downloaded tectonic binary + tarball (~35 MB)
-references/           # copyrighted source PDFs
+# NOTE: .gitignore does NOT support inline comments — keep patterns on their own lines.
+# 1.8 GB: CoinMarketCap crypto dump, yfinance parquet caches (third-party)
+data/
+# downloaded tectonic binary + tarball (~35 MB)
+.tools/
+# copyrighted source PDFs
+references/
 .venv
 .python-version
 

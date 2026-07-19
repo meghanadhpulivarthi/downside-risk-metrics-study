@@ -1,4 +1,4 @@
-# Magnitude, Not Shape: A Survivorship-Free, Significance-Tested Benchmark of Downside-Risk Metrics
+# Magnitude, Not Shape: A Survivorship-Free, Significance-Tested Evaluation of Downside-Risk Metrics
 
 **Working paper — draft, revision 4 (2026-07-18). Target: a workshop / short-paper venue
 (e.g. an ICAIF-affiliated or NeurIPS/ICML "ML for finance" workshop) + arXiv.**
