@@ -201,19 +201,37 @@ def fig_best_of_n(sweep):
 # ---------------- Fig 6: increment scales with tail fatness ----------------
 def fig_increment(mech, depth):
     fig, ax = plt.subplots(figsize=(6.8, 4.6))
+    pts = []
     for bed in BEDS:
-        x = depth[bed]["heterogeneity"]["blowup_rate"]
-        y = mech[bed]["partial"]["var5"]["mean"]
-        kurt = depth[bed]["heterogeneity"]["mean_trailing_kurt"]
+        pts.append((depth[bed]["heterogeneity"]["blowup_rate"],
+                    mech[bed]["partial"]["var5"]["mean"],
+                    depth[bed]["heterogeneity"]["mean_trailing_kurt"], bed))
+    xs = [p[0] for p in pts]
+    ys = [p[1] for p in pts]
+    # Pad the axes so labels have room; then place each label on the side that keeps it
+    # inside the frame (flip to the left/below for points near the right/top edges).
+    xr = (min(xs), max(xs)); yr = (min(ys + [0.0]), max(ys))
+    xpad = 0.18 * (xr[1] - xr[0] or 1.0)
+    ypad = 0.18 * (yr[1] - yr[0] or 1.0)
+    ax.set_xlim(xr[0] - xpad, xr[1] + xpad)
+    ax.set_ylim(yr[0] - ypad, yr[1] + ypad)
+    xmid = 0.5 * (xr[0] + xr[1])
+    ythresh = yr[1] - 0.25 * (yr[1] - yr[0] or 1.0)
+    for x, y, kurt, bed in pts:
         color = "#1f77b4" if IS_CRYPTO[bed] else "#d62728"
         ax.scatter(x, y, s=60, color=color, zorder=3)
+        on_right = x > xmid
+        near_top = y > ythresh
+        dx, ha = (-8, "right") if on_right else (8, "left")
+        dy, va = (-6, "top") if near_top else (6, "bottom")
         ax.annotate(f"{BED_LABEL[bed]}\n(kurt {kurt:g})", (x, y),
-                    textcoords="offset points", xytext=(7, 4), fontsize=8)
+                    textcoords="offset points", xytext=(dx, dy),
+                    ha=ha, va=va, fontsize=8)
     ax.axhline(0, color="k", lw=0.8, ls="--", alpha=0.6)
     ax.set_xlabel("blow-up rate  (fraction of asset-dates with drawdown >= 80%)")
     ax.set_ylabel("VaR incremental signal:  partial rho(VaR, dd | vol)")
     ax.set_title("The magnitude increment is larger in fat-tailed, blow-up-prone beds")
-    ax.text(0.97, 0.05, "blue = crypto,  red = equity  (n=5, descriptive)",
+    ax.text(0.97, 0.04, "blue = crypto,  red = equity  (n=5, descriptive)",
             transform=ax.transAxes, ha="right", fontsize=8, color="gray")
     fig.tight_layout()
     _save(fig, "fig6_increment_vs_tailfat.png")

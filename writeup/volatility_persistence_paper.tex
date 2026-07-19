@@ -20,6 +20,9 @@
 
 \usepackage{booktabs}
 \usepackage{graphicx}
+\usepackage{xurl}                    % break long URLs at any character (never exceed the column)
+\setlength{\emergencystretch}{3em}   % let TeX stretch spacing as a last resort rather than
+                                     % overflow the right margin -- lines wrap instead of running over
 
 \begin{document}
 
@@ -602,11 +605,29 @@ peak-to-trough, no $-100\%$ override), and \emph{excluding} delisted assets (ski
 among survivors only). Within the point-in-time top-$100$ universe, mid-window
 delistings are rare --- $0.9\%$ of asset-dates on crypto-2016 and none on the other
 four beds --- so the three codings barely differ. VaR's increment is unchanged to
-within $\pm0.02$: per bed, baseline\,/\,last-price\,/\,exclude gives
-$+0.12/{+}0.12/{+}0.14$ (crypto-16), $+0.19$ on all three (crypto-17), $+0.14$ on all
-three (crypto-18), $+0.035$ (equity-94), and $+0.076$ (equity-05); downside deviation
-and ES behave identically. The magnitude edge is drawdown-\emph{severity} forecasting,
+within $\pm0.02$ across all three (Table~\ref{tab:delisting}); downside deviation and
+ES behave identically. The magnitude edge is drawdown-\emph{severity} forecasting,
 distinct from the terminal-death signal.
+
+\begin{table}[h]
+\centering
+\small
+\caption{VaR partial $\rho(\text{VaR},\text{drawdown}\mid\text{vol})$ under three
+delisting codings. Baseline and last-price coincide (mid-window delistings are rare);
+the increment is unchanged to within $\pm0.02$.}
+\label{tab:delisting}
+\begin{tabular}{lccc}
+\toprule
+Bed & baseline ($-100\%$) & last-price & exclude \\
+\midrule
+crypto-16 & $+0.12$  & $+0.12$  & $+0.14$  \\
+crypto-17 & $+0.19$  & $+0.19$  & $+0.19$  \\
+crypto-18 & $+0.14$  & $+0.14$  & $+0.14$  \\
+equity-94 & $+0.035$ & $+0.035$ & $+0.035$ \\
+equity-05 & $+0.076$ & $+0.076$ & $+0.076$ \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \section{Pre-registered composite and economic backtest}\label{app:composite}
 The composite is $z(\text{vol})+z(\text{VaR})$, equal weight, computed
