@@ -1,0 +1,35 @@
+# --- Large / regenerable / third-party (do NOT commit) ---
+data/                 # 1.8 GB: CoinMarketCap crypto dump, yfinance parquet caches (third-party)
+.tools/               # downloaded tectonic binary + tarball (~35 MB)
+references/           # copyrighted source PDFs
+.venv
+.python-version
+
+# --- Python ---
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+.ipynb_checkpoints/
+
+# --- LaTeX build artifacts (keep the .tex and the compiled .pdf) ---
+*.aux
+*.log
+*.out
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.bbl
+*.blg
+
+# --- Secrets (safety; none currently in repo) ---
+.env
+*.env
+kaggle.json
+*access_token*
+.kaggle/
+
+# --- OS ---
+.DS_Store

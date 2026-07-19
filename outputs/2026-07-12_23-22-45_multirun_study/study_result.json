@@ -1,0 +1,58 @@
+{
+  "n_candidates": 4000,
+  "vol_val": 0.31363768182834484,
+  "vol_test": 0.37614507137469466,
+  "val_winners": 577,
+  "mean_val_test_gap_among_winners": -0.0534,
+  "reliability_val_winner_beats_vol_on_test": 0.5736568457538995,
+  "sim_searches": {
+    "pool_size": 15,
+    "n_pools": 250,
+    "sel_mean_val": 0.3319,
+    "sel_mean_test": 0.3788,
+    "frac_winners_beat_vol_on_test": 0.536
+  },
+  "best_of_N_curve": [
+    {
+      "N": 1,
+      "val": 0.154,
+      "test": 0.137
+    },
+    {
+      "N": 5,
+      "val": 0.308,
+      "test": 0.346
+    },
+    {
+      "N": 10,
+      "val": 0.326,
+      "test": 0.369
+    },
+    {
+      "N": 25,
+      "val": 0.338,
+      "test": 0.387
+    },
+    {
+      "N": 50,
+      "val": 0.344,
+      "test": 0.378
+    },
+    {
+      "N": 100,
+      "val": 0.348,
+      "test": 0.375
+    },
+    {
+      "N": 500,
+      "val": 0.351,
+      "test": 0.381
+    },
+    {
+      "N": 2000,
+      "val": 0.351,
+      "test": 0.37
+    }
+  ],
+  "val_test_correlation": 0.948
+}

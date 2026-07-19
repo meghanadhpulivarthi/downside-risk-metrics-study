@@ -1,0 +1,54 @@
+{
+  "selected_features": [
+    "var5",
+    "vol",
+    "skew"
+  ],
+  "val_score": 0.3626,
+  "search_trials": 50,
+  "epsilon": 0.005,
+  "best_baseline_val": 0.3136,
+  "test_score": 0.356,
+  "test_t": 19.62,
+  "baselines": {
+    "volatility": {
+      "val_mean": 0.31363768182834484,
+      "val_t": 19.394831082340126,
+      "test_mean": 0.37614507137469466,
+      "test_t": 10.163209890344614
+    },
+    "ES5": {
+      "val_mean": 0.29040066452745217,
+      "val_t": 9.24154706340463,
+      "test_mean": 0.3229671680640674,
+      "test_t": 20.318645815900243
+    },
+    "DES": {
+      "val_mean": 0.23244201952277885,
+      "val_t": 20.05357573756703,
+      "test_mean": 0.43091945986302427,
+      "test_t": 10.135595481126101
+    }
+  },
+  "beats_baselines_on_test": false,
+  "selection_log": [
+    {
+      "step": 1,
+      "added": "var5",
+      "val_mean": 0.3498,
+      "cumulative_trials": 14
+    },
+    {
+      "step": 2,
+      "added": "vol",
+      "val_mean": 0.3571,
+      "cumulative_trials": 27
+    },
+    {
+      "step": 3,
+      "added": "skew",
+      "val_mean": 0.3626,
+      "cumulative_trials": 39
+    }
+  ]
+}

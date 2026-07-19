@@ -1,0 +1,64 @@
+{
+  "n_configs": 20000,
+  "vol_val": 0.31363768182834484,
+  "vol_test": 0.37614507137469466,
+  "global_best_val": 0.3557,
+  "global_best_val_test": 0.3734,
+  "global_best_family": "gated",
+  "per_family_best": {
+    "weighted_consensus": {
+      "best_val": 0.3509,
+      "its_test": 0.3684
+    },
+    "consensus_boost": {
+      "best_val": 0.3494,
+      "its_test": 0.38
+    },
+    "ratio": {
+      "best_val": 0.3547,
+      "its_test": 0.3475
+    },
+    "gated": {
+      "best_val": 0.3557,
+      "its_test": 0.3734
+    },
+    "tilt_blend": {
+      "best_val": 0.35,
+      "its_test": 0.3838
+    }
+  },
+  "best_of_N": [
+    {
+      "N": 1,
+      "val": 0.273,
+      "test": 0.306
+    },
+    {
+      "N": 10,
+      "val": 0.337,
+      "test": 0.379
+    },
+    {
+      "N": 100,
+      "val": 0.348,
+      "test": 0.373
+    },
+    {
+      "N": 1000,
+      "val": 0.353,
+      "test": 0.36
+    },
+    {
+      "N": 5000,
+      "val": 0.355,
+      "test": 0.361
+    },
+    {
+      "N": 20000,
+      "val": 0.356,
+      "test": 0.373
+    }
+  ],
+  "val_test_corr": 0.936,
+  "val_winners_beating_vol_on_test": 0.4267878454053062
+}

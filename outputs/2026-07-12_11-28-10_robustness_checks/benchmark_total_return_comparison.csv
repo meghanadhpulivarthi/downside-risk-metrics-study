@@ -1,0 +1,9 @@
+window,investor,gspc,sp500tr,abs_diff
+1988-1999,risk_averse,-0.108,-0.084,0.024
+1988-1999,prospect_theory,-0.01,0.017,0.027
+1988-1999,risk_neutral,0.22,0.228,0.008
+1988-1999,risk_seeking,0.269,0.268,0.0
+1998-2009,risk_averse,-0.423,-0.415,0.008
+1998-2009,prospect_theory,-0.346,-0.332,0.014
+1998-2009,risk_neutral,0.127,0.135,0.008
+1998-2009,risk_seeking,0.278,0.279,0.001

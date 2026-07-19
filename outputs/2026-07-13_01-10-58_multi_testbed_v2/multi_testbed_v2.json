@@ -1,0 +1,522 @@
+{
+  "crypto_2016_calm": {
+    "n_dates": 8,
+    "metrics": {
+      "volatility": {
+        "rho": 0.623,
+        "diff_vs_vol": 0.0,
+        "ci": [
+          0.0,
+          0.0
+        ],
+        "sig_beats_vol": false
+      },
+      "downside_dev": {
+        "rho": 0.615,
+        "diff_vs_vol": -0.008,
+        "ci": [
+          -0.029,
+          0.012
+        ],
+        "sig_beats_vol": false,
+        "sig_worse": false
+      },
+      "es5": {
+        "rho": 0.623,
+        "diff_vs_vol": -0.0,
+        "ci": [
+          -0.022,
+          0.022
+        ],
+        "sig_beats_vol": false,
+        "sig_worse": false
+      },
+      "var5": {
+        "rho": 0.611,
+        "diff_vs_vol": -0.012,
+        "ci": [
+          -0.028,
+          -0.006
+        ],
+        "sig_beats_vol": false,
+        "sig_worse": true
+      },
+      "vn_ratio": {
+        "rho": -0.549,
+        "diff_vs_vol": -1.172,
+        "ci": [
+          -1.234,
+          -1.161
+        ],
+        "sig_beats_vol": false,
+        "sig_worse": true
+      },
+      "hill_tail": {
+        "rho": NaN,
+        "diff_vs_vol": NaN,
+        "ci": [
+          NaN,
+          NaN
+        ],
+        "sig_beats_vol": false,
+        "sig_worse": false
+      },
+      "down_semibeta": {
+        "rho": 0.4,
+        "diff_vs_vol": -0.223,
+        "ci": [
+          -0.271,
+          -0.187
+        ],
+        "sig_beats_vol": false,
+        "sig_worse": true
+      },
+      "down_beta": {
+        "rho": 0.014,
+        "diff_vs_vol": -0.609,
+        "ci": [
+          -0.65,
+          -0.583
+        ],
+        "sig_beats_vol": false,
+        "sig_worse": true
+      },
+      "ltd_crash": {
+        "rho": -0.376,
+        "diff_vs_vol": -0.999,
+        "ci": [
+          -1.04,
+          -0.96
+        ],
+        "sig_beats_vol": false,
+        "sig_worse": true
+      },
+      "gda_voldown": {
+        "rho": -0.055,
+        "diff_vs_vol": -0.678,
+        "ci": [
+          -0.724,
+          -0.634
+        ],
+        "sig_beats_vol": false,
+        "sig_worse": true
+      }
+    }
+  },
+  "crypto_2017_bull": {
+    "n_dates": 9,
+    "metrics": {
+      "volatility": {
+        "rho": 0.355,
+        "diff_vs_vol": 0.0,
+        "ci": [
+          0.0,
+          0.0
+        ],
+        "sig_beats_vol": false
+      },
+      "downside_dev": {
+        "rho": 0.379,
+        "diff_vs_vol": 0.025,
+        "ci": [
+          0.006,
+          0.041
+        ],
+        "sig_beats_vol": true,
+        "sig_worse": false
+      },
+      "es5": {
+        "rho": 0.351,
+        "diff_vs_vol": -0.004,
+        "ci": [
+          -0.019,
+          0.006
+        ],
+        "sig_beats_vol": false,
+        "sig_worse": false
+      },
+      "var5": {
+        "rho": 0.4,
+        "diff_vs_vol": 0.045,
+        "ci": [
+          0.017,
+          0.071
+        ],
+        "sig_beats_vol": true,
+        "sig_worse": false
+      },
+      "vn_ratio": {
+        "rho": -0.276,
+        "diff_vs_vol": -0.631,
+        "ci": [
+          -0.696,
+          -0.506
+        ],
+        "sig_beats_vol": false,
+        "sig_worse": true
+      },
+      "hill_tail": {
+        "rho": NaN,
+        "diff_vs_vol": NaN,
+        "ci": [
+          NaN,
+          NaN
+        ],
+        "sig_beats_vol": false,
+        "sig_worse": false
+      },
+      "down_semibeta": {
+        "rho": 0.257,
+        "diff_vs_vol": -0.103,
+        "ci": [
+          -0.117,
+          -0.06
+        ],
+        "sig_beats_vol": false,
+        "sig_worse": true
+      },
+      "down_beta": {
+        "rho": 0.093,
+        "diff_vs_vol": -0.262,
+        "ci": [
+          -0.358,
+          -0.125
+        ],
+        "sig_beats_vol": false,
+        "sig_worse": true
+      },
+      "ltd_crash": {
+        "rho": -0.154,
+        "diff_vs_vol": -0.509,
+        "ci": [
+          -0.578,
+          -0.392
+        ],
+        "sig_beats_vol": false,
+        "sig_worse": true
+      },
+      "gda_voldown": {
+        "rho": -0.105,
+        "diff_vs_vol": -0.46,
+        "ci": [
+          -0.584,
+          -0.324
+        ],
+        "sig_beats_vol": false,
+        "sig_worse": true
+      }
+    }
+  },
+  "crypto_2018_crash": {
+    "n_dates": 7,
+    "metrics": {
+      "volatility": {
+        "rho": 0.376,
+        "diff_vs_vol": 0.0,
+        "ci": [
+          0.0,
+          0.0
+        ],
+        "sig_beats_vol": false
+      },
+      "downside_dev": {
+        "rho": 0.41,
+        "diff_vs_vol": 0.034,
+        "ci": [
+          -0.037,
+          0.113
+        ],
+        "sig_beats_vol": false,
+        "sig_worse": false
+      },
+      "es5": {
+        "rho": 0.327,
+        "diff_vs_vol": -0.049,
+        "ci": [
+          -0.113,
+          -0.009
+        ],
+        "sig_beats_vol": false,
+        "sig_worse": true
+      },
+      "var5": {
+        "rho": 0.362,
+        "diff_vs_vol": -0.014,
+        "ci": [
+          -0.089,
+          0.058
+        ],
+        "sig_beats_vol": false,
+        "sig_worse": false
+      },
+      "vn_ratio": {
+        "rho": -0.346,
+        "diff_vs_vol": -0.723,
+        "ci": [
+          -0.854,
+          -0.651
+        ],
+        "sig_beats_vol": false,
+        "sig_worse": true
+      },
+      "hill_tail": {
+        "rho": NaN,
+        "diff_vs_vol": NaN,
+        "ci": [
+          NaN,
+          NaN
+        ],
+        "sig_beats_vol": false,
+        "sig_worse": false
+      },
+      "down_semibeta": {
+        "rho": 0.309,
+        "diff_vs_vol": -0.067,
+        "ci": [
+          -0.131,
+          -0.003
+        ],
+        "sig_beats_vol": false,
+        "sig_worse": true
+      },
+      "down_beta": {
+        "rho": 0.151,
+        "diff_vs_vol": -0.225,
+        "ci": [
+          -0.311,
+          -0.167
+        ],
+        "sig_beats_vol": false,
+        "sig_worse": true
+      },
+      "ltd_crash": {
+        "rho": -0.285,
+        "diff_vs_vol": -0.661,
+        "ci": [
+          -0.808,
+          -0.625
+        ],
+        "sig_beats_vol": false,
+        "sig_worse": true
+      },
+      "gda_voldown": {
+        "rho": -0.05,
+        "diff_vs_vol": -0.426,
+        "ci": [
+          -0.511,
+          -0.321
+        ],
+        "sig_beats_vol": false,
+        "sig_worse": true
+      }
+    }
+  },
+  "equity_1994_99_calm": {
+    "n_dates": 66,
+    "metrics": {
+      "volatility": {
+        "rho": 0.606,
+        "diff_vs_vol": 0.0,
+        "ci": [
+          0.0,
+          0.0
+        ],
+        "sig_beats_vol": false
+      },
+      "downside_dev": {
+        "rho": 0.582,
+        "diff_vs_vol": -0.024,
+        "ci": [
+          -0.031,
+          -0.015
+        ],
+        "sig_beats_vol": false,
+        "sig_worse": true
+      },
+      "es5": {
+        "rho": 0.581,
+        "diff_vs_vol": -0.025,
+        "ci": [
+          -0.032,
+          -0.017
+        ],
+        "sig_beats_vol": false,
+        "sig_worse": true
+      },
+      "var5": {
+        "rho": 0.58,
+        "diff_vs_vol": -0.026,
+        "ci": [
+          -0.033,
+          -0.017
+        ],
+        "sig_beats_vol": false,
+        "sig_worse": true
+      },
+      "vn_ratio": {
+        "rho": -0.426,
+        "diff_vs_vol": -1.032,
+        "ci": [
+          -1.098,
+          -0.963
+        ],
+        "sig_beats_vol": false,
+        "sig_worse": true
+      },
+      "hill_tail": {
+        "rho": NaN,
+        "diff_vs_vol": NaN,
+        "ci": [
+          NaN,
+          NaN
+        ],
+        "sig_beats_vol": false,
+        "sig_worse": false
+      },
+      "down_semibeta": {
+        "rho": 0.487,
+        "diff_vs_vol": -0.133,
+        "ci": [
+          -0.166,
+          -0.103
+        ],
+        "sig_beats_vol": false,
+        "sig_worse": true
+      },
+      "down_beta": {
+        "rho": 0.242,
+        "diff_vs_vol": -0.365,
+        "ci": [
+          -0.432,
+          -0.304
+        ],
+        "sig_beats_vol": false,
+        "sig_worse": true
+      },
+      "ltd_crash": {
+        "rho": -0.065,
+        "diff_vs_vol": -0.671,
+        "ci": [
+          -0.739,
+          -0.613
+        ],
+        "sig_beats_vol": false,
+        "sig_worse": true
+      },
+      "gda_voldown": {
+        "rho": -0.243,
+        "diff_vs_vol": -0.849,
+        "ci": [
+          -0.91,
+          -0.788
+        ],
+        "sig_beats_vol": false,
+        "sig_worse": true
+      }
+    }
+  },
+  "equity_2005_09_gfc": {
+    "n_dates": 54,
+    "metrics": {
+      "volatility": {
+        "rho": 0.564,
+        "diff_vs_vol": 0.0,
+        "ci": [
+          0.0,
+          0.0
+        ],
+        "sig_beats_vol": false
+      },
+      "downside_dev": {
+        "rho": 0.535,
+        "diff_vs_vol": -0.029,
+        "ci": [
+          -0.041,
+          -0.018
+        ],
+        "sig_beats_vol": false,
+        "sig_worse": true
+      },
+      "es5": {
+        "rho": 0.522,
+        "diff_vs_vol": -0.042,
+        "ci": [
+          -0.057,
+          -0.03
+        ],
+        "sig_beats_vol": false,
+        "sig_worse": true
+      },
+      "var5": {
+        "rho": 0.54,
+        "diff_vs_vol": -0.024,
+        "ci": [
+          -0.04,
+          -0.011
+        ],
+        "sig_beats_vol": false,
+        "sig_worse": true
+      },
+      "vn_ratio": {
+        "rho": -0.424,
+        "diff_vs_vol": -0.988,
+        "ci": [
+          -1.075,
+          -0.888
+        ],
+        "sig_beats_vol": false,
+        "sig_worse": true
+      },
+      "hill_tail": {
+        "rho": NaN,
+        "diff_vs_vol": NaN,
+        "ci": [
+          NaN,
+          NaN
+        ],
+        "sig_beats_vol": false,
+        "sig_worse": false
+      },
+      "down_semibeta": {
+        "rho": 0.462,
+        "diff_vs_vol": -0.084,
+        "ci": [
+          -0.121,
+          -0.054
+        ],
+        "sig_beats_vol": false,
+        "sig_worse": true
+      },
+      "down_beta": {
+        "rho": 0.344,
+        "diff_vs_vol": -0.22,
+        "ci": [
+          -0.281,
+          -0.172
+        ],
+        "sig_beats_vol": false,
+        "sig_worse": true
+      },
+      "ltd_crash": {
+        "rho": -0.046,
+        "diff_vs_vol": -0.61,
+        "ci": [
+          -0.667,
+          -0.554
+        ],
+        "sig_beats_vol": false,
+        "sig_worse": true
+      },
+      "gda_voldown": {
+        "rho": -0.321,
+        "diff_vs_vol": -0.885,
+        "ci": [
+          -0.989,
+          -0.762
+        ],
+        "sig_beats_vol": false,
+        "sig_worse": true
+      }
+    }
+  }
+}

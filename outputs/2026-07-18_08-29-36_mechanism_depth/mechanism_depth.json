@@ -1,0 +1,912 @@
+{
+  "crypto_2016_calm": {
+    "mediation": {
+      "trailing_given_forward": {
+        "mean": 0.206,
+        "ci": [
+          0.148,
+          0.297
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      },
+      "forward_given_trailing": {
+        "mean": 0.601,
+        "ci": [
+          0.575,
+          0.618
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      }
+    },
+    "horizon": {
+      "14": {
+        "persistence": {
+          "mean": 0.629,
+          "ci": [
+            0.591,
+            0.698
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        },
+        "skill": {
+          "mean": 0.628,
+          "ci": [
+            0.613,
+            0.674
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        },
+        "var5_incr": {
+          "mean": 0.201,
+          "ci": [
+            0.162,
+            0.254
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        }
+      },
+      "30": {
+        "persistence": {
+          "mean": 0.657,
+          "ci": [
+            0.628,
+            0.715
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        },
+        "skill": {
+          "mean": 0.598,
+          "ci": [
+            0.594,
+            0.628
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        },
+        "var5_incr": {
+          "mean": 0.163,
+          "ci": [
+            0.128,
+            0.211
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        }
+      },
+      "45": {
+        "persistence": {
+          "mean": 0.674,
+          "ci": [
+            0.627,
+            0.732
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        },
+        "skill": {
+          "mean": 0.618,
+          "ci": [
+            0.604,
+            0.654
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        },
+        "var5_incr": {
+          "mean": 0.164,
+          "ci": [
+            0.116,
+            0.232
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        }
+      },
+      "60": {
+        "persistence": {
+          "mean": 0.681,
+          "ci": [
+            0.646,
+            0.723
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        },
+        "skill": {
+          "mean": 0.623,
+          "ci": [
+            0.602,
+            0.665
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        },
+        "var5_incr": {
+          "mean": 0.132,
+          "ci": [
+            0.084,
+            0.185
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        }
+      },
+      "90": {
+        "persistence": {
+          "mean": 0.683,
+          "ci": [
+            0.643,
+            0.725
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        },
+        "skill": {
+          "mean": 0.623,
+          "ci": [
+            0.616,
+            0.65
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        },
+        "var5_incr": {
+          "mean": 0.124,
+          "ci": [
+            0.063,
+            0.157
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        }
+      }
+    },
+    "placebo": {
+      "mean": 0.001,
+      "ci": [
+        -0.058,
+        0.015
+      ],
+      "sig_pos": false,
+      "sig_neg": false
+    },
+    "heterogeneity": {
+      "blowup_rate": 0.127,
+      "mean_trailing_kurt": 20.74
+    }
+  },
+  "crypto_2017_bull": {
+    "mediation": {
+      "trailing_given_forward": {
+        "mean": 0.152,
+        "ci": [
+          0.059,
+          0.215
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      },
+      "forward_given_trailing": {
+        "mean": 0.555,
+        "ci": [
+          0.447,
+          0.642
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      }
+    },
+    "horizon": {
+      "14": {
+        "persistence": {
+          "mean": 0.416,
+          "ci": [
+            0.296,
+            0.496
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        },
+        "skill": {
+          "mean": 0.435,
+          "ci": [
+            0.384,
+            0.476
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        },
+        "var5_incr": {
+          "mean": 0.145,
+          "ci": [
+            0.061,
+            0.213
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        }
+      },
+      "30": {
+        "persistence": {
+          "mean": 0.435,
+          "ci": [
+            0.28,
+            0.526
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        },
+        "skill": {
+          "mean": 0.466,
+          "ci": [
+            0.398,
+            0.529
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        },
+        "var5_incr": {
+          "mean": 0.174,
+          "ci": [
+            0.054,
+            0.231
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        }
+      },
+      "45": {
+        "persistence": {
+          "mean": 0.419,
+          "ci": [
+            0.281,
+            0.528
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        },
+        "skill": {
+          "mean": 0.399,
+          "ci": [
+            0.326,
+            0.463
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        },
+        "var5_incr": {
+          "mean": 0.166,
+          "ci": [
+            -0.003,
+            0.228
+          ],
+          "sig_pos": false,
+          "sig_neg": false
+        }
+      },
+      "60": {
+        "persistence": {
+          "mean": 0.425,
+          "ci": [
+            0.272,
+            0.545
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        },
+        "skill": {
+          "mean": 0.395,
+          "ci": [
+            0.315,
+            0.419
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        },
+        "var5_incr": {
+          "mean": 0.172,
+          "ci": [
+            0.027,
+            0.235
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        }
+      },
+      "90": {
+        "persistence": {
+          "mean": 0.415,
+          "ci": [
+            0.302,
+            0.549
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        },
+        "skill": {
+          "mean": 0.355,
+          "ci": [
+            0.299,
+            0.377
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        },
+        "var5_incr": {
+          "mean": 0.194,
+          "ci": [
+            0.124,
+            0.24
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        }
+      }
+    },
+    "placebo": {
+      "mean": 0.012,
+      "ci": [
+        -0.04,
+        0.059
+      ],
+      "sig_pos": false,
+      "sig_neg": false
+    },
+    "heterogeneity": {
+      "blowup_rate": 0.052,
+      "mean_trailing_kurt": 16.76
+    }
+  },
+  "crypto_2018_crash": {
+    "mediation": {
+      "trailing_given_forward": {
+        "mean": 0.197,
+        "ci": [
+          0.146,
+          0.254
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      },
+      "forward_given_trailing": {
+        "mean": 0.453,
+        "ci": [
+          0.403,
+          0.58
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      }
+    },
+    "horizon": {
+      "14": {
+        "persistence": {
+          "mean": 0.337,
+          "ci": [
+            0.294,
+            0.38
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        },
+        "skill": {
+          "mean": 0.351,
+          "ci": [
+            0.29,
+            0.42
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        },
+        "var5_incr": {
+          "mean": 0.154,
+          "ci": [
+            0.078,
+            0.22
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        }
+      },
+      "30": {
+        "persistence": {
+          "mean": 0.399,
+          "ci": [
+            0.347,
+            0.453
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        },
+        "skill": {
+          "mean": 0.383,
+          "ci": [
+            0.319,
+            0.461
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        },
+        "var5_incr": {
+          "mean": 0.149,
+          "ci": [
+            0.082,
+            0.201
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        }
+      },
+      "45": {
+        "persistence": {
+          "mean": 0.398,
+          "ci": [
+            0.337,
+            0.443
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        },
+        "skill": {
+          "mean": 0.342,
+          "ci": [
+            0.289,
+            0.425
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        },
+        "var5_incr": {
+          "mean": 0.174,
+          "ci": [
+            0.084,
+            0.282
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        }
+      },
+      "60": {
+        "persistence": {
+          "mean": 0.423,
+          "ci": [
+            0.358,
+            0.471
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        },
+        "skill": {
+          "mean": 0.358,
+          "ci": [
+            0.302,
+            0.444
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        },
+        "var5_incr": {
+          "mean": 0.155,
+          "ci": [
+            0.072,
+            0.252
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        }
+      },
+      "90": {
+        "persistence": {
+          "mean": 0.424,
+          "ci": [
+            0.374,
+            0.457
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        },
+        "skill": {
+          "mean": 0.376,
+          "ci": [
+            0.329,
+            0.444
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        },
+        "var5_incr": {
+          "mean": 0.135,
+          "ci": [
+            0.018,
+            0.27
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        }
+      }
+    },
+    "placebo": {
+      "mean": 0.028,
+      "ci": [
+        0.003,
+        0.059
+      ],
+      "sig_pos": true,
+      "sig_neg": false
+    },
+    "heterogeneity": {
+      "blowup_rate": 0.054,
+      "mean_trailing_kurt": 8.26
+    }
+  },
+  "equity_1994_99_calm": {
+    "mediation": {
+      "trailing_given_forward": {
+        "mean": 0.016,
+        "ci": [
+          -0.016,
+          0.054
+        ],
+        "sig_pos": false,
+        "sig_neg": false
+      },
+      "forward_given_trailing": {
+        "mean": 0.477,
+        "ci": [
+          0.445,
+          0.511
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      }
+    },
+    "horizon": {
+      "14": {
+        "persistence": {
+          "mean": 0.691,
+          "ci": [
+            0.68,
+            0.703
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        },
+        "skill": {
+          "mean": 0.484,
+          "ci": [
+            0.455,
+            0.518
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        },
+        "var5_incr": {
+          "mean": 0.067,
+          "ci": [
+            0.046,
+            0.086
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        }
+      },
+      "30": {
+        "persistence": {
+          "mean": 0.775,
+          "ci": [
+            0.765,
+            0.783
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        },
+        "skill": {
+          "mean": 0.555,
+          "ci": [
+            0.527,
+            0.587
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        },
+        "var5_incr": {
+          "mean": 0.041,
+          "ci": [
+            0.021,
+            0.065
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        }
+      },
+      "45": {
+        "persistence": {
+          "mean": 0.806,
+          "ci": [
+            0.796,
+            0.815
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        },
+        "skill": {
+          "mean": 0.575,
+          "ci": [
+            0.547,
+            0.608
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        },
+        "var5_incr": {
+          "mean": 0.049,
+          "ci": [
+            0.029,
+            0.073
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        }
+      },
+      "60": {
+        "persistence": {
+          "mean": 0.824,
+          "ci": [
+            0.815,
+            0.832
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        },
+        "skill": {
+          "mean": 0.592,
+          "ci": [
+            0.56,
+            0.626
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        },
+        "var5_incr": {
+          "mean": 0.037,
+          "ci": [
+            0.015,
+            0.065
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        }
+      },
+      "90": {
+        "persistence": {
+          "mean": 0.843,
+          "ci": [
+            0.835,
+            0.851
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        },
+        "skill": {
+          "mean": 0.606,
+          "ci": [
+            0.574,
+            0.64
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        },
+        "var5_incr": {
+          "mean": 0.035,
+          "ci": [
+            0.01,
+            0.066
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        }
+      }
+    },
+    "placebo": {
+      "mean": 0.0,
+      "ci": [
+        -0.013,
+        0.012
+      ],
+      "sig_pos": false,
+      "sig_neg": false
+    },
+    "heterogeneity": {
+      "blowup_rate": 0.0,
+      "mean_trailing_kurt": 2.77
+    }
+  },
+  "equity_2005_09_gfc": {
+    "mediation": {
+      "trailing_given_forward": {
+        "mean": 0.013,
+        "ci": [
+          -0.025,
+          0.052
+        ],
+        "sig_pos": false,
+        "sig_neg": false
+      },
+      "forward_given_trailing": {
+        "mean": 0.496,
+        "ci": [
+          0.46,
+          0.527
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      }
+    },
+    "horizon": {
+      "14": {
+        "persistence": {
+          "mean": 0.658,
+          "ci": [
+            0.62,
+            0.69
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        },
+        "skill": {
+          "mean": 0.474,
+          "ci": [
+            0.423,
+            0.517
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        },
+        "var5_incr": {
+          "mean": 0.089,
+          "ci": [
+            0.067,
+            0.114
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        }
+      },
+      "30": {
+        "persistence": {
+          "mean": 0.732,
+          "ci": [
+            0.698,
+            0.762
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        },
+        "skill": {
+          "mean": 0.539,
+          "ci": [
+            0.496,
+            0.578
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        },
+        "var5_incr": {
+          "mean": 0.093,
+          "ci": [
+            0.074,
+            0.114
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        }
+      },
+      "45": {
+        "persistence": {
+          "mean": 0.761,
+          "ci": [
+            0.73,
+            0.789
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        },
+        "skill": {
+          "mean": 0.551,
+          "ci": [
+            0.506,
+            0.59
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        },
+        "var5_incr": {
+          "mean": 0.088,
+          "ci": [
+            0.062,
+            0.116
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        }
+      },
+      "60": {
+        "persistence": {
+          "mean": 0.778,
+          "ci": [
+            0.748,
+            0.805
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        },
+        "skill": {
+          "mean": 0.559,
+          "ci": [
+            0.513,
+            0.6
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        },
+        "var5_incr": {
+          "mean": 0.086,
+          "ci": [
+            0.059,
+            0.115
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        }
+      },
+      "90": {
+        "persistence": {
+          "mean": 0.799,
+          "ci": [
+            0.769,
+            0.824
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        },
+        "skill": {
+          "mean": 0.564,
+          "ci": [
+            0.514,
+            0.606
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        },
+        "var5_incr": {
+          "mean": 0.076,
+          "ci": [
+            0.043,
+            0.107
+          ],
+          "sig_pos": true,
+          "sig_neg": false
+        }
+      }
+    },
+    "placebo": {
+      "mean": 0.003,
+      "ci": [
+        -0.009,
+        0.019
+      ],
+      "sig_pos": false,
+      "sig_neg": false
+    },
+    "heterogeneity": {
+      "blowup_rate": 0.001,
+      "mean_trailing_kurt": 3.95
+    }
+  }
+}

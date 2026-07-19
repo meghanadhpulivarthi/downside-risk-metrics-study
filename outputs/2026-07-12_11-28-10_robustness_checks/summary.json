@@ -1,0 +1,9 @@
+{
+  "max_abs_diff_total_return": 0.027,
+  "fdr": {
+    "family_size": 78,
+    "significant_raw_p<0.05": 51,
+    "significant_after_BH_FDR": 51,
+    "source": "2026-07-12_09-15-01_biased_arm_multiwindow"
+  }
+}

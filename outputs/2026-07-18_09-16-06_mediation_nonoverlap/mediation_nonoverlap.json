@@ -1,0 +1,356 @@
+{
+  "overlap": {
+    "crypto_2016_calm": {
+      "n_dates": 8,
+      "trailing_given_forward": {
+        "mean": 0.206,
+        "ci": [
+          0.148,
+          0.297
+        ],
+        "sig_pos": true
+      },
+      "forward_given_trailing": {
+        "mean": 0.601,
+        "ci": [
+          0.575,
+          0.618
+        ],
+        "sig_pos": true
+      },
+      "raw_trailing_dd": {
+        "mean": 0.623,
+        "ci": [
+          0.616,
+          0.65
+        ],
+        "sig_pos": true
+      },
+      "raw_forward_dd": {
+        "mean": 0.767,
+        "ci": [
+          0.752,
+          0.787
+        ],
+        "sig_pos": true
+      }
+    },
+    "crypto_2017_bull": {
+      "n_dates": 9,
+      "trailing_given_forward": {
+        "mean": 0.152,
+        "ci": [
+          0.059,
+          0.215
+        ],
+        "sig_pos": true
+      },
+      "forward_given_trailing": {
+        "mean": 0.555,
+        "ci": [
+          0.447,
+          0.642
+        ],
+        "sig_pos": true
+      },
+      "raw_trailing_dd": {
+        "mean": 0.355,
+        "ci": [
+          0.299,
+          0.377
+        ],
+        "sig_pos": true
+      },
+      "raw_forward_dd": {
+        "mean": 0.62,
+        "ci": [
+          0.546,
+          0.679
+        ],
+        "sig_pos": true
+      }
+    },
+    "crypto_2018_crash": {
+      "n_dates": 7,
+      "trailing_given_forward": {
+        "mean": 0.197,
+        "ci": [
+          0.146,
+          0.254
+        ],
+        "sig_pos": true
+      },
+      "forward_given_trailing": {
+        "mean": 0.453,
+        "ci": [
+          0.403,
+          0.58
+        ],
+        "sig_pos": true
+      },
+      "raw_trailing_dd": {
+        "mean": 0.376,
+        "ci": [
+          0.329,
+          0.444
+        ],
+        "sig_pos": true
+      },
+      "raw_forward_dd": {
+        "mean": 0.534,
+        "ci": [
+          0.481,
+          0.651
+        ],
+        "sig_pos": true
+      }
+    },
+    "equity_1994_99_calm": {
+      "n_dates": 66,
+      "trailing_given_forward": {
+        "mean": 0.016,
+        "ci": [
+          -0.016,
+          0.054
+        ],
+        "sig_pos": false
+      },
+      "forward_given_trailing": {
+        "mean": 0.477,
+        "ci": [
+          0.445,
+          0.511
+        ],
+        "sig_pos": true
+      },
+      "raw_trailing_dd": {
+        "mean": 0.606,
+        "ci": [
+          0.574,
+          0.64
+        ],
+        "sig_pos": true
+      },
+      "raw_forward_dd": {
+        "mean": 0.712,
+        "ci": [
+          0.683,
+          0.743
+        ],
+        "sig_pos": true
+      }
+    },
+    "equity_2005_09_gfc": {
+      "n_dates": 54,
+      "trailing_given_forward": {
+        "mean": 0.013,
+        "ci": [
+          -0.025,
+          0.052
+        ],
+        "sig_pos": false
+      },
+      "forward_given_trailing": {
+        "mean": 0.496,
+        "ci": [
+          0.46,
+          0.527
+        ],
+        "sig_pos": true
+      },
+      "raw_trailing_dd": {
+        "mean": 0.564,
+        "ci": [
+          0.514,
+          0.606
+        ],
+        "sig_pos": true
+      },
+      "raw_forward_dd": {
+        "mean": 0.695,
+        "ci": [
+          0.655,
+          0.728
+        ],
+        "sig_pos": true
+      }
+    }
+  },
+  "nonoverlap": {
+    "crypto_2016_calm": {
+      "n_dates": 8,
+      "trailing_given_forward": {
+        "mean": 0.336,
+        "ci": [
+          0.306,
+          0.388
+        ],
+        "sig_pos": true
+      },
+      "forward_given_trailing": {
+        "mean": 0.297,
+        "ci": [
+          0.235,
+          0.314
+        ],
+        "sig_pos": true
+      },
+      "raw_trailing_dd": {
+        "mean": 0.581,
+        "ci": [
+          0.562,
+          0.611
+        ],
+        "sig_pos": true
+      },
+      "raw_forward_dd": {
+        "mean": 0.565,
+        "ci": [
+          0.525,
+          0.602
+        ],
+        "sig_pos": true
+      }
+    },
+    "crypto_2017_bull": {
+      "n_dates": 9,
+      "trailing_given_forward": {
+        "mean": 0.171,
+        "ci": [
+          0.142,
+          0.211
+        ],
+        "sig_pos": true
+      },
+      "forward_given_trailing": {
+        "mean": 0.2,
+        "ci": [
+          0.094,
+          0.309
+        ],
+        "sig_pos": true
+      },
+      "raw_trailing_dd": {
+        "mean": 0.279,
+        "ci": [
+          0.25,
+          0.296
+        ],
+        "sig_pos": true
+      },
+      "raw_forward_dd": {
+        "mean": 0.295,
+        "ci": [
+          0.214,
+          0.376
+        ],
+        "sig_pos": true
+      }
+    },
+    "crypto_2018_crash": {
+      "n_dates": 7,
+      "trailing_given_forward": {
+        "mean": 0.277,
+        "ci": [
+          0.263,
+          0.287
+        ],
+        "sig_pos": true
+      },
+      "forward_given_trailing": {
+        "mean": 0.27,
+        "ci": [
+          0.231,
+          0.31
+        ],
+        "sig_pos": true
+      },
+      "raw_trailing_dd": {
+        "mean": 0.39,
+        "ci": [
+          0.36,
+          0.409
+        ],
+        "sig_pos": true
+      },
+      "raw_forward_dd": {
+        "mean": 0.39,
+        "ci": [
+          0.347,
+          0.404
+        ],
+        "sig_pos": true
+      }
+    },
+    "equity_1994_99_calm": {
+      "n_dates": 66,
+      "trailing_given_forward": {
+        "mean": 0.337,
+        "ci": [
+          0.314,
+          0.364
+        ],
+        "sig_pos": true
+      },
+      "forward_given_trailing": {
+        "mean": 0.162,
+        "ci": [
+          0.138,
+          0.185
+        ],
+        "sig_pos": true
+      },
+      "raw_trailing_dd": {
+        "mean": 0.597,
+        "ci": [
+          0.566,
+          0.631
+        ],
+        "sig_pos": true
+      },
+      "raw_forward_dd": {
+        "mean": 0.542,
+        "ci": [
+          0.509,
+          0.576
+        ],
+        "sig_pos": true
+      }
+    },
+    "equity_2005_09_gfc": {
+      "n_dates": 54,
+      "trailing_given_forward": {
+        "mean": 0.321,
+        "ci": [
+          0.281,
+          0.354
+        ],
+        "sig_pos": true
+      },
+      "forward_given_trailing": {
+        "mean": 0.162,
+        "ci": [
+          0.145,
+          0.181
+        ],
+        "sig_pos": true
+      },
+      "raw_trailing_dd": {
+        "mean": 0.556,
+        "ci": [
+          0.503,
+          0.599
+        ],
+        "sig_pos": true
+      },
+      "raw_forward_dd": {
+        "mean": 0.5,
+        "ci": [
+          0.453,
+          0.542
+        ],
+        "sig_pos": true
+      }
+    }
+  }
+}

@@ -1,0 +1,625 @@
+%% ============================================================================
+%% ICAIF-style paper (ACM sigconf). Full version: complete story in the body,
+%% every experiment retained (supporting detail in the appendices).
+%%
+%% FONTS / SIZES / LAYOUT are fixed by the ACM `acmart' class with `sigconf'
+%% (two-column, 9pt Libertine body, ACM heading sizes). ACM forbids changing
+%% them, so we do NOT set \fontsize / geometry / column widths by hand.
+%% Do not add \usepackage{times}, \geometry, or manual font-size commands.
+%%
+%% COMPILE: Overleaf ("ACM Conference Proceedings (acmart)") or a TeX Live /
+%% tectonic with the `acmart' package. `nonacm' suppresses the copyright strip
+%% for a working draft; remove it and fill \acm* metadata for camera-ready.
+%% For the ICAIF main track add `anonymous' to the class options.
+%% ============================================================================
+\documentclass[sigconf,nonacm]{acmart}
+
+\settopmatter{printacmref=false}
+\setcopyright{none}
+\renewcommand\footnotetextcopyrightpermission[1]{}
+
+\usepackage{booktabs}
+\usepackage{graphicx}
+
+\begin{document}
+
+\title{Magnitude, Not Shape: A Survivorship-Free, Significance-Tested
+Benchmark of Downside-Risk Metrics}
+
+\author{Author Name}
+\affiliation{%
+  \institution{Affiliation}
+  \city{City}
+  \country{Country}}
+\email{author@example.com}
+\renewcommand{\shortauthors}{Author Name}
+
+\begin{abstract}
+Every few years a new downside- or tail-risk metric is proposed to improve on
+plain return volatility, always on the same premise: the \emph{shape} of the
+loss distribution --- its asymmetry, tail heaviness, or co-crash structure ---
+carries information that symmetric volatility misses. We test that premise as
+adversarially as the data allow. On a survivorship-free (a crypto panel retaining
+delisted coins, plus equity), multi-regime, multiple-testing-corrected benchmark
+of ten metrics across five test beds, no metric --- published or
+machine-discovered --- reliably beats volatility at forecasting an asset's
+forward maximum drawdown. The anatomy of that failure is a clean law:
+\emph{magnitude, not shape}. The partial rank correlation of Value-at-Risk with
+forward drawdown, controlling for volatility, survives Benjamini--Hochberg
+correction on all five beds (up to $0.19$), while every tail-\emph{shape} metric
+adds nothing or subtracts. We explain why volatility is hard to beat (it is
+persistent, though a predictive mediation test shows not a sufficient statistic),
+show the tiny magnitude edge is not economically free (a cost-aware backtest and a
+pre-registered composite add nothing over volatility except in fat-tailed crypto),
+and demonstrate that an autonomous large-language-model discovery loop only
+inflates validation while its locked-test score plateaus at volatility --- a
+data-snooping caution as agentic research makes signal search nearly free.
+Volatility is not glamorous, but on a level field it is very hard to beat.
+\end{abstract}
+
+\begin{CCSXML}
+<ccs2012>
+<concept><concept_id>10010147.10010257</concept_id>
+<concept_desc>Computing methodologies~Machine learning</concept_desc>
+<concept_significance>500</concept_significance></concept>
+<concept><concept_id>10003752.10010070</concept_id>
+<concept_desc>Applied computing~Economics</concept_desc>
+<concept_significance>500</concept_significance></concept>
+</ccs2012>
+\end{CCSXML}
+\ccsdesc[500]{Computing methodologies~Machine learning}
+\ccsdesc[500]{Applied computing~Economics}
+
+\keywords{downside risk, tail risk, drawdown, volatility, survivorship bias,
+multiple testing, data snooping, LLM agents}
+
+\maketitle
+
+%% =========================================================================
+\section{Introduction}
+The market's dangers are asymmetric: prices fall faster than they rise, and it is
+the fall that ruins investors. From this intuition a large literature has grown,
+proposing metrics that look past symmetric volatility to the \emph{shape} of the
+loss distribution --- lower partial moments and the Sortino
+ratio~\cite{bawa1975,fishburn1977,sortino1991}, the partial-moment ``predictive''
+ratio we originally set out to audit~\cite{violenawrocki2016}, left-tail
+Value-at-Risk and expected shortfall~\cite{rockafellar2000,atilgan2020}, realized
+semibetas~\cite{bpq2022}, downside beta~\cite{ang2006,leviwelch2020}, lower-tail
+dependence~\cite{chabiyo2018}, disappointment-aversion risk~\cite{faragotedongap2018},
+and tail-exponent factors~\cite{kellyjiang2014}. Each rests on the same premise:
+that asymmetry or tail structure carries information volatility misses.
+
+We test that premise on the fairest field we can build. Three disciplines the
+source literature usually omits turn out to matter enormously: a
+\emph{survivorship-free} universe (so the assets that actually died are present),
+a \emph{locked} out-of-sample holdout (so search cannot leak into the verdict),
+and \emph{multiple-testing correction} (so a benchmark of dozens of comparisons
+does not manufacture winners). We benchmark ten metrics as forecasters of
+$90$-day forward maximum drawdown across five cross-sectional test beds spanning
+calm, bull, and crash regimes in crypto and equity, with per-date
+rank-correlation skill, paired block-bootstrap confidence intervals, and
+Benjamini--Hochberg (BH) correction.
+
+The headline is negative and, in hindsight, unsurprising: no metric reliably
+beats plain volatility. The contribution is the \emph{anatomy} of that result and
+the honesty of the battery behind it. (1) We establish a clean empirical law ---
+\emph{magnitude, not shape}: the only signal that survives correction beyond
+volatility is the \emph{size} of tail losses (VaR/ES/downside deviation), not
+their asymmetry (\S\ref{sec:magnitude}). (2) We explain why volatility is hard to
+beat --- it is persistent --- while honestly bounding that explanation: a
+predictive mediation test shows forward volatility is \emph{not} a sufficient
+statistic (\S\ref{sec:why}). (3) We ask whether the residual magnitude edge is
+economically real: a cost-aware backtest and a pre-registered composite show it is
+not, except in fat-tailed crypto (\S\ref{sec:economics}). (4) We show an
+autonomous large-language-model (LLM) discovery loop only overfits validation ---
+a data-snooping caution for AI-driven research (\S\ref{sec:discovery}). (5) We
+close with the one thing volatility is genuinely good for: predicting outright
+blow-ups (\S\ref{sec:blowup}). Every robustness, economic, and discovery
+experiment is retained; supporting detail is in the appendices.
+
+%% =========================================================================
+\section{Related Work}
+\textbf{Downside-risk metrics.} Lower partial moments generalize
+semi-variance~\cite{bawa1975,fishburn1977} and underpin the Sortino
+ratio~\cite{sortino1991} and the partial-moment ratio we
+audit~\cite{violenawrocki2016}. Tail-focused measures include left-tail
+VaR/ES~\cite{rockafellar2000,atilgan2020}, realized semibetas~\cite{bpq2022},
+downside beta~\cite{ang2006,leviwelch2020}, lower-tail
+dependence~\cite{chabiyo2018}, disappointment-aversion risk~\cite{faragotedongap2018},
+and tail-exponent factors~\cite{kellyjiang2014}. Most were built to \emph{price}
+the cross-section of returns, not to forecast a single asset's drawdown; we
+repurpose them and scope our conclusions accordingly.
+
+\textbf{Volatility persistence.} That volatility is autocorrelated and
+forecastable is the founding fact of the ARCH/GARCH
+literature~\cite{engle1982,bollerslev1986,andersen2003}. We ask whether this alone
+accounts for cross-sectional drawdown predictability.
+
+\textbf{Data snooping.} Searching many signals inflates in-sample
+skill~\cite{white2000,harvey2016}; the backtest-overfitting literature formalizes
+best-of-$N$ inflation and prescribes deflation~\cite{bailey2014,bailey2017}. Our
+contribution is to show an \emph{autonomous} agent reaches this frontier at
+near-zero cost, so the holdout discipline becomes mandatory rather than advisable.
+
+%% =========================================================================
+\section{Data and Protocol}\label{sec:data}
+\textbf{Five test beds.} \emph{Crypto (survivorship-free):} a CoinMarketCap daily
+panel (2013--2018) that retains crashed and delisted coins, so a point-in-time
+top-$100$-by-market-cap universe includes assets that later crater; we use three
+regimes --- 2016 (calm), 2017 (bull), 2018 (crash). \emph{Equity:} S\&P~500
+constituents, 1994--1999 (calm) and 2005--2009 (GFC). The equity beds are
+survivorship-biased by construction --- freely available equity data retains
+almost no true deaths, itself a telling finding --- so the survivorship claim
+rests on the crypto beds, while equity tests cross-asset generality.
+
+\textbf{Skill and significance.} From a $180$-day trailing window we forecast the
+$90$-day forward maximum drawdown of each asset (delisting scored as a $-100\%$
+terminal loss); skill is the per-formation-date cross-sectional Spearman
+correlation between metric and realized drawdown, averaged over the bed, with
+paired block-bootstrap $95\%$ confidence intervals. Because the benchmark spans
+${\sim}45$ metric~$\times$~bed cells, significance flags are BH-corrected
+($q=0.05$) within each family. To ask what a metric adds \emph{beyond} volatility,
+we use the partial Spearman correlation controlling for volatility. The discovery
+experiment (\S\ref{sec:discovery}) uses a strict train/validation/\emph{locked-test}
+split, scored once after the metric is frozen.
+
+%% =========================================================================
+\section{The verdict: nothing beats volatility}\label{sec:verdict}
+Table~\ref{tab:h2h} ranks each metric against volatility standalone. After BH
+correction, the only metrics that significantly beat volatility on \emph{any} bed
+are two volatility variants (downside deviation, VaR) on the single crypto-bull
+bed --- and they reverse on equity, where volatility significantly beats them.
+Every genuinely different, shape-based metric is significantly \emph{worse} than
+volatility on every bed. There is no metric that consistently or generalizably
+beats volatility across regimes and asset classes. This is a narrower and more
+defensible statement than ``nothing beats volatility'': small, regime-specific
+edges exist for volatility's own variants, but they do not survive a change of
+asset class.
+
+\begin{table}[t]
+\centering
+\caption{Standalone out-of-sample drawdown-forecast Spearman correlation.
+$\ast$ = significantly beats volatility, $\dagger$ = significantly worse (both
+survive BH, $q=0.05$); unmarked = indistinguishable.}
+\label{tab:h2h}
+\small
+\begin{tabular}{lccccc}
+\toprule
+Metric & cr-16 & cr-17 & cr-18 & eq 94 & eq 05 \\
+\midrule
+\textbf{volatility} (base) & 0.62 & 0.36 & 0.38 & 0.61 & 0.56 \\
+downside deviation & 0.62 & 0.38$\ast$ & 0.41 & 0.58$\dagger$ & 0.54$\dagger$ \\
+VaR & 0.61 & 0.40$\ast$ & 0.36 & 0.58$\dagger$ & 0.54$\dagger$ \\
+ES~\cite{atilgan2020} & 0.62 & 0.35 & 0.33$\dagger$ & 0.58$\dagger$ & 0.52$\dagger$ \\
+neg.\ semibeta~\cite{bpq2022} & 0.40$\dagger$ & 0.26$\dagger$ & 0.31$\dagger$ & 0.49$\dagger$ & 0.46$\dagger$ \\
+downside beta~\cite{ang2006} & 0.01$\dagger$ & 0.09$\dagger$ & 0.15$\dagger$ & 0.24$\dagger$ & 0.34$\dagger$ \\
+lower-tail dep.~\cite{chabiyo2018} & $-0.38\dagger$ & $-0.15\dagger$ & $-0.29\dagger$ & $-0.07\dagger$ & $-0.05\dagger$ \\
+GDA~\cite{faragotedongap2018} & $-0.06\dagger$ & $-0.11\dagger$ & $-0.05\dagger$ & $-0.24\dagger$ & $-0.32\dagger$ \\
+UPM/LPM~\cite{violenawrocki2016} & $-0.55\dagger$ & $-0.28\dagger$ & $-0.35\dagger$ & $-0.43\dagger$ & $-0.42\dagger$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%% =========================================================================
+\section{The anatomy: magnitude, not shape}\label{sec:magnitude}
+A verdict is not an explanation. If nothing beats volatility, what --- if anything
+--- is left to forecast beyond it, and which metrics capture it?
+Figure~\ref{fig:forest} plots the partial Spearman correlation
+$\rho(\text{metric},\text{drawdown}\mid\text{volatility})$ for every metric and
+bed. The picture splits cleanly by \emph{what a metric measures}, and the split
+survives BH correction. Tail-\emph{magnitude} measures carry a small but genuine
+increment: VaR is significant on \textbf{all five beds} (partial $\rho$ up to
+$0.19$), downside deviation on the three crypto beds. Tail-\emph{shape} measures
+--- the Viole--Nawrocki asymmetry ratio, lower-tail dependence, the tail exponent,
+the disappointment-aversion proxy --- are $\approx 0$ or significantly
+\emph{negative} everywhere. The one shape-family exception, negative semibeta, is
+plausibly a case of co-crash \emph{magnitude} leaking into a shape statistic. The
+forecastable residual beyond volatility is thus the \emph{size} of tail losses,
+not their \emph{asymmetry} --- precisely the premise the shape metrics were built
+on. Exact values, and the power checks that back the thin crypto beds, are in
+Appendix~\ref{app:partials}.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig1_partial_forest.png}
+\caption{Incremental signal beyond volatility, by bed: partial Spearman
+$\rho(\text{metric},\text{drawdown}\mid\text{volatility})$. Tail-magnitude metrics
+(blue) sit to the right of zero, especially in crypto; tail-shape metrics (red)
+cluster at or to the left of zero. Whiskers are $95\%$ block-bootstrap CIs; the
+dotted line separates the two families.}
+\label{fig:forest}
+\end{figure*}
+
+This resolves an apparent paradox in Table~\ref{tab:h2h}: VaR is significantly
+\emph{worse} than volatility standalone on equity, yet has a significant positive
+\emph{increment} there (Figure~\ref{fig:forest}). Both are true. As a standalone
+ranker VaR is a noisier proxy for the volatility it re-expresses, so it loses head
+to head; the partial correlation isolates its small orthogonal component. ``Adds
+signal beyond volatility'' and ``beats volatility on its own'' are different
+questions, and the decomposition separates them.
+
+Why is even the magnitude increment larger in crypto? Because it scales with how
+fat-tailed and blow-up-prone a market is (Appendix~\ref{app:hetero},
+Figure~\ref{fig:hetero}): the crypto beds (trailing excess kurtosis $8$--$21$,
+blow-up rate $5$--$13\%$) show VaR increments of $0.12$--$0.19$, versus
+$0.03$--$0.08$ on the thin-tailed equity beds. Within crypto the increment further
+concentrates in high-volatility periods (Appendix~\ref{app:conditional}). Tail
+magnitude carries incremental information precisely when the tail is active.
+
+%% =========================================================================
+\section{Why volatility is hard to beat}\label{sec:why}
+Volatility wins because it is \emph{persistent}, the founding fact of the
+ARCH/GARCH tradition~\cite{engle1982,bollerslev1986}. Trailing volatility
+forecasts forward volatility (rank correlation $0.42$--$0.84$ across beds), and
+forward realized volatility is in turn strongly tied to forward drawdown
+(Appendix~\ref{app:chain}, Table~\ref{tab:chain}). This chain accounts for most of
+the forecastable variation.
+
+It is tempting to go further and call forward volatility a \emph{sufficient
+statistic} --- to claim drawdown predictability simply \emph{is} volatility
+persistence. A naive mediation test seems to confirm it: controlling for forward
+volatility, trailing volatility's partial correlation with drawdown collapses to
+$\approx 0$ on equity. But that test is contaminated: forward volatility and
+forward drawdown are measured over the \emph{same} window, so conditioning on one
+mechanically absorbs the other. When we measure the mediator on a \emph{disjoint,
+earlier} window --- volatility over days $1$--$30$, drawdown over days $31$--$120$
+--- so that it is genuinely \emph{predictive}, the mediation vanishes: trailing
+volatility retains a partial correlation of $0.32$--$0.34$ on equity
+(Figure~\ref{fig:mediation}). Trailing volatility carries forecasting content a
+short-horizon volatility forecast does not. We therefore report volatility
+persistence as a \emph{leading but incomplete} explanation --- not a mechanism
+that reduces drawdown to a single number. (Consistent with this, drawdown skill
+and volatility persistence rise and fall together as the forecast horizon varies;
+Appendix~\ref{app:horizon}.)
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/fig3_mediation.png}
+\caption{Mediation: partial $\rho(\text{trailing vol},\text{drawdown}\mid
+\text{forward vol})$. Under the same-window (mechanical) design it is $\approx 0$
+on equity, falsely suggesting full mediation; under the predictive
+(disjoint-window) design it is $0.32$--$0.34$ --- trailing volatility is not
+screened off, so forward volatility is not a sufficient statistic.}
+\label{fig:mediation}
+\end{figure}
+
+%% =========================================================================
+\section{Does the edge pay? Economics and a composite}\label{sec:economics}
+A rank correlation is not a profit-and-loss statement, and a partial correlation
+of $0.1$ may or may not matter. We ask directly. First, the pre-registered
+composite the decomposition implies: $z(\text{vol})+z(\text{VaR})$, equal weight,
+with no fitting (Appendix~\ref{app:composite}). Its only fully out-of-sample test,
+a locked panel, shows \emph{no significant gain} over volatility (Newey--West
+$t=0.67$); across beds it beats volatility only on the fat-tailed crypto-bull bed
+and is significantly worse on thin-tailed equity, where a noisier VaR only degrades
+the volatility signal.
+
+Second, a cost-aware backtest (Appendix~\ref{app:economic},
+Figure~\ref{fig:economic}). At each date we sort the universe into risk terciles,
+hold the low-risk tercile, avoid the high-risk tercile, and measure realized
+drawdown net of a $20$~bps turnover cost. The result is a genuine positive for
+volatility and a null for everything else: the high-risk tercile realizes
+$10$--$30$ percentage points more forward drawdown than the low-risk tercile on
+every bed, and the composite adds nothing net of its higher turnover except,
+again, on crypto-bull. The economic picture matches the statistical one exactly:
+volatility is the workhorse; magnitude adds a little only where tails are fat.
+
+%% =========================================================================
+\section{Can a machine find more? Automated discovery}\label{sec:discovery}
+If the incremental signal beyond volatility is genuinely this small, then a
+tireless automated search should be \emph{unable} to find a metric that beats
+volatility out of sample --- and should instead overfit the validation set. That
+is exactly what happens, and it is worth demonstrating because AI agents are now
+being wired into quantitative-research loops. We let an LLM agent freely rewrite a
+scoring function, and separately ran a $20{,}000$-configuration directed search.
+Both inflate the best \emph{validation} score monotonically with search intensity
+while the \emph{locked-test} score plateaus at the volatility baseline
+(Table~\ref{tab:bon}, Figure~\ref{fig:bon}); validation-selected winners beat
+volatility on the locked test only ${\sim}43\%$ of the time --- a coin flip ---
+despite a $0.94$ validation--test rank correlation across configurations. A
+non-LLM random sweep reproduces the same plateau: the danger is the cheap search,
+not the language model.
+
+The statistics are classical data snooping~\cite{white2000,bailey2017}; what is
+new is the \emph{setting}. An autonomous agent removes the last natural brake on
+the number of trials --- analyst effort --- and reaches the snooping frontier at
+near-zero marginal cost, with no human in the loop. The discipline that was
+merely advisable under human search becomes mandatory under agent search: freeze
+the scorer and data, score a locked (ideally survivorship-free) holdout exactly
+once, log the trial count, and report the holdout win-rate alongside a deflated
+statistic.
+
+\begin{table}[t]
+\centering
+\caption{Best-of-$N$ discovery. Validation inflates with search intensity; the
+locked test does not (volatility baseline $0.376$). Validation and test are
+different splits, so compare trends, not levels.}
+\label{tab:bon}
+\small
+\begin{tabular}{rcc}
+\toprule
+Search intensity $N$ & Best validation & Its locked test \\
+\midrule
+1 & 0.27 & 0.31 \\
+100 & 0.35 & 0.37 \\
+20{,}000 & 0.356 & 0.373 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/fig5_best_of_N.png}
+\caption{As search intensity grows, the best validation score climbs while its
+locked-test score stays flat around the volatility baseline. Validation-selected
+winners beat volatility on the locked test only $43\%$ of the time.}
+\label{fig:bon}
+\end{figure}
+
+%% =========================================================================
+\section{What volatility is for: predicting blow-ups}\label{sec:blowup}
+The paper is not an argument against measuring risk --- it is an argument for
+measuring it with volatility. The clearest positive use is forecasting outright
+blow-ups. On the locked crypto test, plain volatility predicts which assets crater
+(forward return $\le -80\%$) with ROC-AUC $0.68$ ($0.95$ at a $-90\%$ cutoff) and
+a $2.5\times$ top-decile lift; a gradient-boosting model over all ten metrics
+\emph{overfits and loses} to volatility alone (AUC $0.59$). Consistent with
+\S\ref{sec:magnitude}, the size of recent moves --- not their shape --- is what
+carries the blow-up signal. This is a ranking result, not a deployment
+recommendation: turning it into action faces cost, liquidity, and reflexivity
+frictions we do not model, and in retail-heavy crypto markets such a signal raises
+information-asymmetry considerations beyond our scope.
+
+%% =========================================================================
+\section{Discussion}\label{sec:discussion}
+The pieces form one coherent picture. Volatility sets a high bar because it is
+persistent (\S\ref{sec:why}); the only thing left to add is the magnitude of tail
+losses, and only a little, mostly in fat-tailed markets (\S\ref{sec:magnitude});
+so a pre-registered composite yields no significant out-of-sample gain, no
+standalone metric beats volatility (\S\ref{sec:verdict}), automated search cannot
+find one (\S\ref{sec:discovery}), and the economics track the statistics
+(\S\ref{sec:economics}). The recurring failure of \emph{asymmetry} and \emph{shape}
+metrics --- including the partial-moment ratio that motivated this study --- is
+not an implementation accident: once symmetric volatility is accounted for, the
+asymmetric structure adds no incremental cross-sectional information for
+forecasting drawdown. We are deliberately careful about the \emph{strength} of the
+persistence story: an earlier version of this project claimed forward volatility
+was a sufficient statistic, found that claim was a same-window measurement
+artifact, and retracted it here --- just as an earlier ``survivorship masks
+downside value'' thesis was retracted when a hardened test refuted it. The paper
+reports only claims that survived stress-testing.
+
+The practical takeaway is unglamorous but firm: for cross-sectional drawdown
+forecasting, use volatility --- optionally with a small tail-magnitude term in
+fat-tailed markets --- and treat any downside metric ``discovered'' to beat it,
+by hand or by machine, as unproven until it clears a locked, survivorship-free
+holdout.
+
+%% =========================================================================
+\section{Conclusion}
+On a survivorship-free, multi-regime, multiple-testing-corrected benchmark, no
+downside-risk metric --- published or machine-discovered --- reliably beats plain
+volatility at forecasting drawdown. What survives correction is a sharp
+decomposition: the only forecastable residual beyond volatility is tail
+\emph{magnitude}, not \emph{shape}. Volatility is hard to beat largely because it
+is persistent (a leading, though not sufficient, explanation), it is economically
+useful for separating drawdown and predicting blow-ups, and automated LLM-driven
+discovery cannot improve on it out of sample. Volatility is not glamorous, but on
+a level field it is very hard to beat.
+
+\emph{Limitations.} Skill is rank-correlation, not a full tradable P\&L
+(\S\ref{sec:economics} is a first economic check, not a portfolio study); the
+crypto beds have few formation dates ($7$--$9$), so their significance is
+suggestive and the null ``shape adds nothing'' leans on the well-powered equity
+beds; the repurposed pricing metrics are daily adaptations, and results speak to
+drawdown forecasting, not the originals' pricing claims.
+
+%% =========================================================================
+\appendix
+\section{Reproducibility}\label{app:repro}
+Code, data pointers, and result logs to reproduce every table and figure are
+available at \url{https://github.com/USERNAME/partial-moments-audit}
+\emph{(replace with the final public URL)}. Data sources: a CoinMarketCap daily
+crypto dump (retaining delisted coins), yfinance S\&P~500 constituents and the
+market index, and point-in-time index membership.
+
+\section{Partial correlations and power}\label{app:partials}
+Table~\ref{tab:partials} gives the exact partial correlations plotted in
+Figure~\ref{fig:forest}, with BH significance. VaR survives on all five beds; the
+one equity ES cell that is nominally significant does not survive correction.
+Power on the thin crypto beds: for VaR, on crypto-16 ($n=8$) and crypto-17 ($n=9$)
+the effect ($0.12$, $0.19$) exceeds the $80\%$-power minimum detectable effect
+($0.09$, $0.09$) and is stable under leave-one-date-out; on crypto-18 ($n=7$) the
+effect ($0.13$) is below its MDE ($0.18$) and is reported as suggestive. A placebo
+(permuting forward drawdown within each date) drives the trailing-volatility
+correlation to $\approx 0$ on four of five beds; the exception, crypto-18
+($+0.028$, CI $[0.003,0.059]$), is negligible against a real skill of $\approx
+0.38$ and reflects the coarse block bootstrap at $n=7$.
+
+\begin{table}[t]
+\centering
+\caption{Partial Spearman $\rho(\text{metric},\text{drawdown}\mid\text{volatility})$.
+Rows 1--3 tail magnitude, rows 4--9 tail shape. $\ast$ survives BH ($q=0.05$,
+positive); $\dagger$ survives BH negative; n/e = not estimable per date.}
+\label{tab:partials}
+\small
+\begin{tabular}{lccccc}
+\toprule
+Metric & cr-16 & cr-17 & cr-18 & eq 94 & eq 05 \\
+\midrule
+VaR & $+0.12\ast$ & $+0.19\ast$ & $+0.13\ast$ & $+0.03\ast$ & $+0.08\ast$ \\
+downside dev. & $+0.13\ast$ & $+0.14\ast$ & $+0.20\ast$ & $+0.02$ & $+0.01$ \\
+ES~\cite{atilgan2020} & $+0.14\ast$ & $+0.08\ast$ & $+0.08$ & $+0.03$ & $+0.00$ \\
+neg.\ semibeta~\cite{bpq2022} & $+0.02$ & $+0.08\ast$ & $+0.13\ast$ & $+0.03$ & $+0.05\ast$ \\
+UPM/LPM~\cite{violenawrocki2016} & $-0.00$ & $+0.01$ & $-0.05$ & $-0.05\dagger$ & $-0.07\dagger$ \\
+downside beta~\cite{ang2006} & $-0.08\dagger$ & $+0.03$ & $+0.02$ & $+0.01$ & $+0.04$ \\
+Hill tail~\cite{kellyjiang2014} & $-0.09\dagger$ & $-0.13\dagger$ & $-0.09\dagger$ & n/e & n/e \\
+lower-tail dep.~\cite{chabiyo2018} & $-0.07$ & $-0.04$ & $-0.17\dagger$ & $-0.01$ & $+0.00$ \\
+GDA~\cite{faragotedongap2018} & $+0.03$ & $-0.05$ & $+0.05$ & $-0.01$ & $-0.03$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{The persistence chain}\label{app:chain}
+Table~\ref{tab:chain} decomposes why trailing volatility forecasts drawdown. Both
+links exceed the direct trailing-vol$\rightarrow$drawdown skill they compose. The
+forward-vol$\rightarrow$drawdown column is contemporaneous (both over the same
+forward window) and hence partly mechanical~\cite{andersen2003}; the genuinely
+predictive link is trailing$\rightarrow$forward volatility (see \S\ref{sec:why}
+and Figure~\ref{fig:chain}).
+
+\begin{table}[t]
+\centering
+\caption{Persistence chain (mean per-date Spearman; all CIs exclude 0).}
+\label{tab:chain}
+\small
+\begin{tabular}{lccc}
+\toprule
+Bed & trail$\rightarrow$fwd vol & fwd vol$\rightarrow$dd & (trail$\rightarrow$dd) \\
+\midrule
+crypto-16 & 0.68 & 0.77 & 0.62 \\
+crypto-17 & 0.42 & 0.62 & 0.36 \\
+crypto-18 & 0.42 & 0.53 & 0.38 \\
+equity 94 & 0.84 & 0.71 & 0.61 \\
+equity 05 & 0.80 & 0.70 & 0.56 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/fig2_persistence_chain.png}
+\caption{The two links of the persistence chain relative to the direct
+trailing-volatility$\rightarrow$drawdown skill, by bed.}
+\label{fig:chain}
+\end{figure}
+
+\section{Horizon dynamics}\label{app:horizon}
+Sweeping the forecast horizon from $14$ to $90$ days, volatility persistence and
+drawdown skill move together (Figure~\ref{fig:horizon}): on equity both rise
+(persistence $0.66\rightarrow0.84$, skill $0.47\rightarrow0.61$, at a roughly
+constant gap); on crypto both are flat. Wherever persistence is higher, so is
+skill --- consistent with persistence driving most of the forecastable variation,
+with the constant gap the part it does not explain.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig4_horizon_decay.png}
+\caption{Volatility persistence (blue) and drawdown-forecast skill (red) versus
+forecast horizon, by bed. The curves track.}
+\label{fig:horizon}
+\end{figure*}
+
+\section{Cross-bed heterogeneity}\label{app:hetero}
+Figure~\ref{fig:hetero} relates the VaR increment to each bed's tail fatness. The
+increment is systematically larger in the fat-tailed, blow-up-prone crypto beds
+than in equity; with only five beds this is descriptive, but the direction is
+consistent with the conditional evidence in Appendix~\ref{app:conditional}.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/fig6_increment_vs_tailfat.png}
+\caption{VaR incremental signal (partial $\rho\mid$ volatility) versus blow-up
+rate, by bed. Larger in fat-tailed crypto; descriptive ($n=5$).}
+\label{fig:hetero}
+\end{figure}
+
+\section{Conditional increment (stress vs.\ calm)}\label{app:conditional}
+Pooling dates by asset class and splitting each pool at its median aggregate
+(cross-sectional-median) volatility, the VaR increment concentrates in high-stress
+dates within crypto --- rising from $+0.13$ (CI $[0.06,0.18]$) in low-stress dates
+to $+0.18$ ($[0.09,0.24]$) in high-stress dates ($24$ dates, $12$ per regime;
+suggestive given the overlap) --- while on equity it is flat and small ($+0.056$
+vs.\ $+0.050$; $120$ dates). Tail magnitude carries incremental information
+precisely when the tail is active.
+
+\section{Pre-registered composite and economic backtest}\label{app:composite}
+The composite is $z(\text{vol})+z(\text{VaR})$, equal weight, computed
+cross-sectionally per date, with no fitting. VaR was chosen a priori as the
+magnitude metric surviving correction on all five beds (\S\ref{sec:magnitude}); the
+weights are untuned, so the fully out-of-sample evidence is the locked-panel test
+(Table~\ref{tab:econ}), which is not significant. The economic backtest
+(\S\ref{sec:economics}, Figure~\ref{fig:economic}) sorts the universe into risk
+terciles and measures realized-drawdown discrimination (forward DD of the high-
+minus low-risk tercile) and the forward-return spread, net of a $20$~bps turnover
+cost.
+
+\begin{table}[t]
+\centering
+\caption{Composite $z(\text{vol})+z(\text{VaR})$ vs.\ volatility: per-date Spearman
+and difference (95\% CI). Significant only on crypto-bull; locked-panel test not
+significant.}
+\label{tab:econ}
+\small
+\begin{tabular}{lccc}
+\toprule
+Test bed & vol $\rho$ & comp $\rho$ & difference (95\% CI) \\
+\midrule
+crypto-16 & 0.62 & 0.62 & $-0.00$ (n.s.) \\
+crypto-17 & 0.36 & 0.40 & $+0.05$ $[0.02,0.07]$ \\
+crypto-18 & 0.38 & 0.39 & $+0.01$ (n.s.) \\
+equity 94 & 0.61 & 0.60 & $-0.008$ $[-0.011,-0.004]$ \\
+equity 05 & 0.56 & 0.56 & $-0.00$ (n.s.) \\
+\midrule
+\multicolumn{4}{l}{\emph{Locked panel:} $0.376 \rightarrow 0.388$, Newey--West $t=0.67$ (n.s.).}\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/fig7_economic.png}
+\caption{Realized drawdown discrimination (high- minus low-risk tercile) by bed,
+sorting on volatility vs.\ the composite. Volatility already separates drawdown
+strongly; the composite is indistinguishable except marginally on crypto-bull.}
+\label{fig:economic}
+\end{figure}
+
+%% =========================================================================
+\begin{thebibliography}{99}
+\small
+\bibitem{andersen2003} T.~Andersen, T.~Bollerslev, F.~Diebold, and P.~Labys.
+Modeling and forecasting realized volatility. \emph{Econometrica}, 71(2):579--625, 2003.
+\bibitem{ang2006} A.~Ang, J.~Chen, and Y.~Xing. Downside risk.
+\emph{Review of Financial Studies}, 19(4):1191--1239, 2006.
+\bibitem{atilgan2020} Y.~Atilgan, T.~Bali, K.~Demirtas, and A.~Gunaydin.
+Left-tail momentum. \emph{Journal of Financial Economics}, 135(3):725--753, 2020.
+\bibitem{bailey2014} D.~Bailey and M.~L\'opez de Prado. The deflated Sharpe ratio.
+\emph{Journal of Portfolio Management}, 40(5):94--107, 2014.
+\bibitem{bailey2017} D.~Bailey, J.~Borwein, M.~L\'opez de Prado, and Q.~Zhu.
+The probability of backtest overfitting.
+\emph{Journal of Computational Finance}, 20(4):39--70, 2017.
+\bibitem{bawa1975} V.~Bawa. Optimal rules for ordering uncertain prospects.
+\emph{Journal of Financial Economics}, 2(1):95--121, 1975.
+\bibitem{bollerslev1986} T.~Bollerslev. Generalized autoregressive conditional
+heteroskedasticity. \emph{Journal of Econometrics}, 31(3):307--327, 1986.
+\bibitem{bpq2022} T.~Bollerslev, A.~Patton, and R.~Quaedvlieg. Realized semibetas.
+\emph{Journal of Financial Economics}, 144(1):227--246, 2022.
+\bibitem{chabiyo2018} F.~Chabi-Yo, S.~Ruenzi, and F.~Weigert. Crash sensitivity and
+the cross-section of expected stock returns.
+\emph{Journal of Financial and Quantitative Analysis}, 53(3):1059--1100, 2018.
+\bibitem{engle1982} R.~Engle. Autoregressive conditional heteroscedasticity with
+estimates of the variance of U.K.\ inflation. \emph{Econometrica}, 50(4):987--1007, 1982.
+\bibitem{faragotedongap2018} A.~Farago and R.~T\'edongap. Downside risks and the
+cross-section of asset returns.
+\emph{Journal of Financial Economics}, 129(1):69--86, 2018.
+\bibitem{fishburn1977} P.~Fishburn. Mean-risk analysis with risk associated with
+below-target returns. \emph{American Economic Review}, 67(2):116--126, 1977.
+\bibitem{harvey2016} C.~Harvey, Y.~Liu, and H.~Zhu. $\ldots$ and the cross-section
+of expected returns. \emph{Review of Financial Studies}, 29(1):5--68, 2016.
+\bibitem{kellyjiang2014} B.~Kelly and H.~Jiang. Tail risk and asset prices.
+\emph{Review of Financial Studies}, 27(10):2841--2871, 2014.
+\bibitem{leviwelch2020} Y.~Levi and I.~Welch. Symmetric and asymmetric market betas
+and downside risk. \emph{Review of Financial Studies}, 33(6):2772--2795, 2020.
+\bibitem{rockafellar2000} R.~T.~Rockafellar and S.~Uryasev. Optimization of
+conditional value-at-risk. \emph{Journal of Risk}, 2(3):21--41, 2000.
+\bibitem{sortino1991} F.~Sortino and R.~van der Meer. Downside risk.
+\emph{Journal of Portfolio Management}, 17(4):27--31, 1991.
+\bibitem{violenawrocki2016} F.~Viole and D.~Nawrocki. Predicting risk/return
+performance using upper partial moment/lower partial moment metrics.
+\emph{Journal of Mathematical Finance}, 6(5):900--920, 2016.
+\bibitem{white2000} H.~White. A reality check for data snooping.
+\emph{Econometrica}, 68(5):1097--1126, 2000.
+\end{thebibliography}
+
+\end{document}

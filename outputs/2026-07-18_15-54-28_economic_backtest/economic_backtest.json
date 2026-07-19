@@ -1,0 +1,112 @@
+{
+  "crypto_2016_calm": {
+    "volatility": {
+      "n_periods": 8,
+      "gross_spread_mean": 0.2424,
+      "net_spread_mean": 0.2418,
+      "spread_ir": 0.785,
+      "dd_discrimination": 0.2969,
+      "mean_turnover": 0.31,
+      "ret_low_mean": 0.2298,
+      "ret_high_mean": -0.0126
+    },
+    "composite": {
+      "n_periods": 8,
+      "gross_spread_mean": 0.1031,
+      "net_spread_mean": 0.1025,
+      "spread_ir": 0.242,
+      "dd_discrimination": 0.2923,
+      "mean_turnover": 0.318,
+      "ret_low_mean": 0.226,
+      "ret_high_mean": 0.1229
+    }
+  },
+  "crypto_2017_bull": {
+    "volatility": {
+      "n_periods": 9,
+      "gross_spread_mean": 0.842,
+      "net_spread_mean": 0.8412,
+      "spread_ir": 0.349,
+      "dd_discrimination": 0.124,
+      "mean_turnover": 0.406,
+      "ret_low_mean": 3.1398,
+      "ret_high_mean": 2.2979
+    },
+    "composite": {
+      "n_periods": 9,
+      "gross_spread_mean": 1.161,
+      "net_spread_mean": 1.1601,
+      "spread_ir": 0.461,
+      "dd_discrimination": 0.1457,
+      "mean_turnover": 0.475,
+      "ret_low_mean": 3.2172,
+      "ret_high_mean": 2.0561
+    }
+  },
+  "crypto_2018_crash": {
+    "volatility": {
+      "n_periods": 7,
+      "gross_spread_mean": 0.1405,
+      "net_spread_mean": 0.1396,
+      "spread_ir": 1.908,
+      "dd_discrimination": 0.1111,
+      "mean_turnover": 0.455,
+      "ret_low_mean": -0.3284,
+      "ret_high_mean": -0.4689
+    },
+    "composite": {
+      "n_periods": 7,
+      "gross_spread_mean": 0.1268,
+      "net_spread_mean": 0.126,
+      "spread_ir": 1.556,
+      "dd_discrimination": 0.114,
+      "mean_turnover": 0.42,
+      "ret_low_mean": -0.3315,
+      "ret_high_mean": -0.4583
+    }
+  },
+  "equity_1994_99_calm": {
+    "volatility": {
+      "n_periods": 66,
+      "gross_spread_mean": -0.0331,
+      "net_spread_mean": -0.0334,
+      "spread_ir": -0.38,
+      "dd_discrimination": 0.1056,
+      "mean_turnover": 0.167,
+      "ret_low_mean": 0.0459,
+      "ret_high_mean": 0.079
+    },
+    "composite": {
+      "n_periods": 66,
+      "gross_spread_mean": -0.0325,
+      "net_spread_mean": -0.0329,
+      "spread_ir": -0.375,
+      "dd_discrimination": 0.1043,
+      "mean_turnover": 0.201,
+      "ret_low_mean": 0.0453,
+      "ret_high_mean": 0.0778
+    }
+  },
+  "equity_2005_09_gfc": {
+    "volatility": {
+      "n_periods": 54,
+      "gross_spread_mean": -0.0287,
+      "net_spread_mean": -0.0291,
+      "spread_ir": -0.249,
+      "dd_discrimination": 0.0993,
+      "mean_turnover": 0.193,
+      "ret_low_mean": 0.0131,
+      "ret_high_mean": 0.0419
+    },
+    "composite": {
+      "n_periods": 54,
+      "gross_spread_mean": -0.0305,
+      "net_spread_mean": -0.0309,
+      "spread_ir": -0.264,
+      "dd_discrimination": 0.0989,
+      "mean_turnover": 0.215,
+      "ret_low_mean": 0.0126,
+      "ret_high_mean": 0.0431
+    }
+  }
+}

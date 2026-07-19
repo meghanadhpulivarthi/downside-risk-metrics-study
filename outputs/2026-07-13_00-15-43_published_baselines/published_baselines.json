@@ -1,0 +1,37 @@
+{
+  "VN_ratio": {
+    "val_spearman": -0.2635,
+    "test_spearman": -0.3464,
+    "test_blowup_auc": 0.3138
+  },
+  "left_tail_ES5": {
+    "val_spearman": 0.2904,
+    "test_spearman": 0.323,
+    "test_blowup_auc": 0.5825
+  },
+  "VaR5": {
+    "val_spearman": 0.3498,
+    "test_spearman": 0.3595,
+    "test_blowup_auc": 0.6139
+  },
+  "hill_tail": {
+    "val_spearman": -0.1637,
+    "test_spearman": -0.071,
+    "test_blowup_auc": 0.5018
+  },
+  "down_semibeta": {
+    "val_spearman": 0.2054,
+    "test_spearman": 0.3091,
+    "test_blowup_auc": 0.6011
+  },
+  "downside_dev": {
+    "val_spearman": 0.3326,
+    "test_spearman": 0.4089,
+    "test_blowup_auc": 0.6354
+  },
+  "volatility": {
+    "val_spearman": 0.3136,
+    "test_spearman": 0.3761,
+    "test_blowup_auc": 0.6801
+  }
+}

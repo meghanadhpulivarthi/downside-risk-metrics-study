@@ -1,0 +1,17 @@
+{
+  "window_expl": [
+    "1998-01-01",
+    "2009-01-01"
+  ],
+  "holding_1y_end": "2010-01-01",
+  "coverage_survivors": [
+    280,
+    289
+  ],
+  "coverage_delisted_tail": [
+    245,
+    551
+  ],
+  "delisted_in_holding_window": 0,
+  "note": "directional lower-bound RQ1; delisted coverage partial"
+}

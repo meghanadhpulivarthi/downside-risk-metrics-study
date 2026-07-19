@@ -1,0 +1,22 @@
+{
+  "expl": [
+    "2016-07-01",
+    "2017-06-30"
+  ],
+  "hold": [
+    "2017-07-01",
+    "2018-06-30"
+  ],
+  "as_of": "2017-06-30",
+  "top_n": 100,
+  "min_obs": 200,
+  "universe_size": 69,
+  "downside_diff_lpm2_minus_variance": 0.06613080014614547,
+  "downside_diff_ci95": [
+    -0.0650531348747173,
+    0.21131236734462588
+  ],
+  "downside_diff_ci_includes_zero": true,
+  "decile_ls_ratio_vs_return": 0.007776303534369411,
+  "decile_ls_lpm2_vs_drawdown": 0.22177367444570506
+}

@@ -1,0 +1,60 @@
+{
+  "horizon_drawdown": {
+    "30": {
+      "VN_ratio": -0.338,
+      "left_tail_ES5": 0.3324,
+      "VaR5": 0.3692,
+      "hill_tail": -0.0928,
+      "down_semibeta": 0.347,
+      "downside_dev": 0.4063,
+      "volatility": 0.3838
+    },
+    "90": {
+      "VN_ratio": -0.3464,
+      "left_tail_ES5": 0.323,
+      "VaR5": 0.3595,
+      "hill_tail": -0.071,
+      "down_semibeta": 0.3091,
+      "downside_dev": 0.4089,
+      "volatility": 0.3761
+    },
+    "180": {
+      "VN_ratio": NaN,
+      "left_tail_ES5": NaN,
+      "VaR5": NaN,
+      "hill_tail": NaN,
+      "down_semibeta": NaN,
+      "downside_dev": NaN,
+      "volatility": NaN
+    }
+  },
+  "blowup_threshold": {
+    "-0.5": {
+      "VN_ratio": 0.3957,
+      "left_tail_ES5": 0.5434,
+      "VaR5": 0.5576,
+      "hill_tail": 0.4558,
+      "down_semibeta": 0.5558,
+      "downside_dev": 0.5702,
+      "volatility": 0.5864
+    },
+    "-0.7": {
+      "VN_ratio": 0.2991,
+      "left_tail_ES5": 0.6355,
+      "VaR5": 0.6561,
+      "hill_tail": 0.4792,
+      "down_semibeta": 0.5813,
+      "downside_dev": 0.6821,
+      "volatility": 0.6876
+    },
+    "-0.9": {
+      "VN_ratio": 0.0242,
+      "left_tail_ES5": 0.6481,
+      "VaR5": 0.7757,
+      "hill_tail": NaN,
+      "down_semibeta": 0.8724,
+      "downside_dev": 0.6899,
+      "volatility": 0.9516
+    }
+  }
+}

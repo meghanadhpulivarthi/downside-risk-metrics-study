@@ -1,0 +1,37 @@
+{
+  "blowup_threshold": -0.8,
+  "forward_days": 90,
+  "chosen_model": "grad_boost",
+  "val_auc": {
+    "logistic": 0.6888,
+    "grad_boost": 0.7329
+  },
+  "test_model": {
+    "auc": 0.5896,
+    "ap": 0.0168,
+    "top_decile_lift": 1.26
+  },
+  "test_baselines": {
+    "vol": {
+      "auc": 0.6801,
+      "ap": 0.0315,
+      "top_decile_lift": 2.51
+    },
+    "trailing_dd": {
+      "auc": 0.4588,
+      "ap": 0.0116,
+      "top_decile_lift": 0.0
+    },
+    "downside_dev": {
+      "auc": 0.6354,
+      "ap": 0.0269,
+      "top_decile_lift": 2.51
+    }
+  },
+  "beats_baseline_on_test_auc": false,
+  "blowup_rate": {
+    "train": 0.021,
+    "val": 0.017,
+    "test": 0.012
+  }
+}

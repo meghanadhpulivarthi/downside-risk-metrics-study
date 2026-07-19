@@ -1,0 +1,71 @@
+{
+  "per_bed": {
+    "crypto_2016_calm": {
+      "rho_vol": 0.623,
+      "rho_comp": 0.621,
+      "diff": -0.002,
+      "ci": [
+        -0.013,
+        0.001
+      ],
+      "sig_beats_vol": false,
+      "sig_worse": false,
+      "n_dates": 8
+    },
+    "crypto_2017_bull": {
+      "rho_vol": 0.355,
+      "rho_comp": 0.402,
+      "diff": 0.047,
+      "ci": [
+        0.023,
+        0.071
+      ],
+      "sig_beats_vol": true,
+      "sig_worse": false,
+      "n_dates": 9
+    },
+    "crypto_2018_crash": {
+      "rho_vol": 0.376,
+      "rho_comp": 0.39,
+      "diff": 0.014,
+      "ci": [
+        -0.034,
+        0.067
+      ],
+      "sig_beats_vol": false,
+      "sig_worse": false,
+      "n_dates": 7
+    },
+    "equity_1994_99_calm": {
+      "rho_vol": 0.606,
+      "rho_comp": 0.598,
+      "diff": -0.008,
+      "ci": [
+        -0.011,
+        -0.004
+      ],
+      "sig_beats_vol": false,
+      "sig_worse": true,
+      "n_dates": 66
+    },
+    "equity_2005_09_gfc": {
+      "rho_vol": 0.564,
+      "rho_comp": 0.562,
+      "diff": -0.002,
+      "ci": [
+        -0.009,
+        0.004
+      ],
+      "sig_beats_vol": false,
+      "sig_worse": false,
+      "n_dates": 54
+    }
+  },
+  "locked_panel": {
+    "n_test_dates": 7,
+    "vol_test_mean": 0.376,
+    "comp_test_mean": 0.388,
+    "diff_mean": 0.012,
+    "diff_newey_west_t": 0.67
+  }
+}

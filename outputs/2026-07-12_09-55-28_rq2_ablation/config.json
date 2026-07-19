@@ -1,0 +1,21 @@
+{
+  "lags": [
+    1,
+    2,
+    3
+  ],
+  "forms": [
+    "linear",
+    "squared"
+  ],
+  "methods": [
+    "correlation",
+    "covariance"
+  ],
+  "n_bootstrap": 1000,
+  "paper_variant": [
+    "lag1",
+    "linear",
+    "correlation"
+  ]
+}

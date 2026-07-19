@@ -1,0 +1,3 @@
+train,test,learned_q,learned_n,train_corr_insample,test_corr_learned_OOS,test_corr_best_preset,best_preset,test_corr_ceiling_insample,generalization_gap
+1978-1989,1988-1999,0.5,2.0,0.154,-0.279,0.269,risk_seeking,0.329,0.433
+1988-1999,1998-2009,0.75,0.1,0.329,0.303,0.277,risk_seeking,0.338,0.026

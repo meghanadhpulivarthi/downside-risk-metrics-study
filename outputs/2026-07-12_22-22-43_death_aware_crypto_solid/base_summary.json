@@ -1,0 +1,24 @@
+{
+  "trailing": 180,
+  "forward": 90,
+  "q": 0.05,
+  "n_dates": 32,
+  "es5bv_naive": 0.0806,
+  "es5bv_naive_t": 3.03,
+  "es5bv_death": 0.097,
+  "es5bv_death_t": 6.17,
+  "es5bv_diff": 0.0163,
+  "es5bv_diff_t": 0.51,
+  "var5bv_death": 0.1598,
+  "var5bv_death_t": 8.5,
+  "meandd_naive": 0.4942,
+  "meandd_naive_t": 13.02,
+  "meandd_death": 0.5571,
+  "meandd_death_t": 20.86,
+  "meandd_diff": 0.0629,
+  "meandd_diff_t": 4.45,
+  "es5bv_diff_ci95": [
+    -0.047,
+    0.0739
+  ]
+}

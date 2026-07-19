@@ -1,0 +1,39 @@
+{
+  "explanatory": [
+    "1998-01-01",
+    "2009-01-01"
+  ],
+  "holding_1y": [
+    "2009-01-01",
+    "2010-01-01"
+  ],
+  "holding_2y": [
+    "2009-01-01",
+    "2011-01-01"
+  ],
+  "benchmark": "^GSPC",
+  "riskfree": "^IRX",
+  "return_frequency": "monthly",
+  "periods_per_year": 12,
+  "min_obs": 100,
+  "rho_method": "correlation",
+  "investor_types": {
+    "risk_averse": {
+      "q": 0.25,
+      "n": 1.0
+    },
+    "prospect_theory": {
+      "q": 0.44,
+      "n": 1.0
+    },
+    "risk_neutral": {
+      "q": 1.0,
+      "n": 1.0
+    },
+    "risk_seeking": {
+      "q": 2.0,
+      "n": 1.0
+    }
+  },
+  "universe": "current_sp500_survivors"
+}

@@ -1,0 +1,82 @@
+{
+  "crypto": {
+    "n_dates": 24,
+    "median_agg_vol": 0.1107,
+    "low_stress": {
+      "var_partial": {
+        "mean": 0.127,
+        "ci": [
+          0.057,
+          0.177
+        ],
+        "n": 12
+      },
+      "vol_skill": {
+        "mean": 0.444,
+        "ci": [
+          0.328,
+          0.535
+        ],
+        "n": 12
+      }
+    },
+    "high_stress": {
+      "var_partial": {
+        "mean": 0.18,
+        "ci": [
+          0.09,
+          0.241
+        ],
+        "n": 12
+      },
+      "vol_skill": {
+        "mean": 0.457,
+        "ci": [
+          0.312,
+          0.596
+        ],
+        "n": 12
+      }
+    }
+  },
+  "equity": {
+    "n_dates": 120,
+    "median_agg_vol": 0.0164,
+    "low_stress": {
+      "var_partial": {
+        "mean": 0.056,
+        "ci": [
+          0.037,
+          0.085
+        ],
+        "n": 60
+      },
+      "vol_skill": {
+        "mean": 0.573,
+        "ci": [
+          0.527,
+          0.615
+        ],
+        "n": 60
+      }
+    },
+    "high_stress": {
+      "var_partial": {
+        "mean": 0.05,
+        "ci": [
+          0.013,
+          0.086
+        ],
+        "n": 60
+      },
+      "vol_skill": {
+        "mean": 0.602,
+        "ci": [
+          0.567,
+          0.634
+        ],
+        "n": 60
+      }
+    }
+  }
+}

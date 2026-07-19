@@ -1,0 +1,992 @@
+{
+  "crypto_2016_calm": {
+    "n_dates": 8,
+    "partial": {
+      "downside_dev": {
+        "mean": 0.128,
+        "ci": [
+          0.079,
+          0.185
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      },
+      "es5": {
+        "mean": 0.141,
+        "ci": [
+          0.068,
+          0.227
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      },
+      "var5": {
+        "mean": 0.124,
+        "ci": [
+          0.063,
+          0.157
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      },
+      "vn_ratio": {
+        "mean": -0.002,
+        "ci": [
+          -0.065,
+          0.033
+        ],
+        "sig_pos": false,
+        "sig_neg": false
+      },
+      "hill_tail": {
+        "mean": -0.088,
+        "ci": [
+          -0.15,
+          -0.007
+        ],
+        "sig_pos": false,
+        "sig_neg": true
+      },
+      "down_semibeta": {
+        "mean": 0.02,
+        "ci": [
+          -0.049,
+          0.083
+        ],
+        "sig_pos": false,
+        "sig_neg": false
+      },
+      "down_beta": {
+        "mean": -0.081,
+        "ci": [
+          -0.131,
+          -0.021
+        ],
+        "sig_pos": false,
+        "sig_neg": true
+      },
+      "ltd_crash": {
+        "mean": -0.068,
+        "ci": [
+          -0.121,
+          0.047
+        ],
+        "sig_pos": false,
+        "sig_neg": false
+      },
+      "gda_voldown": {
+        "mean": 0.03,
+        "ci": [
+          -0.021,
+          0.07
+        ],
+        "sig_pos": false,
+        "sig_neg": false
+      }
+    },
+    "raw": {
+      "downside_dev": {
+        "mean": 0.615,
+        "ci": [
+          0.6,
+          0.652
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      },
+      "es5": {
+        "mean": 0.623,
+        "ci": [
+          0.606,
+          0.664
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      },
+      "var5": {
+        "mean": 0.611,
+        "ci": [
+          0.596,
+          0.642
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      },
+      "vn_ratio": {
+        "mean": -0.549,
+        "ci": [
+          -0.591,
+          -0.539
+        ],
+        "sig_pos": false,
+        "sig_neg": true
+      },
+      "hill_tail": {
+        "mean": -0.167,
+        "ci": [
+          -0.231,
+          -0.123
+        ],
+        "sig_pos": false,
+        "sig_neg": true
+      },
+      "down_semibeta": {
+        "mean": 0.4,
+        "ci": [
+          0.357,
+          0.458
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      },
+      "down_beta": {
+        "mean": 0.014,
+        "ci": [
+          -0.022,
+          0.06
+        ],
+        "sig_pos": false,
+        "sig_neg": false
+      },
+      "ltd_crash": {
+        "mean": -0.376,
+        "ci": [
+          -0.412,
+          -0.313
+        ],
+        "sig_pos": false,
+        "sig_neg": true
+      },
+      "gda_voldown": {
+        "mean": -0.055,
+        "ci": [
+          -0.082,
+          -0.01
+        ],
+        "sig_pos": false,
+        "sig_neg": true
+      },
+      "volatility": {
+        "mean": 0.623,
+        "ci": [
+          0.616,
+          0.65
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      }
+    },
+    "chain": {
+      "chain_tvol_fvol": {
+        "mean": 0.683,
+        "ci": [
+          0.643,
+          0.725
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      },
+      "chain_fvol_dd": {
+        "mean": 0.767,
+        "ci": [
+          0.752,
+          0.787
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      }
+    }
+  },
+  "crypto_2017_bull": {
+    "n_dates": 9,
+    "partial": {
+      "downside_dev": {
+        "mean": 0.141,
+        "ci": [
+          0.099,
+          0.172
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      },
+      "es5": {
+        "mean": 0.076,
+        "ci": [
+          0.035,
+          0.103
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      },
+      "var5": {
+        "mean": 0.194,
+        "ci": [
+          0.124,
+          0.24
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      },
+      "vn_ratio": {
+        "mean": 0.006,
+        "ci": [
+          -0.086,
+          0.073
+        ],
+        "sig_pos": false,
+        "sig_neg": false
+      },
+      "hill_tail": {
+        "mean": -0.133,
+        "ci": [
+          -0.198,
+          -0.092
+        ],
+        "sig_pos": false,
+        "sig_neg": true
+      },
+      "down_semibeta": {
+        "mean": 0.078,
+        "ci": [
+          0.064,
+          0.103
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      },
+      "down_beta": {
+        "mean": 0.033,
+        "ci": [
+          -0.055,
+          0.143
+        ],
+        "sig_pos": false,
+        "sig_neg": false
+      },
+      "ltd_crash": {
+        "mean": -0.037,
+        "ci": [
+          -0.143,
+          0.077
+        ],
+        "sig_pos": false,
+        "sig_neg": false
+      },
+      "gda_voldown": {
+        "mean": -0.051,
+        "ci": [
+          -0.192,
+          0.033
+        ],
+        "sig_pos": false,
+        "sig_neg": false
+      }
+    },
+    "raw": {
+      "downside_dev": {
+        "mean": 0.379,
+        "ci": [
+          0.316,
+          0.394
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      },
+      "es5": {
+        "mean": 0.351,
+        "ci": [
+          0.297,
+          0.375
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      },
+      "var5": {
+        "mean": 0.4,
+        "ci": [
+          0.32,
+          0.422
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      },
+      "vn_ratio": {
+        "mean": -0.276,
+        "ci": [
+          -0.334,
+          -0.207
+        ],
+        "sig_pos": false,
+        "sig_neg": true
+      },
+      "hill_tail": {
+        "mean": -0.078,
+        "ci": [
+          -0.134,
+          -0.045
+        ],
+        "sig_pos": false,
+        "sig_neg": true
+      },
+      "down_semibeta": {
+        "mean": 0.249,
+        "ci": [
+          0.215,
+          0.277
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      },
+      "down_beta": {
+        "mean": 0.093,
+        "ci": [
+          -0.013,
+          0.222
+        ],
+        "sig_pos": false,
+        "sig_neg": false
+      },
+      "ltd_crash": {
+        "mean": -0.154,
+        "ci": [
+          -0.233,
+          -0.057
+        ],
+        "sig_pos": false,
+        "sig_neg": true
+      },
+      "gda_voldown": {
+        "mean": -0.105,
+        "ci": [
+          -0.231,
+          -0.009
+        ],
+        "sig_pos": false,
+        "sig_neg": true
+      },
+      "volatility": {
+        "mean": 0.355,
+        "ci": [
+          0.299,
+          0.377
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      }
+    },
+    "chain": {
+      "chain_tvol_fvol": {
+        "mean": 0.415,
+        "ci": [
+          0.302,
+          0.549
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      },
+      "chain_fvol_dd": {
+        "mean": 0.62,
+        "ci": [
+          0.546,
+          0.679
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      }
+    }
+  },
+  "crypto_2018_crash": {
+    "n_dates": 7,
+    "partial": {
+      "downside_dev": {
+        "mean": 0.199,
+        "ci": [
+          0.076,
+          0.342
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      },
+      "es5": {
+        "mean": 0.077,
+        "ci": [
+          -0.0,
+          0.167
+        ],
+        "sig_pos": false,
+        "sig_neg": false
+      },
+      "var5": {
+        "mean": 0.135,
+        "ci": [
+          0.018,
+          0.27
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      },
+      "vn_ratio": {
+        "mean": -0.053,
+        "ci": [
+          -0.143,
+          0.0
+        ],
+        "sig_pos": false,
+        "sig_neg": false
+      },
+      "hill_tail": {
+        "mean": -0.092,
+        "ci": [
+          -0.158,
+          -0.022
+        ],
+        "sig_pos": false,
+        "sig_neg": true
+      },
+      "down_semibeta": {
+        "mean": 0.132,
+        "ci": [
+          0.02,
+          0.254
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      },
+      "down_beta": {
+        "mean": 0.017,
+        "ci": [
+          -0.097,
+          0.145
+        ],
+        "sig_pos": false,
+        "sig_neg": false
+      },
+      "ltd_crash": {
+        "mean": -0.165,
+        "ci": [
+          -0.254,
+          -0.134
+        ],
+        "sig_pos": false,
+        "sig_neg": true
+      },
+      "gda_voldown": {
+        "mean": 0.047,
+        "ci": [
+          -0.056,
+          0.189
+        ],
+        "sig_pos": false,
+        "sig_neg": false
+      }
+    },
+    "raw": {
+      "downside_dev": {
+        "mean": 0.41,
+        "ci": [
+          0.354,
+          0.496
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      },
+      "es5": {
+        "mean": 0.327,
+        "ci": [
+          0.273,
+          0.378
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      },
+      "var5": {
+        "mean": 0.362,
+        "ci": [
+          0.305,
+          0.432
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      },
+      "vn_ratio": {
+        "mean": -0.346,
+        "ci": [
+          -0.429,
+          -0.309
+        ],
+        "sig_pos": false,
+        "sig_neg": true
+      },
+      "hill_tail": {
+        "mean": -0.071,
+        "ci": [
+          -0.139,
+          -0.005
+        ],
+        "sig_pos": false,
+        "sig_neg": true
+      },
+      "down_semibeta": {
+        "mean": 0.309,
+        "ci": [
+          0.243,
+          0.397
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      },
+      "down_beta": {
+        "mean": 0.151,
+        "ci": [
+          0.086,
+          0.212
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      },
+      "ltd_crash": {
+        "mean": -0.285,
+        "ci": [
+          -0.379,
+          -0.268
+        ],
+        "sig_pos": false,
+        "sig_neg": true
+      },
+      "gda_voldown": {
+        "mean": -0.05,
+        "ci": [
+          -0.127,
+          0.09
+        ],
+        "sig_pos": false,
+        "sig_neg": false
+      },
+      "volatility": {
+        "mean": 0.376,
+        "ci": [
+          0.329,
+          0.444
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      }
+    },
+    "chain": {
+      "chain_tvol_fvol": {
+        "mean": 0.424,
+        "ci": [
+          0.374,
+          0.457
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      },
+      "chain_fvol_dd": {
+        "mean": 0.534,
+        "ci": [
+          0.481,
+          0.651
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      }
+    }
+  },
+  "equity_1994_99_calm": {
+    "n_dates": 66,
+    "partial": {
+      "downside_dev": {
+        "mean": 0.02,
+        "ci": [
+          -0.009,
+          0.055
+        ],
+        "sig_pos": false,
+        "sig_neg": false
+      },
+      "es5": {
+        "mean": 0.03,
+        "ci": [
+          0.002,
+          0.063
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      },
+      "var5": {
+        "mean": 0.035,
+        "ci": [
+          0.01,
+          0.066
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      },
+      "vn_ratio": {
+        "mean": -0.047,
+        "ci": [
+          -0.082,
+          -0.01
+        ],
+        "sig_pos": false,
+        "sig_neg": true
+      },
+      "hill_tail": {
+        "mean": NaN,
+        "ci": [
+          NaN,
+          NaN
+        ],
+        "sig_pos": false,
+        "sig_neg": false
+      },
+      "down_semibeta": {
+        "mean": 0.027,
+        "ci": [
+          -0.008,
+          0.061
+        ],
+        "sig_pos": false,
+        "sig_neg": false
+      },
+      "down_beta": {
+        "mean": 0.014,
+        "ci": [
+          -0.022,
+          0.049
+        ],
+        "sig_pos": false,
+        "sig_neg": false
+      },
+      "ltd_crash": {
+        "mean": -0.011,
+        "ci": [
+          -0.048,
+          0.021
+        ],
+        "sig_pos": false,
+        "sig_neg": false
+      },
+      "gda_voldown": {
+        "mean": -0.012,
+        "ci": [
+          -0.047,
+          0.022
+        ],
+        "sig_pos": false,
+        "sig_neg": false
+      }
+    },
+    "raw": {
+      "downside_dev": {
+        "mean": 0.582,
+        "ci": [
+          0.552,
+          0.615
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      },
+      "es5": {
+        "mean": 0.581,
+        "ci": [
+          0.551,
+          0.614
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      },
+      "var5": {
+        "mean": 0.58,
+        "ci": [
+          0.552,
+          0.611
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      },
+      "vn_ratio": {
+        "mean": -0.426,
+        "ci": [
+          -0.465,
+          -0.385
+        ],
+        "sig_pos": false,
+        "sig_neg": true
+      },
+      "hill_tail": {
+        "mean": NaN,
+        "ci": [
+          NaN,
+          NaN
+        ],
+        "sig_pos": false,
+        "sig_neg": false
+      },
+      "down_semibeta": {
+        "mean": 0.478,
+        "ci": [
+          0.448,
+          0.508
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      },
+      "down_beta": {
+        "mean": 0.242,
+        "ci": [
+          0.188,
+          0.293
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      },
+      "ltd_crash": {
+        "mean": -0.065,
+        "ci": [
+          -0.113,
+          -0.024
+        ],
+        "sig_pos": false,
+        "sig_neg": true
+      },
+      "gda_voldown": {
+        "mean": -0.243,
+        "ci": [
+          -0.294,
+          -0.189
+        ],
+        "sig_pos": false,
+        "sig_neg": true
+      },
+      "volatility": {
+        "mean": 0.606,
+        "ci": [
+          0.574,
+          0.64
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      }
+    },
+    "chain": {
+      "chain_tvol_fvol": {
+        "mean": 0.843,
+        "ci": [
+          0.835,
+          0.851
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      },
+      "chain_fvol_dd": {
+        "mean": 0.712,
+        "ci": [
+          0.683,
+          0.743
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      }
+    }
+  },
+  "equity_2005_09_gfc": {
+    "n_dates": 54,
+    "partial": {
+      "downside_dev": {
+        "mean": 0.01,
+        "ci": [
+          -0.022,
+          0.044
+        ],
+        "sig_pos": false,
+        "sig_neg": false
+      },
+      "es5": {
+        "mean": 0.0,
+        "ci": [
+          -0.033,
+          0.032
+        ],
+        "sig_pos": false,
+        "sig_neg": false
+      },
+      "var5": {
+        "mean": 0.076,
+        "ci": [
+          0.043,
+          0.107
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      },
+      "vn_ratio": {
+        "mean": -0.07,
+        "ci": [
+          -0.108,
+          -0.029
+        ],
+        "sig_pos": false,
+        "sig_neg": true
+      },
+      "hill_tail": {
+        "mean": NaN,
+        "ci": [
+          NaN,
+          NaN
+        ],
+        "sig_pos": false,
+        "sig_neg": false
+      },
+      "down_semibeta": {
+        "mean": 0.052,
+        "ci": [
+          0.009,
+          0.092
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      },
+      "down_beta": {
+        "mean": 0.04,
+        "ci": [
+          -0.004,
+          0.079
+        ],
+        "sig_pos": false,
+        "sig_neg": false
+      },
+      "ltd_crash": {
+        "mean": 0.001,
+        "ci": [
+          -0.037,
+          0.036
+        ],
+        "sig_pos": false,
+        "sig_neg": false
+      },
+      "gda_voldown": {
+        "mean": -0.029,
+        "ci": [
+          -0.068,
+          0.014
+        ],
+        "sig_pos": false,
+        "sig_neg": false
+      }
+    },
+    "raw": {
+      "downside_dev": {
+        "mean": 0.535,
+        "ci": [
+          0.483,
+          0.58
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      },
+      "es5": {
+        "mean": 0.522,
+        "ci": [
+          0.469,
+          0.567
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      },
+      "var5": {
+        "mean": 0.54,
+        "ci": [
+          0.488,
+          0.585
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      },
+      "vn_ratio": {
+        "mean": -0.424,
+        "ci": [
+          -0.471,
+          -0.371
+        ],
+        "sig_pos": false,
+        "sig_neg": true
+      },
+      "hill_tail": {
+        "mean": NaN,
+        "ci": [
+          NaN,
+          NaN
+        ],
+        "sig_pos": false,
+        "sig_neg": false
+      },
+      "down_semibeta": {
+        "mean": 0.487,
+        "ci": [
+          0.421,
+          0.541
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      },
+      "down_beta": {
+        "mean": 0.344,
+        "ci": [
+          0.259,
+          0.413
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      },
+      "ltd_crash": {
+        "mean": -0.046,
+        "ci": [
+          -0.102,
+          -0.005
+        ],
+        "sig_pos": false,
+        "sig_neg": true
+      },
+      "gda_voldown": {
+        "mean": -0.321,
+        "ci": [
+          -0.389,
+          -0.237
+        ],
+        "sig_pos": false,
+        "sig_neg": true
+      },
+      "volatility": {
+        "mean": 0.564,
+        "ci": [
+          0.514,
+          0.606
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      }
+    },
+    "chain": {
+      "chain_tvol_fvol": {
+        "mean": 0.799,
+        "ci": [
+          0.769,
+          0.824
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      },
+      "chain_fvol_dd": {
+        "mean": 0.695,
+        "ci": [
+          0.655,
+          0.728
+        ],
+        "sig_pos": true,
+        "sig_neg": false
+      }
+    }
+  }
+}

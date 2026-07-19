@@ -1,0 +1,5 @@
+question,predictor,target,spearman_rho,p_value,n
+downside_forecast,lpm2_downside,holding_max_drawdown,0.4029959810010962,0.0005964992330103915,69
+downside_forecast,variance,holding_max_drawdown,0.3368651808549507,0.004650117201408779,69
+return_forecast,upm_lpm_ratio,holding_mean_return,0.31158202411399344,0.009157025826409898,69
+return_forecast,sharpe,holding_mean_return,0.13741322616002924,0.2601917006383286,69

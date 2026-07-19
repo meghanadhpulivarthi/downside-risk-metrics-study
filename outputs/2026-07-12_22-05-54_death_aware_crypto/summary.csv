@@ -1,0 +1,3 @@
+design,n_dates,death_rate,death_rate_t,mean_fwd_drawdown,mean_fwd_drawdown_t,spearman_es5_drawdown,spearman_es5_drawdown_t,spearman_vol_drawdown,spearman_vol_drawdown_t,es5_quintile_drawdown_spread,es5_quintile_drawdown_spread_t
+naive_survivor,11,0.0041,1.0,0.4732,11.05,0.5075,11.66,0.5308,15.07,0.2212,7.64
+death_aware_PIT,13,0.0024,1.4,0.5487,18.65,0.461,11.02,0.4716,13.82,0.2469,7.22

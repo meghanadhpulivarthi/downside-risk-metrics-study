@@ -1,0 +1,52 @@
+iter	val_score	status	description
+0	0.313638	keep	baseline: trailing volatility
+1	0.290401	discard	es5 tail expected shortfall (positive magnitude)
+2	0.332607	keep	downside deviation (semi-deviation of losses)
+3	0.326433	discard	per-date rank blend of downside_dev es10 lpm2
+4	0.301010	discard	downside_dev times tail-fatness ratio es5 over es10
+5	0.269619	discard	gradient boosting regressor on all features fit on train
+6	0.323331	discard	random forest on downside feature subset fit on train
+7	0.211962	discard	DES mixture death-hazard p plus one minus p times downside_dev
+8	0.331045	discard	downside_dev boosted when vol above per-date median regime indicator
+9	0.319433	discard	downside_dev times sqrt trailing_dd chronic drawdown interaction
+10	0.311355	discard	per-date rank average of downside_dev and trailing_dd
+11	0.192882	discard	downside_dev with negative-skew crash-prone multiplier
+12	0.335083	keep	per-date rank average of the four tied downside signals var5 es10 lpm2 downside_dev
+13	0.335620	keep	downside consensus rank plus small-cap tilt from inverse log_mcap rank
+14	0.337113	keep	downside consensus rank plus small-cap tilt plus high-mean-return runup tilt
+15	0.337344	keep	downside consensus times runup boost plus small-cap tilt nonlinear interaction
+16	0.337671	keep	iter15 base plus young-coin age regime tilt
+17	0.329046	discard	iter16 base plus tail-shape gap es5 minus var5 rank tilt
+18	0.332280	discard	iter16 base plus chronic trailing_dd consensus signal light blend
+19	0.336888	discard	iter16 base with stronger runup boost coefficient 0.7
+20	0.338620	keep	iter16 base but runup boost uses cum_ret bubble runup instead of mean_ret
+21	0.337817	discard	iter20 base but runup boost averages cum_ret and mean_ret runup ranks
+22	0.338555	discard	iter20 base with cum_ret runup boost coefficient raised to 0.65
+23	0.336497	discard	iter20 base plus high-kurtosis fat-tail rank tilt light blend
+24	0.340533	keep	iter20 base reweighted more smallcap 0.15 boosted 0.75 young 0.10
+25	0.338799	discard	iter24 pushed smallcap 0.20 boosted 0.70 young 0.10
+26	0.339799	discard	iter24 dropping young tilt boosted 0.82 smallcap 0.18
+27	0.339050	discard	iter24 base but smallcap also multiplied into consensus boost interaction
+28	0.333577	discard	iter24 base with es5 added as 5th consensus signal
+29	0.330876	discard	iter24 base dropping var5 consensus of es10 lpm2 downside_dev
+30	0.337397	discard	iter24 base with vol added as 5th consensus signal
+31	0.336839	discard	iter24 base plus negative-skew crash-prone rank tilt light blend
+32	0.338079	discard	iter24 base but runup boost gated to high-vol above-median regime only
+33	0.335499	discard	iter24 base but consensus raised to power 1.5 convex emphasis
+34	0.340180	discard	iter24 base but boosted converted to per-date rank before blending tilts
+35	0.338527	discard	iter24 base with runup boost coefficient lowered to 0.4
+36	0.339249	discard	iter24 base retuned boosted 0.75 smallcap 0.13 young 0.12
+37	0.337687	discard	iter24 base plus additive trailing_dd chronic drawdown tilt light blend
+38	0.334559	discard	iter24 base but consensus uses median of the four signal ranks robust blend
+39	0.340695	keep	iter24 base but consensus overweights downside_dev in weighted rank mean
+40	0.340306	discard	iter39 base pushing downside_dev consensus weight to 3.0
+41	0.339373	discard	iter39 base also overweighting lpm2 to 1.5 alongside downside_dev 2.0
+42	0.337335	discard	iter39 base also downweighting var5 to 0.5 in consensus
+43	0.340468	discard	iter39 base with downside_dev consensus weight 2.5
+44	0.341231	keep	iter39 base retuned smallcap 0.14 young 0.11 boosted 0.75
+45	0.340549	discard	iter44 base retuned smallcap 0.13 young 0.13 boosted 0.74
+46	0.341255	keep	iter44 base with runup boost coefficient 0.55
+47	0.340377	discard	iter46 base with runup boost coefficient 0.6
+48	0.341959	keep	iter46 base plus multiplicative young-times-smallcap interaction tilt
+49	0.341435	discard	iter48 base with stronger young-smallcap interaction weight 0.12
+50	0.342028	keep	iter48 base plus small runup-times-smallcap bubble interaction tilt
