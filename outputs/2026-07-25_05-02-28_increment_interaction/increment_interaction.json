@@ -1,0 +1,77 @@
+{
+  "n_obs": 144,
+  "n_beds": 5,
+  "kurt_date_bootstrap": {
+    "slope": 0.0131,
+    "ci": [
+      0.0068,
+      0.0215
+    ],
+    "p_one_sided": 0.0,
+    "n_boot": 5000
+  },
+  "kurt_bed_clustered": {
+    "slope": 0.0131,
+    "ci": [
+      -0.0036,
+      0.0324
+    ],
+    "p_one_sided": 0.0964,
+    "n_boot": 5000
+  },
+  "blowup_date_bootstrap": {
+    "slope": 0.7618,
+    "ci": [
+      0.4028,
+      1.4842
+    ],
+    "p_one_sided": 0.0,
+    "n_boot": 5000
+  },
+  "blowup_bed_clustered": {
+    "slope": 0.7618,
+    "ci": [
+      -0.4835,
+      2.7019
+    ],
+    "p_one_sided": 0.1536,
+    "n_boot": 5000
+  },
+  "per_bed": [
+    {
+      "bed": "crypto_2016_calm",
+      "n_dates": 8,
+      "var_partial": 0.124,
+      "median_kurt": 10.503,
+      "blowup_rate": 0.127
+    },
+    {
+      "bed": "crypto_2017_bull",
+      "n_dates": 9,
+      "var_partial": 0.194,
+      "median_kurt": 7.06,
+      "blowup_rate": 0.052
+    },
+    {
+      "bed": "crypto_2018_crash",
+      "n_dates": 7,
+      "var_partial": 0.135,
+      "median_kurt": 3.809,
+      "blowup_rate": 0.054
+    },
+    {
+      "bed": "equity_1994_99_calm",
+      "n_dates": 66,
+      "var_partial": 0.035,
+      "median_kurt": 1.332,
+      "blowup_rate": 0.0
+    },
+    {
+      "bed": "equity_2005_09_gfc",
+      "n_dates": 54,
+      "var_partial": 0.076,
+      "median_kurt": 1.716,
+      "blowup_rate": 0.001
+    }
+  ]
+}

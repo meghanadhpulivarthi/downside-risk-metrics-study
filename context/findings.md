@@ -714,3 +714,78 @@ Fig 2 (mediation, from app:mediation) into §Magnitude and §Why. Body figures: 
 Fig 2 mediation, Fig 3 best-of-N; body tables: Table 1 verdict, Table 2 partials. App B retitled
 "Power and placebo" (table moved out); app:mediation keeps prose, points to body Fig 2. Main =
 full 4 pages (appendix starts page 4 right col, after refs); total 7pp; 0 overfull, all refs resolve.
+
+### 2026-07-25 — Two new experiments to tighten the paper (exps 3 & 4)
+Scripts: `src/autoresearch/run_increment_interaction.py`, `run_disciplines_ablation.py`.
+Outputs under `outputs/2026-07-25_05-*`.
+
+**Exp 4 (increment-vs-tail-fatness interaction, replaces the descriptive n=5 scatter):**
+pooled 144 date-level obs across 5 beds; regress per-date VaR partial on per-date cross-sectional
+tail-fatness. Median-excess-kurtosis slope +0.0131, date-level bootstrap CI [0.007, 0.022] (p≈0);
+BED-CLUSTERED CI [-0.004, 0.032], p≈0.10 (only 5 clusters, underpowered). Blow-up-rate variant:
+slope +0.76, date CI [0.40, 1.48] p≈0; bed-clustered p≈0.15. Per-bed means reproduce the paper
+(crypto VaR partial 0.12/0.19/0.14, kurt 10.5/7.1/3.8; equity 0.035/0.076, kurt 1.3/1.7). HONEST
+read: direction clear + date-level significant, bed-clustered only suggestive — a real upgrade over
+the scatter, not a slam dunk.
+
+**Exp 3 (disciplines ablation; survivorship = Option A, agreed w/ author):** first survivor
+definition (series terminates near panel end) was a NO-OP — in this CMC panel dead coins keep
+reporting a dust price rather than terminating, so ~all "survive". Fixed: survivor = not terminated
+AND ended >=5% of all-time peak (i.e. did not crater to dust). Removes ~2/3 of coins (138->36,
+202->61, 146->67). Findings: (a) VaR partial does NOT shrink under survivors-only; it is flat/inflated
+(2016 .124->.122, 2017 .194->.250, 2018 .135->.205). (b) On the 2018-crash bed, survivorship bias
+flips co-crash SHAPE metric down_semibeta head-to-head from -0.067 (CI [-.131,-.003], significantly
+WORSE than vol) to +0.055 (CI [-.082,.178], tied) — a directional "false crown" but NOT a significant
+win. Other shape metrics stay hugely negative under both (vn_ratio ~-1.2, ltd_crash ~-1.1). (c) No-BH
+arm: only downside_dev & var5 (magnitude) are nominal winners; none vanish under BH; ZERO shape false
+crowns — BH is not load-bearing for the shape verdict. CONCLUSION: the disciplines change what you'd
+conclude (bias erases shape's head-to-head penalty on the crash bed, inflates the magnitude edge), but
+even without them NO shape metric significantly beats volatility. => Modest support for option-2 spine;
+recommend NOT restructuring around agentic-snooping — fold ablation in as a supporting appendix.
+(Integrated 2026-07-25: §5 subsections; app:hetero upgraded to the interaction test; new app:ablation;
+one Discussion sentence. 7pp, clean.)
+
+### 2026-07-25 — Kaggle "Huge Stock Market Dataset" is NOT survivorship-free for equity (STOP SIGN)
+Probe: `src/autoresearch/probe_equity_coverage.py`. Tested whether a survivorship-free equity main-table
+bed is buildable from data/kaggle_huge_stock for the 1994-99 and 2005-09 windows. VERDICT: NO.
+- 0 (zero) matched PIT S&P-500 members have a price series ending inside EITHER window — impossible for a
+  real survivorship-free GFC bed (Lehman/Bear/WaMu died in 2008). Every matched series runs to the 2017
+  dataset end => only survivors are present.
+- Famous delistings ABSENT from the dump: LEH, WCOM, ENE, BSC, ABK. Present: WM, CIT, GM, AIG (survived
+  in some form). ~40% of PIT members unmatched (245/594, 178/645), disproportionately the dead names.
+CONSEQUENCE: cannot swap equity to a "survivorship-free" Kaggle bed — it would be the exact bias the paper
+audits, dressed up as its opposite. This EMPIRICALLY CONFIRMS the paper's caveat ("free equity data retains
+almost no true deaths") — worth one sentence in the paper. Only real survivorship-free-equity path is Stooq
+delisted prices (see data_feasibility_probe.py) — a separate data-eng project, uncertain coverage, deferred.
+The biased-vs-unbiased ablation the user wants IS feasible on CRYPTO (full vs survivors-only) — exp 3 seed;
+can expand to a full per-metric head-to-head comparison table.
+(2026-07-25 done: added a one-sentence Kaggle-equity finding to Experimental Setup; strengthened
+app:ablation crash-bed paragraph with down_beta -0.23->-0.01 + an explicit "crash-regime-specific,
+small/mixed on calm/bull" caveat. Decided AGAINST a multi-bed comparison table: the bias-flatters-shape
+effect is CRASH-BED-SPECIFIC — on crypto-2016/2017 several shape metrics get *worse* under survivors-only —
+so a full table would dilute or cherry-pick. 7pp, clean.)
+
+### 2026-07-25 — Stooq is NOT accessible from this environment (survivorship-free equity fully deferred)
+Probe: `src/autoresearch/probe_stooq_delisted.py` + raw-CSV urllib test. pandas_datareader 0.11.1's
+DataReader(...,'stooq') raises NotImplementedError for ALL symbols incl. AAPL (API not wired). Direct
+CSV endpoint https://stooq.com/q/d/l/?s=<sym>&i=d returns HTTP 404 with no UA, and with a browser UA
+returns a robots/block HTML page (3 lines) instead of CSV — for AAPL and LEH alike. => Stooq serves a
+bot-block from this datacenter IP; cannot pull delisted daily history here. CONCLUSION: neither free
+source works (Kaggle lacks the deaths; Stooq blocks bots). A genuine survivorship-free EQUITY bed needs
+institutional data (CRSP/WRDS). DEFER to future work; the paper's crypto-anchored survivorship claim +
+the demonstrated "free equity data has zero window deaths" fact is the correct, defensible position.
+
+### 2026-07-25 — Target-confound experiment (P0-1, answers the reviewer-panel Devil's Advocate CRITICAL)
+Script: `src/autoresearch/run_target_sensitivity.py`. Re-scored all 10 metrics against SHAPE-sensitive
+forward targets (neg-skew, downside fraction, tail-exceedance frequency) vs the magnitude target (90d max
+drawdown), per-date Spearman + head-to-head vs vol, all 5 beds.
+RESULT (decisive): on maxdd, vol wins everywhere, NO shape metric beats it (only downside_dev/var5 on
+crypto). On ALL THREE shape targets, vol's rank corr goes NEGATIVE (neg_skew vol rho -0.06..-0.21; tail_freq
+-0.10..-0.52; downside_frac -0.05..-0.25) and the SHAPE metrics (vn_ratio, hill, down_semibeta, down_beta,
+ltd_crash, gda) BEAT vol on nearly every bed. => The DA confound is REAL: the winner depends on the target.
+REFRAME (makes the paper stronger + answers DA + rebuts R2 strawman): drawdown is magnitude-dominated
+(E[MDD]~sigma*sqrt(T), Magdon-Ismail), and that IS the point. Shape metrics are NOT broken — they forecast
+shape (skew/tail-freq) better than vol. But shape is not what drives the drawdown that ruins investors.
+Integrated: new appendix app:target + a confound-owning paragraph in sec:magnitude + one abstract sentence.
+Also reconciled the disciplines contradiction (P0-2): disciplines change what you REPORT/credit, not the
+verdict direction (verdict robust to dropping any one).
