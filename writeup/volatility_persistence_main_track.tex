@@ -531,27 +531,26 @@ which shape metric one would have credited without each.
 \textit{Without survivorship-free data.} We rebuild the crypto universe survivors-only,
 keeping at each formation date only coins that neither delisted nor ended below $5\%$ of
 their all-time peak, about a third of the point-in-time top $100$. On the $2018$ crash
-bed this flips negative semibeta, a co-crash shape metric, from a head-to-head $-0.067$
-against volatility (CI $[-0.131,-0.003]$, significantly worse) to $+0.055$
-(CI $[-0.082,0.178]$, a tie), closes downside beta from $-0.23$ to $-0.01$, and lifts
-VaR's partial from $+0.135$ to $+0.205$ (Table~\ref{tab:ablation}). Survivorship bias erases shape's penalty and
-inflates the magnitude edge, precisely in the crash regime where hiding the coins that
-died most reshapes the cross-section. It does not manufacture a winner. No shape metric
-beats volatility even survivors-only, and the rest stay far below it.
+bed this erases shape's penalty and inflates the magnitude edge (Table~\ref{tab:ablation}).
+Negative semibeta, a co-crash shape metric, flips from significantly worse than volatility
+to a tie, downside beta closes its gap, and VaR's partial rises. This happens precisely in
+the crash regime, where hiding the coins that died most reshapes the cross-section. It does
+not manufacture a winner. No shape metric beats volatility even survivors-only.
 
 \begin{table}[t]
 \centering
 \small
-\caption{Survivorship ablation on the crypto-2018 crash bed. Removing the coins that died
-(survivors-only) turns a co-crash shape metric's loss into a tie and inflates the
-magnitude edge, yet no shape metric beats volatility either way.}
+\caption{Survivorship ablation on the crypto-2018 crash bed, vs.\ volatility (block-bootstrap
+$95\%$ CIs where estimated). Dropping the coins that died turns a co-crash shape metric's loss
+into a tie and inflates the magnitude edge, yet no shape metric beats volatility either way.}
 \label{tab:ablation}
+\setlength{\tabcolsep}{3.5pt}
 \begin{tabular}{lcc}
 \toprule
-crypto-2018, vs.\ volatility & full universe & survivors-only \\
+crypto-2018 & full universe & survivors-only \\
 \midrule
-neg.\ semibeta (head-to-head) & $-0.067$ (worse) & $+0.055$ (tie) \\
-downside beta (head-to-head) & $-0.23$ & $-0.01$ \\
+neg.\ semibeta (h2h) & $-0.067\,[\text{-}0.131,\text{-}0.003]$ & $+0.055\,[\text{-}0.082,0.178]$ \\
+downside beta (h2h) & $-0.23$ & $-0.01$ \\
 VaR (partial $\rho$) & $+0.135$ & $+0.205$ \\
 \bottomrule
 \end{tabular}
