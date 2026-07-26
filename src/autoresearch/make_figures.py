@@ -162,13 +162,13 @@ def fig_horizon(depth):
         persist = [hz[str(h)]["persistence"]["mean"] for h in horizons]
         skill = [hz[str(h)]["skill"]["mean"] for h in horizons]
         ax.plot(horizons, persist, "o-", color="#1f77b4", ms=3, label="vol persistence")
-        ax.plot(horizons, skill, "s-", color="#d62728", ms=3, label="drawdown skill")
+        ax.plot(horizons, skill, "s-", color="#d62728", ms=3, label="drawdown rank corr.")
         ax.set_title(BED_LABEL[bed], fontsize=10)
         ax.set_xlabel("horizon (days)", fontsize=8)
         ax.set_ylim(0, 1); ax.tick_params(labelsize=8)
     axes[0].set_ylabel("mean Spearman")
     axes[0].legend(fontsize=7, loc="lower right")
-    fig.suptitle("Drawdown skill tracks volatility persistence across horizons", fontsize=11)
+    fig.suptitle("Drawdown rank correlation tracks volatility persistence across horizons", fontsize=11)
     fig.tight_layout(rect=[0, 0, 1, 0.93])
     _save(fig, "fig4_horizon_decay.png")
 
