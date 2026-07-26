@@ -100,7 +100,7 @@ manufacturing winners. We evaluate ten metrics, volatility and nine downside- an
 tail-risk challengers, as forecasters of $90$-day forward
 maximum drawdown across five cross-sectional test beds spanning calm, bull, and
 crash regimes in crypto and equity, with per-date rank correlations, paired
-block-bootstrap confidence intervals, and Benjamini--Hochberg (BH) correction.
+block-bootstrap confidence intervals (CIs), and Benjamini--Hochberg (BH) correction.
 
 The headline is negative and, in hindsight, unsurprising. No metric reliably beats
 plain volatility. Our contribution is the anatomy of that result and the
@@ -134,7 +134,7 @@ snooping~\cite{white2000,harvey2016,bailey2014,bailey2017}. Our novelty is to sh
 panel (2013--2018) that retains crashed and delisted coins, so a point-in-time
 top-$100$-by-market-cap universe includes assets that later crater; we use three
 regimes: 2016 (calm), 2017 (bull), 2018 (crash). \emph{Equity:} S\&P~500
-constituents, 1994--1999 (calm) and 2005--2009 (GFC). The equity beds are
+constituents, 1994--1999 (calm) and 2005--2009 (the Global Financial Crisis). The equity beds are
 survivorship-biased by construction (freely available equity data retains
 almost no true deaths, itself a telling finding), so the survivorship claim
 rests on the crypto beds, while equity tests cross-asset generality. We checked this
@@ -161,7 +161,7 @@ volatility standalone, with significance from paired block-bootstrap $95\%$ inte
 and Benjamini--Hochberg (BH) correction at $q=0.05$ applied within each family
 (head-to-head and partials, ${\sim}45$ cells each). The block bootstrap uses length-$3$
 blocks over the per-date series. On the thin crypto beds ($7$--$9$ dates) this grid is
-coarse, so we back every crypto star with its interval and minimum detectable effect
+coarse, so we back every crypto star with its interval and minimum detectable effect (MDE)
 (App.~\ref{app:partials}) and read crypto-only significance as suggestive. The only
 metrics that significantly beat volatility on
 any bed are two volatility variants, downside deviation and VaR, on the single
@@ -298,7 +298,7 @@ one number.
 
 \begin{table}[t]
 \centering
-\caption{Persistence chain (mean per-date Spearman; all CIs exclude 0).}
+\caption{Persistence chain (mean per-date Spearman; dd = drawdown; all CIs exclude 0).}
 \label{tab:chain}
 \small
 \begin{tabular}{lccc}
@@ -334,7 +334,7 @@ it. On a locked panel it shows no significant out-of-sample gain over volatility
 (Newey--West $t=0.67$, lag $3$), beating it only on fat-tailed crypto-bull
 (Table~\ref{tab:econ}). A cost-aware tercile backtest agrees. The
 high-risk tercile realizes $10$--$30$ percentage points more forward drawdown than the
-low-risk tercile on every bed, net of a $20$~bps turnover cost, and the composite adds
+low-risk tercile on every bed, net of a $20$-basis-point (bps) turnover cost, and the composite adds
 nothing net of turnover except, again, on crypto-bull. Volatility is the workhorse.
 Magnitude adds a little, and only where tails are fat.
 

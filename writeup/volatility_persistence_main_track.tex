@@ -131,7 +131,7 @@ snooping~\cite{white2000,harvey2016,bailey2014,bailey2017}. Our novelty is to sh
 panel (2013--2018) that retains crashed and delisted coins, so a point-in-time
 top-$100$-by-market-cap universe includes assets that later crater; we use three
 regimes: 2016 (calm), 2017 (bull), 2018 (crash). \emph{Equity:} S\&P~500
-constituents, 1994--1999 (calm) and 2005--2009 (GFC). The equity beds are
+constituents, 1994--1999 (calm) and 2005--2009 (the Global Financial Crisis). The equity beds are
 survivorship-biased by construction (freely available equity data retains
 almost no true deaths, itself a telling finding), so the survivorship claim
 rests on the crypto beds, while equity tests cross-asset generality. We checked this
@@ -165,7 +165,7 @@ $\rho(\cdot,\text{drawdown}\mid\text{volatility})$ is the Spearman correlation o
 residual ranks after regressing the metric and the drawdown on volatility, per date.
 
 \textbf{Significance and power.} We attach a paired block-bootstrap $95\%$ confidence
-interval (length-$3$ blocks over the per-date series) to every comparison and apply
+interval (CI; length-$3$ blocks over the per-date series) to every comparison and apply
 BH correction at $q=0.05$ within each metric family (head-to-head and partials,
 ${\sim}45$ cells each). The crypto beds are thin ($7$--$9$ formation dates), so we read
 crypto-only significance as suggestive and back each crypto claim with its minimum
@@ -366,7 +366,7 @@ reduces drawdown to one number.
 
 \begin{table}[t]
 \centering
-\caption{Persistence chain (mean per-date Spearman; all CIs exclude 0).}
+\caption{Persistence chain (mean per-date Spearman; dd = drawdown; all CIs exclude 0).}
 \label{tab:chain}
 \small
 \begin{tabular}{lccc}
@@ -420,7 +420,7 @@ it. There it shows no significant out-of-sample gain over volatility
 (Newey--West $t=0.67$, lag $3$), beating it only on fat-tailed crypto-bull
 (Table~\ref{tab:econ}). A cost-aware tercile backtest agrees (Figure~\ref{fig:economic}). The
 high-risk tercile realizes $10$--$30$ percentage points more forward drawdown than the
-low-risk tercile on every bed, net of a $20$~bps turnover cost, and the composite adds
+low-risk tercile on every bed, net of a $20$-basis-point (bps) turnover cost, and the composite adds
 nothing net of turnover except, again, on crypto-bull. Volatility is the workhorse.
 Magnitude adds a little, and only where tails are fat.
 
