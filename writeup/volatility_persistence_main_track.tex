@@ -220,8 +220,8 @@ magnitude beats shape within the own-asset family, while no systematic
 co-movement metric adds signal (Figure~\ref{fig:forest} groups both axes). The
 increment is also not an artifact of the $-100\%$ delisting code. Mid-window delistings
 are ${\le}1\%$ of asset-dates, and valuing them at last price or dropping them moves
-VaR's increment by ${\le}0.02$. Table~\ref{tab:partials} gives the exact increments
-with BH significance.
+VaR's increment by ${\le}0.02$ (Table~\ref{tab:delisting}). Table~\ref{tab:partials}
+gives the exact increments with BH significance.
 
 \begin{figure*}[t]
 \centering
@@ -268,6 +268,26 @@ downside beta~\cite{ang2006} & $-0.08\dagger$ & $+0.03$ & $+0.02$ & $+0.01$ & $+
 Hill tail~\cite{kellyjiang2014} & $-0.09\dagger$ & $-0.13\dagger$ & $-0.09\dagger$ & n/e & n/e \\
 lower-tail dep.~\cite{chabiyo2018} & $-0.07$ & $-0.04$ & $-0.17\dagger$ & $-0.01$ & $+0.00$ \\
 GDA~\cite{faragotedongap2018} & $+0.03$ & $-0.05$ & $+0.05$ & $-0.01$ & $-0.03$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[t]
+\centering
+\small
+\caption{VaR partial $\rho(\text{VaR},\text{drawdown}\mid\text{vol})$ under three
+delisting codings. Baseline ($-100\%$) and last-price coincide (mid-window delistings are
+rare); the increment is unchanged to within $\pm0.02$.}
+\label{tab:delisting}
+\begin{tabular}{lccc}
+\toprule
+Bed & baseline ($-100\%$) & last-price & exclude \\
+\midrule
+crypto-16 & $+0.12$  & $+0.12$  & $+0.14$  \\
+crypto-17 & $+0.19$  & $+0.19$  & $+0.19$  \\
+crypto-18 & $+0.14$  & $+0.14$  & $+0.14$  \\
+equity-94 & $+0.035$ & $+0.035$ & $+0.035$ \\
+equity-05 & $+0.076$ & $+0.076$ & $+0.076$ \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -393,20 +413,46 @@ equity 05 & 0.56 & 0.56 & $-0.00$ (n.s.) \\
 If the residual is this small, a tireless automated
 search should fail out-of-sample and merely overfit validation. We test this on a strict
 train/validation/locked-test split, the locked test scored once after the metric
-is frozen. An LLM agent rewriting a scoring function and a $20{,}000$-configuration sweep
-both inflate the best \emph{validation} score with search intensity while the
-\emph{locked-test} score plateaus at the volatility baseline (Figure~\ref{fig:bon}).
-To check this is not a single-panel artifact, we re-ran a general nonlinear candidate
-generator ($1{,}500$ candidates per run) across $12$ holdout panels $\times$ $3$ search
-seeds, in out-of-time and random-repartition families, with the LLM loop as the single
-original panel. The validation-selected metric's out-of-sample edge over volatility is
-at most $+0.07$ and averages $+0.02$--$0.03$, straddling zero, while the
+is frozen. On the original locked panel, an LLM agent rewriting a scoring function and a
+$20{,}000$-configuration sweep both inflate the best \emph{validation} score with search
+intensity while the \emph{locked-test} score plateaus at the volatility baseline
+(Table~\ref{tab:bon}, Figure~\ref{fig:bon}). Validation-selected winners beat volatility
+on the locked test only $43\%$ of the time, despite a $0.94$ validation--test rank
+correlation.
+
+\begin{table}[t]
+\centering
+\caption{Best-of-$N$ discovery on the original locked panel. Validation inflates with
+search intensity; the locked test does not (volatility baseline $0.376$). Validation and
+test are different splits, so compare trends, not levels.}
+\label{tab:bon}
+\small
+\begin{tabular}{rcc}
+\toprule
+Search intensity $N$ & Best validation & Its locked test \\
+\midrule
+1 & 0.27 & 0.31 \\
+100 & 0.35 & 0.37 \\
+20{,}000 & 0.356 & 0.373 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+This is not a single-panel artifact. We re-ran a general nonlinear candidate generator
+($1{,}500$ candidates per run) across a grid of holdout panels $\times$ $3$ search seeds
+in two families: \emph{out-of-time}, a fixed-length test window slid through the timeline
+with validation always chronologically earlier; and \emph{random}, order-ignoring
+repartitions of the non-train dates. The validation-selected metric's locked-test edge
+over volatility (test gap) averages $+0.020$ out-of-time (range $-0.028$ to $+0.046$) and
+$+0.035$ random ($+0.014$ to $+0.072$), always small and often straddling zero, while the
 validation--test rank correlation stays $0.94$--$0.99$ throughout. No search, LLM or
-brute-force, finds a genuine improvement, and a non-LLM random sweep reproduces the
-plateau, so the danger is the cheap search, not the language model. The statistics are
-classical data snooping~\cite{white2000,bailey2017}; what is new is that an autonomous
-agent removes the last brake on trial count (analyst effort), so a locked,
-survivorship-free holdout scored exactly once becomes mandatory, not merely advisable.
+brute-force, beats volatility out-of-sample by more than noise, and the non-LLM sweep
+reproduces the plateau, so the danger is the cheap search, not the language model.
+
+The statistics are classical data snooping~\cite{white2000,bailey2017}. What is new is
+that an autonomous agent removes the last brake on trial count, namely analyst effort, so
+a locked, survivorship-free holdout scored exactly once becomes mandatory, not merely
+advisable.
 
 \subsection{What is volatility for?}
 The clearest positive use is forecasting outright
