@@ -146,6 +146,20 @@ metric by its per-date cross-sectional rank correlation with that drawdown, aver
 over the bed, cross-sectional rather than time-series because the operational
 question is which assets to derisk on a given date.
 
+\textbf{Metrics.} All ten are computed from the same $180$-day trailing daily returns.
+Volatility is the return standard deviation. Three are tail-magnitude measures: historical
+$5\%$ Value-at-Risk and expected shortfall~\cite{rockafellar2000}, and downside deviation,
+the lower partial moment of order two about a zero target~\cite{bawa1975,sortino1991}. The
+rest are tail-shape measures: the Viole--Nawrocki upper/lower partial-moment
+ratio~\cite{violenawrocki2016}; a per-asset Hill loss-tail exponent, our per-date
+simplification of the Kelly--Jiang common tail factor~\cite{kellyjiang2014}; and four
+systematic co-movement measures, namely negative realized semibeta~\cite{bpq2022}, downside
+beta~\cite{ang2006}, lower-tail dependence~\cite{chabiyo2018}, and a
+disappointment-aversion proxy~\cite{faragotedongap2018}, each estimated against the
+equal-weight market. The partial rank correlation
+$\rho(\cdot,\text{drawdown}\mid\text{volatility})$ is the Spearman correlation of the two
+residual ranks after regressing the metric and the drawdown on volatility, per date.
+
 \textbf{Significance and power.} We attach a paired block-bootstrap $95\%$ confidence
 interval (length-$3$ blocks over the per-date series) to every comparison and apply
 BH correction at $q=0.05$ within each metric family (head-to-head and partials,
@@ -246,7 +260,9 @@ markets are fat-tailed and blow-up-prone (crypto increments $0.12$--$0.19$, exce
 kurtosis $8$--$21$, vs equity $0.03$--$0.08$); a pooled per-date regression of the
 increment on tail-fatness across all $144$ dates gives a positive slope, suggestive when
 clustered by bed. Tail magnitude carries incremental information precisely when the tail
-is active.
+is active. Within crypto, splitting dates at their cross-sectional-median volatility, the
+increment rises from $+0.13$ on low-stress dates to $+0.18$ on high-stress ones, while on
+equity it stays flat and small.
 
 \begin{table}[t]
 \centering
@@ -372,6 +388,22 @@ $0.32$--$0.34$, so forward volatility does not fully screen off trailing volatil
 \label{fig:mediation}
 \end{figure}
 
+\textbf{Horizon dynamics.} Persistence and forecastability rise and fall together. As we
+sweep the forecast horizon from $14$ to $90$ days, volatility persistence and the drawdown
+rank correlation move in step (Figure~\ref{fig:horizon}). On equity both rise (persistence
+$0.66\rightarrow0.84$, rank correlation $0.47\rightarrow0.61$) at a roughly constant gap,
+while on crypto both are flat. Wherever persistence is higher, so is the rank correlation,
+consistent with persistence driving most of the forecastable variation and the constant
+gap being the part it does not explain.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig4_horizon_decay.png}
+\caption{Volatility persistence (blue) and drawdown-forecast rank correlation (red) versus
+forecast horizon, by bed. The curves track.}
+\label{fig:horizon}
+\end{figure*}
+
 \subsection{Does the edge pay?}
 A rank correlation is not a profit-and-loss statement.
 The magnitude-not-shape split of \S\ref{sec:magnitude}, volatility plus a single
@@ -382,7 +414,7 @@ priori as the magnitude metric surviving correction on all five beds, and the we
 are untuned, so the fully out-of-sample evidence is the locked panel. We pre-registered
 it. There it shows no significant out-of-sample gain over volatility
 (Newey--West $t=0.67$, lag $3$), beating it only on fat-tailed crypto-bull
-(Table~\ref{tab:econ}). A cost-aware tercile backtest agrees. The
+(Table~\ref{tab:econ}). A cost-aware tercile backtest agrees (Figure~\ref{fig:economic}). The
 high-risk tercile realizes $10$--$30$ percentage points more forward drawdown than the
 low-risk tercile on every bed, net of a $20$~bps turnover cost, and the composite adds
 nothing net of turnover except, again, on crypto-bull. Volatility is the workhorse.
@@ -408,6 +440,15 @@ equity 05 & 0.56 & 0.56 & $-0.00$ (n.s.) \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/fig7_economic.png}
+\caption{Realized drawdown discrimination (high minus low-risk tercile) by bed, sorting on
+volatility vs.\ the composite. Volatility already separates drawdown strongly; the
+composite is indistinguishable except marginally on crypto-bull.}
+\label{fig:economic}
+\end{figure}
 
 \subsection{Can a machine find more?}
 If the residual is this small, a tireless automated
