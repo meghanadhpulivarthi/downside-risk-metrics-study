@@ -37,20 +37,22 @@ Every few years a new downside- or tail-risk metric promises to improve on
 plain return volatility. The premise is always the same. The \emph{shape} of the
 loss distribution, whether its asymmetry, tail heaviness, or co-crash structure, is
 supposed to carry information that symmetric volatility misses. We test that premise
-as adversarially as the data allow. On a survivorship-free, multi-regime,
-multiple-testing-corrected evaluation of ten metrics across five test beds, no
-metric reliably beats volatility at forecasting an asset's forward maximum drawdown,
-whether the metric is published or machine-discovered. The failure has a clean
-anatomy, which we call \emph{magnitude, not shape}. The partial rank correlation of
-Value-at-Risk with forward drawdown, controlling for volatility, survives
-Benjamini--Hochberg correction on all five beds, though it reaches only $0.19$ at
-its largest. Every tail-shape metric adds nothing or subtracts. Yet the shape metrics
+as adversarially as the data allow. On an evaluation that is survivorship-free where
+survivorship can be fixed (crypto), multi-regime, and multiple-testing-corrected, with
+survivorship-biased equity beds as a cross-asset check, no metric reliably beats
+volatility at forecasting an asset's forward maximum drawdown across ten metrics and five
+test beds, whether the metric is published or machine-discovered. The failure has a clean
+anatomy, which we call \emph{magnitude, not shape}. The only increments that survive
+Benjamini--Hochberg correction come from metrics that embed the \emph{size} of downside
+losses (Value-at-Risk on all five beds, reaching $0.19$ at its largest; downside deviation;
+and, weakly, negative semibeta). Every magnitude-free shape metric adds nothing or
+subtracts. Yet the shape metrics
 are not broken. On genuinely shape-sensitive targets they beat volatility. Drawdown
 is simply a magnitude phenomenon that shape does not drive. Volatility is
-hard to beat because it is persistent, but a predictive mediation test indicates it is
-not a sufficient statistic. The tiny magnitude edge is not economically free either.
+hard to beat because it is persistent, though a predictive mediation test indicates it is
+not a sufficient statistic. The tiny magnitude edge does not pay its way either.
 A cost-aware backtest and a pre-registered composite add nothing over volatility
-except in fat-tailed crypto. Finally, an autonomous large-language-model discovery
+outside fat-tailed crypto. Finally, an autonomous large-language-model discovery
 loop only inflates validation while its locked-test score plateaus at volatility, a
 data-snooping caution now that agentic search makes signal-hunting nearly free.
 On a level field, plain volatility is remarkably hard to displace.
@@ -84,13 +86,13 @@ the partial-moment ``predictive'' ratio (UPM/LPM)~\cite{violenawrocki2016}, left
 Value-at-Risk (VaR) and expected shortfall (ES)~\cite{rockafellar2000,atilgan2020}, realized
 semibetas~\cite{bpq2022}, downside beta~\cite{ang2006,leviwelch2020}, lower-tail
 dependence~\cite{chabiyo2018}, disappointment-aversion risk (GDA)~\cite{faragotedongap2018},
-and tail-exponent factors~\cite{kellyjiang2014}. Each rests on the same premise, that
-asymmetry or tail structure carries information volatility misses.
+and tail-exponent factors~\cite{kellyjiang2014}. Each rests on the same premise, namely
+that asymmetry or tail structure carries information volatility misses.
 
 We test that premise on the fairest field we can build. Three disciplines the
 source literature usually omits turn out to matter enormously. A
 \emph{survivorship-free} universe keeps the assets that actually died. A
-\emph{locked} out-of-sample holdout stops search from leaking into the verdict. And
+\emph{locked} out-of-sample holdout stops search from leaking into the verdict. Finally,
 \emph{multiple-testing correction} keeps an evaluation of dozens of comparisons from
 manufacturing winners. We evaluate ten metrics, volatility and nine downside- and
 tail-risk challengers, as forecasters of $90$-day forward
@@ -105,7 +107,7 @@ magnitude, not shape. The only signal surviving correction beyond volatility is 
 \emph{size} of tail losses (VaR/ES/downside deviation), not their asymmetry
 (\S\ref{sec:magnitude}). Second, volatility is hard to beat because it is persistent,
 though a predictive test indicates forward volatility is not a sufficient statistic
-(\S\ref{sec:why}). Third, the residual edge is not economically free, except in
+(\S\ref{sec:why}). Third, the residual edge does not pay its way, except in
 fat-tailed crypto (\S\ref{sec:why}). Fourth, an autonomous large-language-model (LLM)
 discovery loop does not beat volatility out-of-sample and only overfits validation, a
 data-snooping caution as agentic search makes signal-hunting nearly free
@@ -122,8 +124,12 @@ directly~\cite{magdonismail2004,chekhlov2005}. Volatility itself is a persistent
 tradable risk signal~\cite{moreiramuir2017,frazzinipedersen2014}. That volatility is
 persistent is the founding fact of ARCH/GARCH~\cite{engle1982,bollerslev1986,andersen2003,corsi2009}; that searching
 many signals inflates in-sample rank correlations is classical data
-snooping~\cite{white2000,harvey2016,bailey2014,bailey2017}. Our novelty is to show an
-\emph{autonomous} agent reaches the snooping frontier at near-zero cost.
+snooping~\cite{white2000,sullivan1999,harvey2016,bailey2014,bailey2017}. A recent wave of
+LLM-driven and agentic systems automates signal discovery in
+finance~\cite{lopezlira2023,alphagpt2023,quantagent2024}, and typically reports
+validation-selected wins. Our contribution is to follow such wins onto a locked test. An
+\emph{autonomous} agent reaches the snooping frontier at near-zero cost, and its edge
+evaporates once a survivorship-free holdout is scored exactly once.
 
 %% =========================================================================
 \section{Experimental Setup}\label{sec:data}
@@ -135,20 +141,27 @@ constituents, 1994--1999 (calm) and 2005--2009 (the Global Financial Crisis). Th
 survivorship-biased by construction (freely available equity data retains
 almost no true deaths, itself a telling finding), so the survivorship claim
 rests on the crypto beds, while equity tests cross-asset generality. We checked this
-directly. A public, delisting-reputed price dump (the Kaggle Huge Stock Market dataset)
-contains none of our windows' famous S\&P~500 casualties, with Lehman, Bear Stearns,
-Enron, and WorldCom all absent, and yields zero mid-window delistings, so no free-data
-equity bed is genuinely survivorship-free.\footnote{All code, data pointers, and result
-logs to reproduce every table and figure are available in an anonymized repository for
-review and will be released publicly upon acceptance. Data sources are a CoinMarketCap
-daily crypto dump (retaining delisted coins), yfinance S\&P~500 constituents and the
-market index, and point-in-time index membership.}
+directly. A public price dump reputed to include delisted stocks (the Kaggle Huge Stock
+Market dataset) contains none of our windows' famous S\&P~500 casualties, with Lehman,
+Bear Stearns, Enron, and WorldCom all absent, and yields zero mid-window delistings, so we
+could not source a genuinely survivorship-free equity bed from free data. The bias runs in
+our favor. On crypto-2018, dropping the coins that died flatters shape and inflates the
+magnitude edge (\S\ref{sec:ablation}), so the small equity increments are plausibly upper
+bounds and shape's equity penalty a lower bound.\footnote{All code, data pointers,
+a pre-registration record (the frozen tests, the generalizability bar, and the
+composite), and result logs to reproduce every table and figure
+are available in an anonymized repository for review and will be released publicly upon
+acceptance. Data sources are a CoinMarketCap daily crypto dump (retaining delisted coins),
+yfinance S\&P~500 constituents and the market index, and point-in-time index membership.}
 
 \textbf{What we forecast.} From a $180$-day trailing window we forecast each asset's
 $90$-day forward maximum drawdown, coding a delisting as a $-100\%$ loss. We score a
 metric by its per-date cross-sectional rank correlation with that drawdown, averaged
 over the bed, cross-sectional rather than time-series because the operational
-question is which assets to derisk on a given date.
+question is which assets to de-risk on a given date. The beds span $8$, $9$, and $7$
+formation dates on crypto-16/17/18 and $66$ and $54$ on equity-94/05, each ranking a
+point-in-time cross-section of up to $100$ crypto assets or the ${\sim}500$ S\&P~500
+constituents.
 
 \textbf{Metrics.} All ten are computed from the same $180$-day trailing daily returns.
 Volatility is the return standard deviation. Three are tail-magnitude measures: historical
@@ -165,16 +178,22 @@ $\rho(\cdot,\text{drawdown}\mid\text{volatility})$ is the Spearman correlation o
 residual ranks after regressing the metric and the drawdown on volatility, per date.
 
 \textbf{Significance and power.} We attach a paired block-bootstrap $95\%$ confidence
-interval (CI; length-$3$ blocks over the per-date series) to every comparison and apply
-BH correction at $q=0.05$ within each metric family (head-to-head and partials,
-${\sim}45$ cells each). The crypto beds are thin ($7$--$9$ formation dates), so we read
+interval (CI) to every comparison, using length-$3$ blocks over the per-date series (near
+the $n^{1/3}$ rule of thumb for these lengths); the VaR increment's sign and significance
+are unchanged under block lengths $1$--$4$ and a stationary bootstrap. We apply BH
+correction at $q=0.05$ within each test battery (the head-to-head and the partial family,
+${\sim}45$ cells each), running BH within rather than across batteries because the two
+answer different questions. The crypto beds are thin ($7$--$9$ formation dates), so we read
 crypto-only significance as suggestive and back each crypto claim with its minimum
-detectable effect (MDE): VaR's increment exceeds the $80\%$-power MDE on crypto-16 and
+detectable effect (MDE). VaR's increment exceeds the $80\%$-power MDE on crypto-16 and
 crypto-17 but falls below it on crypto-18. The equity beds are well powered. There the
-$80\%$-power MDE for the shape increments is $0.034$--$0.042$, and the observed shape
-increments sit at or below it, so ``shape adds nothing'' is a powered null rather than a
-failure to detect. A placebo that permutes forward drawdown within each date drives the
-volatility correlation to $\approx0$ on four of five beds.
+$95\%$ CI on every shape increment excludes effects larger than $\approx0.04$ (the
+$80\%$-power MDE is $0.034$--$0.042$), so ``shape adds nothing'' is an equivalence result,
+not a failure to detect. A placebo that permutes forward drawdown within each date
+collapses the volatility correlation to $\approx0$ on four beds (${\le}0.012$) and to
+$+0.028$ on the thinnest, crypto-2018 ($7$ dates), whose bootstrap CI $[0.003,0.059]$
+barely clears zero. Against the true $+0.38$ that is a $93\%$ collapse, the residual a
+seven-date within-date permutation leaves rather than pipeline leakage.
 
 %% =========================================================================
 \section{The verdict: nothing beats volatility}\label{sec:verdict}
@@ -227,15 +246,20 @@ If nothing beats volatility, what is left to forecast
 beyond it? The \emph{partial} rank correlation (Spearman
 $\rho(\text{metric},\text{drawdown}\mid\text{volatility})$, which isolates what a metric
 adds beyond volatility) answers this. Figure~\ref{fig:forest} plots it for
-every metric and bed, and the picture splits cleanly by \emph{what a metric measures}. Tail-magnitude
-measures carry a small but genuine increment (VaR significant on \textbf{all five
-beds}, partial $\rho$ up to $0.19$; downside deviation on the three crypto beds), while
-tail-shape measures (the Viole--Nawrocki ratio, lower-tail dependence, the
-tail exponent, disappointment aversion) are $\approx0$ or negative
-everywhere. This is not merely an \emph{own-asset vs systematic} artifact. The one
-own-asset shape metric (the Hill tail exponent) is itself $\approx0$/negative, so
-magnitude beats shape within the own-asset family, while no systematic
-co-movement metric adds signal (Figure~\ref{fig:forest} groups both axes). The
+every metric and bed, and the picture splits cleanly by whether a metric embeds the
+\emph{size} of downside moves. Every increment that survives correction comes from a
+magnitude-bearing measure. VaR is significant on \textbf{all five beds} (partial $\rho$ up
+to $0.19$) and downside deviation on the three crypto beds. One systematic metric joins
+them. Negative realized semibeta, whose down-down semicovariance construction embeds
+downside magnitude, carries a BH-surviving increment of $+0.08$, $+0.13$, and $+0.05$ on
+crypto-17, crypto-18, and equity-05. Every magnitude-free shape measure adds $\approx0$ or
+subtracts, on both sides of the own-asset/systematic divide. The two own-asset shape
+metrics (the Viole--Nawrocki ratio and the Hill tail exponent) are themselves
+$\approx0$/negative, and so are the magnitude-free co-movement measures (downside beta,
+lower-tail dependence, disappointment aversion). The law is therefore sharper than
+\emph{own-asset vs systematic}. An increment beyond volatility appears wherever a metric
+carries downside magnitude, in an asset's own tail or in its co-crash with the market, and
+nowhere else. The
 increment is also not an artifact of the $-100\%$ delisting code. Mid-window delistings
 are ${\le}1\%$ of asset-dates, and valuing them at last price or dropping them moves
 VaR's increment by ${\le}0.02$ (Table~\ref{tab:delisting}). Table~\ref{tab:partials}
@@ -244,15 +268,16 @@ gives the exact increments with BH significance.
 \begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{figures/fig1_partial_forest.png}
-\caption{Incremental signal beyond volatility, by bed: partial Spearman
-$\rho(\text{metric},\text{drawdown}\mid\text{volatility})$, grouped on both axes a
-skeptic cares about, namely what the metric measures (magnitude vs shape) and
-whose distribution it uses (own-asset vs systematic co-movement with the market).
-Only own-asset magnitude (blue) sits reliably right of zero. The lone own-asset
-shape metric, the Hill tail exponent (orange), is $\approx 0$ or negative,
-so ``magnitude beats shape'' holds within the own-asset family, and no
-systematic co-movement metric (red) adds signal. Whiskers are $95\%$ block-bootstrap
-CIs; dotted lines separate the three families.}
+\caption{Incremental signal beyond volatility, by bed. Partial Spearman
+$\rho(\text{metric},\text{drawdown}\mid\text{volatility})$, grouped by whether a metric
+embeds downside magnitude. Only the magnitude-bearing metrics (blue: VaR, downside
+deviation, ES, and negative semibeta, whose down-down semicovariance construction carries
+downside magnitude) sit reliably right of zero. The magnitude-free shape metrics add
+$\approx0$ or subtract, both the own-asset ones (orange: the Viole--Nawrocki (VN) UPM/LPM
+ratio and the Hill tail exponent) and the systematic co-movement ones (red: downside beta,
+lower-tail dependence, and the disappointment-aversion (GDA) proxy). Magnitude beats shape
+on both sides of the own-asset/systematic divide. Whiskers are $95\%$ block-bootstrap CIs;
+dotted lines separate the three groups.}
 \label{fig:forest}
 \end{figure*}
 
@@ -260,19 +285,23 @@ VaR is worse than volatility
 standalone on equity (Table~\ref{tab:h2h}) yet has a positive increment there.
 As a standalone ranker it is a noisier proxy for volatility, but the partial
 correlation isolates its small orthogonal component. The increment is also larger where
-markets are fat-tailed and blow-up-prone (crypto increments $0.12$--$0.19$, excess
-kurtosis $8$--$21$, vs equity $0.03$--$0.08$); a pooled per-date regression of the
-increment on tail-fatness across all $144$ dates gives a positive slope, suggestive when
-clustered by bed. Tail magnitude carries incremental information precisely when the tail
-is active. Within crypto, splitting dates at their cross-sectional-median volatility, the
-increment rises from $+0.13$ on low-stress dates to $+0.18$ on high-stress ones, while on
-equity it stays flat and small.
+markets are fat-tailed and blow-up-prone. Crypto increments run $0.12$--$0.19$ where excess
+kurtosis is $8$--$21$, against equity increments of $0.03$--$0.08$ where kurtosis is far
+lower. A pooled per-date regression of the increment on tail-fatness across all $144$ dates
+gives a positive slope ($+0.013$, $95\%$ CI $[0.007,0.021]$); clustering by bed widens the
+CI to $[-0.004,0.032]$ (one-sided $p=0.10$), so we read it as suggestive. Tail magnitude
+carries incremental information precisely when the tail is active. When crypto dates are
+split at the cross-sectional median of volatility, the increment rises from $+0.13$ on
+low-stress dates to $+0.18$ on high-stress ones, while on equity it stays flat and small.
 
 \begin{table}[t]
 \centering
 \caption{Partial Spearman $\rho(\text{metric},\text{drawdown}\mid\text{volatility})$.
-Rows 1--3 tail magnitude, rows 4--9 tail shape. $\ast$ survives BH ($q=0.05$,
-positive); $\dagger$ survives BH negative; n/e = not estimable per date. Bold marks the highest value in each column.}
+Rows 1--3 are own-asset tail magnitude; row 4 (negative semibeta) is magnitude-bearing
+through its down-down semicovariance; rows 5--9 are magnitude-free shape. $\ast$ survives
+BH ($q=0.05$, positive); $\dagger$ survives BH negative; n/e = not estimable per date
+(too few loss-tail observations to fit a Hill exponent per date on equity). Bold marks the
+highest value in each column.}
 \label{tab:partials}
 \small
 \begin{tabular}{lccccc}
@@ -358,8 +387,9 @@ direct trailing-vol$\rightarrow$drawdown rank correlation they compose. We resis
 calling forward volatility a
 \emph{sufficient statistic}. A naive same-window mediation suggests it, but that test
 is contaminated (forward volatility and drawdown share a window). Measured on a
-disjoint, predictive window, trailing volatility retains a partial correlation of
-$0.32$--$0.34$ on equity (Figure~\ref{fig:mediation}). Because that disjoint mediator is
+disjoint, predictive window (forward volatility over $[t,t{+}30]$ and drawdown over
+$[t{+}30,t{+}120]$, so mediator and outcome share no days), trailing volatility retains a
+partial correlation of $0.32$--$0.34$ on equity (Figure~\ref{fig:mediation}). Because that disjoint mediator is
 a noisy $30$-day proxy, we read this as consistent with incomplete mediation rather than
 proof, so persistence is a leading but incomplete explanation, not a mechanism that
 reduces drawdown to one number.
@@ -415,22 +445,27 @@ A rank correlation is not a profit-and-loss statement.
 The magnitude-not-shape split of \S\ref{sec:magnitude}, volatility plus a single
 tail-magnitude term, implies one natural composite, the equal-weight sum
 $z(\text{vol})+z(\text{VaR})$ with no fitting, where $z(\cdot)$ is the cross-sectional
-z-score (each metric standardized across the assets on a given date). VaR was chosen a
-priori as the magnitude metric surviving correction on all five beds, and the weights
-are untuned, so the fully out-of-sample evidence is the locked panel. We pre-registered
-it. There it shows no significant out-of-sample gain over volatility
-(Newey--West $t=0.67$, lag $3$), beating it only on fat-tailed crypto-bull
-(Table~\ref{tab:econ}). A cost-aware tercile backtest agrees (Figure~\ref{fig:economic}). The
+z-score (each metric standardized across the assets on a given date). VaR was fixed as the
+composite's second term before the locked panel was opened. It was the only metric whose
+increment survived correction on all five exploratory beds, and the weights are untuned,
+so the locked panel is fully out-of-sample. There it shows no significant out-of-sample
+gain over volatility (Newey--West $t=0.67$, lag $3$), beating it only on fat-tailed
+crypto-bull (Table~\ref{tab:econ}). That crypto-bull edge is $+0.05$, below the bed's
+$80\%$-power MDE of $0.09$, so like VaR's crypto claims it is suggestive rather than
+powered. A cost-aware tercile backtest agrees (Figure~\ref{fig:economic}). The
 high-risk tercile realizes $10$--$30$ percentage points more forward drawdown than the
-low-risk tercile on every bed, net of a $20$-basis-point (bps) turnover cost, and the composite adds
-nothing net of turnover except, again, on crypto-bull. Volatility is the workhorse.
+low-risk tercile on every bed, net of a $20$-basis-point (bps) cost charged on portfolio
+turnover at each rebalance (terciles, rebalanced per formation date), and the composite
+adds nothing net of turnover except, again, on crypto-bull. Volatility is the workhorse.
 Magnitude adds a little, and only where tails are fat.
 
 \begin{table}[t]
 \centering
-\caption{Composite $z(\text{vol})+z(\text{VaR})$ vs.\ volatility: per-date Spearman
-and difference (95\% CI); significant only on crypto-bull. n.s.\ = not significant
-(the difference's $95\%$ CI includes $0$).}
+\caption{Composite $z(\text{vol})+z(\text{VaR})$ vs.\ volatility, per-date Spearman
+and difference (95\% CI). The difference is significantly positive only on crypto-bull and
+significantly negative, though trivially small, on equity-94; n.s.\ = not significant (the
+difference's $95\%$ CI includes $0$). The locked panel trains on $2017$ and is scored once
+on the $2018$ crash.}
 \label{tab:econ}
 \small
 \begin{tabular}{lccc}
@@ -464,9 +499,23 @@ train/validation/locked-test split, the locked test scored once after the metric
 is frozen. On the original locked panel, an LLM agent rewriting a scoring function and a
 $20{,}000$-configuration sweep both inflate the best \emph{validation} score with search
 intensity while the \emph{locked-test} score plateaus at the volatility baseline
-(Table~\ref{tab:bon}, Figure~\ref{fig:bon}). Validation-selected winners beat volatility
-on the locked test only $43\%$ of the time, despite a $0.94$ validation--test rank
-correlation.
+(Table~\ref{tab:bon}, Figure~\ref{fig:bon}). Of the swept configurations that beat
+volatility on validation, only $43\%$ also beat it on the locked test, despite a $0.94$
+validation--test rank correlation.
+
+\textbf{The discovery loop.} The agent is Claude Opus 4.8. It is given a frozen scorer it
+may not edit, a train/validation split, and a single file defining
+\texttt{build\_scores(panel)}. Each iteration it reads the log of past attempts and the
+current metric, rewrites the metric with one new idea (any Python over the per-row features
+volatility, ES, VaR, LPM$_2$, downside deviation, trailing drawdown, skew, kurtosis, and
+market cap, fitting any parameters on the train split only), scores it on validation, and
+keeps the edit if validation improved, otherwise reverts. It never sees the locked test,
+which a separate frozen script scores exactly once after the metric is finalized. The run
+we report ran $51$ iterations ($14$ kept, $37$ discarded), lifting validation from $0.31$
+to $0.34$. The $20{,}000$-configuration sweep enumerates the same feature-combination space
+(sums, ratios, products, gates, interactions) exhaustively, and the general nonlinear
+generator samples $1{,}500$ such candidates per run. All three optimize the same validation
+score against the same locked test.
 
 \begin{table}[t]
 \centering
@@ -490,12 +539,17 @@ This is not a single-panel artifact. We re-ran a general nonlinear candidate gen
 ($1{,}500$ candidates per run) across a grid of holdout panels $\times$ $3$ search seeds
 in two families: \emph{out-of-time}, a fixed-length test window slid through the timeline
 with validation always chronologically earlier; and \emph{random}, order-ignoring
-repartitions of the non-train dates. The validation-selected metric's locked-test edge
-over volatility (test gap) averages $+0.020$ out-of-time (range $-0.028$ to $+0.046$) and
-$+0.035$ random ($+0.014$ to $+0.072$), always small and often straddling zero, while the
-validation--test rank correlation stays $0.94$--$0.99$ throughout. No search, LLM or
-brute-force, beats volatility out-of-sample by more than noise, and the non-LLM sweep
-reproduces the plateau, so the danger is the cheap search, not the language model.
+repartitions of the non-train dates. The validation-selected metric's locked-test edge over
+volatility (test gap) is small but positive, averaging $+0.020$ out-of-time (clustered
+$t=4.3$ across the six panels) and $+0.035$ under random repartitions ($t=5.3$), while the
+validation--test rank correlation stays $0.94$--$0.99$ throughout. Two readings follow.
+First, the out-of-time edge is tiny and consistent with search rediscovering the same
+tail-magnitude increment of \S\ref{sec:magnitude}, not new signal. Second, the random-split
+edge is the larger of the two, a signature of temporal leakage, because order-ignoring
+repartitions interleave validation and test dates and let volatility's persistence leak
+across the split, manufacturing a phantom edge. Only chronological holdouts are honest in
+persistent panels. Either way the edge is economically negligible, and the non-LLM sweep
+reproduces it, so the danger is the cheap search, not the language model.
 
 The statistics are classical data snooping~\cite{white2000,bailey2017}. What is new is
 that an autonomous agent removes the last brake on trial count, namely analyst effort, so
@@ -517,12 +571,13 @@ reflexivity frictions are unmodeled).
 \begin{figure*}[t]
 \centering
 \includegraphics[width=0.7\textwidth]{figures/fig5_best_of_N.png}
-\caption{Automated discovery does not beat volatility out of sample. As search intensity
-grows, the best validation score climbs while its locked-test score stays
-flat at the volatility baseline. On this ($2017\!\to\!2018$-crash) holdout,
-validation-selected winners beat volatility on the locked test only $43\%$ of the time;
-across $12$ panels $\times$ $3$ seeds the win-rate is regime-dependent, but the
-locked-test edge over volatility never exceeds noise.}
+\caption{Automated discovery does not beat volatility out of sample by more than a sliver.
+As search intensity grows, the best validation score climbs while its locked-test score
+stays flat at the volatility baseline. On this ($2017\!\to\!2018$-crash) holdout, only
+$43\%$ of the configurations that beat volatility on validation also beat it on the locked
+test. Across $12$ panels $\times$ $3$ seeds the locked-test edge is statistically positive
+but economically negligible ($+0.02$ out-of-time), and larger under order-ignoring random
+splits, the signature of temporal leakage.}
 \label{fig:bon}
 \end{figure*}
 
@@ -577,11 +632,11 @@ losses, and only a little, mostly in fat-tailed markets (\S\ref{sec:magnitude}).
 standalone metric beats volatility (\S\ref{sec:verdict}), a pre-registered composite
 yields no significant out-of-sample gain, automated search cannot find one, and the
 economics track the statistics (\S\ref{sec:why}). The recurring
-failure of asymmetry and shape
+failure of magnitude-free asymmetry and shape
 metrics (including the partial-moment ratio~\cite{violenawrocki2016}) is
-not an implementation accident. Once symmetric volatility is accounted for, the
-asymmetric structure adds no incremental cross-sectional information for
-forecasting drawdown. The fair-field disciplines change what one would report, not the
+not an implementation accident. Once symmetric volatility is accounted for, asymmetric
+structure adds incremental cross-sectional information for forecasting drawdown only when
+it also carries downside magnitude, as in negative semibeta; pure shape adds nothing. The fair-field disciplines change what one would report, not the
 verdict (\S\ref{sec:ablation}). Survivorship bias alone flips a co-crash shape metric
 from significantly worse than volatility to a tie and inflates the apparent magnitude
 edge, yet the verdict that no shape metric beats volatility is robust to dropping any
@@ -591,8 +646,8 @@ of the conclusion.
 We are deliberately careful about the strength of the
 persistence story. An earlier version of this study claimed forward volatility
 was a sufficient statistic, found that claim was a same-window measurement
-artifact, and retracted it here, just as an earlier ``survivorship masks
-downside value'' thesis was retracted when a hardened test refuted it. The paper
+artifact, and corrected it in this version, just as an earlier ``survivorship masks
+downside value'' thesis was dropped when a hardened test refuted it. The paper
 reports only claims that survived stress-testing.
 
 The practical takeaway is plain but firm. For cross-sectional drawdown
@@ -605,7 +660,9 @@ holdout. On a level field, volatility is not glamorous, but it is very hard to b
 (\S\ref{sec:why} is a first economic check, not a portfolio study); the
 crypto beds have few formation dates ($7$--$9$), so their significance is
 suggestive and the null ``shape adds nothing'' leans on the well-powered equity
-beds; and the repurposed pricing metrics are daily adaptations, so results speak to
+beds; the trailing window is fixed at $180$ days and the horizon sweep varies only the
+forward side, so sensitivity to the trailing length is unexamined; and the repurposed
+pricing metrics are daily adaptations, so results speak to
 drawdown forecasting, not the originals' pricing claims.
 
 %% =========================================================================

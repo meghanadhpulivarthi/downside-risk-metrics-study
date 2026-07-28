@@ -1,0 +1,12 @@
+{
+  "metric": "var5",
+  "block_lengths": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "stationary_mean_block": 3,
+  "n_boot": 3000,
+  "seed": 0
+}

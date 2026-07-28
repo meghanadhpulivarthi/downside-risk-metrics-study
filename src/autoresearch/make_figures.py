@@ -31,17 +31,20 @@ BED_LABEL = {"crypto_2016_calm": "crypto '16", "crypto_2017_bull": "crypto '17",
              "equity_2005_09_gfc": "equity 05-09"}
 IS_CRYPTO = {b: b.startswith("crypto") for b in BEDS}
 
-# Metric families for the forest plot, split on BOTH axes a reviewer cares about:
-# what the metric measures (magnitude vs shape) AND whose distribution it uses
-# (own-asset vs systematic/co-movement with the market). This shows "magnitude, not
-# shape" survives *within* the own-asset family (Hill, the only own-asset shape metric,
-# also fails), and separately that no systematic co-movement metric adds signal.
-OWN_MAGNITUDE = [("var5", "VaR"), ("downside_dev", "downside dev"), ("es5", "ES")]
-OWN_SHAPE = [("hill_tail", "Hill tail")]
-SYSTEMATIC = [("vn_ratio", "VN UPM/LPM"), ("down_semibeta", "semibeta"),
-              ("down_beta", "downside beta"), ("ltd_crash", "lower-tail dep"),
-              ("gda_voldown", "GDA vol-down")]
-FAMILY_COLOR = {"own_mag": "#1f77b4", "own_shape": "#ff7f0e", "systematic": "#d62728"}
+# Metric families for the forest plot. The primary split is what a metric MEASURES:
+# magnitude-bearing (embeds the size of downside moves) vs magnitude-free shape. Negative
+# semibeta sits in the magnitude group even though it is a systematic (against-market)
+# measure, because its down-down semicovariance construction embeds downside magnitude,
+# which is why it -- alone among the co-movement metrics -- shows a BH-surviving increment.
+# The shape metrics are split into own-asset (VN ratio, Hill; M2: VN is own-asset, not
+# systematic) and systematic co-movement, so the "magnitude beats shape" law reads within
+# both. Only magnitude-bearing metrics (blue) sit reliably right of zero.
+MAGNITUDE = [("var5", "VaR"), ("downside_dev", "downside dev"), ("es5", "ES"),
+             ("down_semibeta", "neg. semibeta")]
+OWN_SHAPE = [("vn_ratio", "VN UPM/LPM"), ("hill_tail", "Hill tail")]
+SYSTEMATIC_SHAPE = [("down_beta", "downside beta"), ("ltd_crash", "lower-tail dep"),
+                    ("gda_voldown", "GDA")]
+FAMILY_COLOR = {"magnitude": "#1f77b4", "own_shape": "#ff7f0e", "syst_shape": "#d62728"}
 
 
 def latest(suffix, fname):
@@ -60,18 +63,18 @@ def xerr(mean, ci):
 
 # ---------------- Fig 1: partial-correlation forest (magnitude vs shape) ----------------
 def fig_forest(mech):
-    # Ordered top->bottom: own magnitude, own shape, systematic. Each metric carries
-    # its family color so the two axes (magnitude/shape, own/systematic) read at a glance.
-    families = ([(k, lab, "own_mag") for k, lab in OWN_MAGNITUDE]
+    # Ordered top->bottom: magnitude-bearing, own-asset shape, systematic shape. Each
+    # metric carries its family color so "only magnitude adds signal" reads at a glance.
+    families = ([(k, lab, "magnitude") for k, lab in MAGNITUDE]
                 + [(k, lab, "own_shape") for k, lab in OWN_SHAPE]
-                + [(k, lab, "systematic") for k, lab in SYSTEMATIC])
+                + [(k, lab, "syst_shape") for k, lab in SYSTEMATIC_SHAPE])
     fig, axes = plt.subplots(1, 5, figsize=(13, 4.8), sharey=True)
     ylabels = [lab for _, lab, _ in families]
     ypos = list(range(len(families)))[::-1]  # first metric at top
     # Separators between the three family blocks.
-    n_mag, n_shape = len(OWN_MAGNITUDE), len(OWN_SHAPE)
+    n_mag, n_shape = len(MAGNITUDE), len(OWN_SHAPE)
     split1 = (ypos[n_mag - 1] + ypos[n_mag]) / 2                    # magnitude | own-shape
-    split2 = (ypos[n_mag + n_shape - 1] + ypos[n_mag + n_shape]) / 2  # own-shape | systematic
+    split2 = (ypos[n_mag + n_shape - 1] + ypos[n_mag + n_shape]) / 2  # own-shape | syst-shape
 
     for ax, bed in zip(axes, BEDS):
         part = mech[bed]["partial"]
@@ -94,15 +97,15 @@ def fig_forest(mech):
     axes[0].set_yticklabels(ylabels, fontsize=8)
     for tick_label, (_, _, fam) in zip(axes[0].get_yticklabels(), families):
         tick_label.set_color(FAMILY_COLOR[fam])
-    handles = [plt.Line2D([0], [0], marker="o", ls="", color=FAMILY_COLOR["own_mag"],
-                          label="own-asset magnitude"),
+    handles = [plt.Line2D([0], [0], marker="o", ls="", color=FAMILY_COLOR["magnitude"],
+                          label="magnitude-bearing"),
                plt.Line2D([0], [0], marker="o", ls="", color=FAMILY_COLOR["own_shape"],
                           label="own-asset shape"),
-               plt.Line2D([0], [0], marker="o", ls="", color=FAMILY_COLOR["systematic"],
-                          label="systematic / co-movement")]
+               plt.Line2D([0], [0], marker="o", ls="", color=FAMILY_COLOR["syst_shape"],
+                          label="systematic shape")]
     axes[-1].legend(handles=handles, fontsize=7.5, loc="lower right", framealpha=0.9)
     fig.suptitle("Partial Spearman rho(metric, forward drawdown | volatility): "
-                 "only own-asset magnitude adds signal", fontsize=11)
+                 "only magnitude-bearing metrics add signal beyond volatility", fontsize=11)
     fig.text(0.5, 0.005, "incremental rank correlation beyond volatility (95% block-bootstrap CI)",
              ha="center", fontsize=9)
     fig.tight_layout(rect=[0, 0.03, 1, 0.95])
