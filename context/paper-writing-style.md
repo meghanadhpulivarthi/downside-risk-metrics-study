@@ -70,6 +70,64 @@ medium-long sentences. Aim for restraint and rhythm variance.
 - a decorative triad (three parallel items purely for cadence). Factual triads that
   enumerate real things (`bull, bear, and sideways`) are fine and unlimited.
 
+## Nine basic ways to improve academic style (UC Berkeley SLC)
+
+From the UC Berkeley Student Learning Center worksheet
+(slc.berkeley.edu/.../nine-basic-ways-improve-your-style-academic-writing). Where a
+point conflicts with the punctuation rules above, the house rules win (flagged inline).
+
+1. **Use active voice.** Prefer active over passive constructions. Reserve passive for
+   when the actor is unknown or irrelevant.
+2. **Mix up punctuation.** Use it correctly and with variety: semicolons join two
+   complete, complementary sentences; colons introduce a list; dashes bracket an aside.
+   *House override:* do not use em-dashes at all, and never use a colon for a dramatic
+   reveal (functional list/equation colons only) — rephrase instead.
+3. **Vary sentence structure.** Avoid a monotonous run of short, similar sentences;
+   combine and restructure for flow (reinforces "Sentence rhythm" above).
+4. **Avoid choppiness.** Merge fragmented, choppy sentences into smoother connected ones,
+   while still keeping the occasional deliberate short declarative for punch.
+5. **Avoid repetition.** Do not pair redundant synonyms ("jealous and envious"); pick one.
+6. **Be concise.** Trim wordy constructions and state ideas directly.
+7. **Use the vocabulary you know.** Favor clear, simple words over flashy ones you might
+   misuse, but avoid weak choices such as "bad", "big", or "mad".
+8. **Expand your vocabulary.** Look up unfamiliar words while reading and adopt them once
+   they are comfortable and appropriate.
+9. **Keep language formal.** Avoid casual phrasing; choose precise formal wording
+   ("mild-mannered and kind", not "mellow and good"). Matches the earlier fix that
+   replaced "not decorative" with a formal phrasing.
+
+Guiding line: **write to express, not to impress.**
+
+## Eleven essential academic-writing skills (EIKI guide)
+
+From the EIKI "Complete Guide to Academic Writing" (eikipub.com). Broader than the prose
+rules above; the first ones bear directly on drafting, the later ones are research-workflow
+and soft skills. Kept here for completeness.
+
+1. **Clarity and coherence.** Communicate ideas clearly and concisely with sound grammar
+   and structure so the writing flows from one point to the next.
+2. **Critical thinking.** Evaluate and analyze evidence, weighing the strengths and
+   weaknesses of competing perspectives to support the argument.
+3. **Research skills.** Locate reliable sources across journals, books, and databases and
+   judge their credibility.
+4. **Attention to detail.** Eliminate errors in grammar, spelling, and citation; apply the
+   referencing style consistently; edit and proofread.
+5. **Time management.** Prioritize, schedule, and allocate time so drafts and deadlines are
+   met.
+6. **Writing style.** Develop a distinctive, consistent voice and adapt language to the
+   audience, purpose, and genre.
+7. **Interpersonal skills.** Collaborate with peers and reviewers; listen and respond to
+   feedback when revising.
+8. **Adaptability.** Adjust to new genres, styles, and tools across the writing process.
+9. **Organization.** Arrange ideas and present them in a clear, logical order.
+10. **Independence.** Work autonomously, take initiative, and make decisions to finish the
+    work.
+11. **Curiosity.** Keep an inquisitive mindset and pursue meaningful, original questions.
+
+For this paper the load-bearing four are #1 clarity, #4 attention to detail, #6 style, and
+#9 organization; they operationalize the same discipline as the punctuation and rhythm
+rules above.
+
 ## Self-audit (run before declaring a draft done)
 
 ```bash
